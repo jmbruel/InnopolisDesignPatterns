@@ -1,0 +1,84 @@
+ifndef::glossaire[]
+:glossaire:
+
+[glossary]
+== Glossaire et définition
+
+WARNING: Ces définitions reprennent les définitions vues dans ce livre,
+en les organisant par grands types de patrons de conception :
+de création, comportementaux et structurels.
+
+ifdef::slides[:leveloffset: -1]
+
+[glossary]
+
+
+
+=== Patrons de création
+
+
+
+Singleton::
+include::pattern/singleton.txt[]
+
+ifdef::slides[=== Patrons de création (suite)]
+
+Fabrique::
+include::pattern/fabrique.txt[]
+
+ifdef::slides[=== Patrons de création (suite)]
+
+[[FabriqueAbstraite]] Fabrique abstraite::
+include::pattern/fabrique-abstraite.txt[]
+
+
+
+=== Patrons comportementaux
+
+
+
+État (_State^uk^_)::
+include::pattern/etat.txt[]
+
+ifdef::slides[=== Patrons comportementaux (suite)]
+
+Itérateur (_Iterator^uk^_)::
+include::pattern/iterateur.txt[]
+
+ifdef::slides[=== Patrons comportementaux (suite)]
+
+Observateur (_Observer^uk^_)::
+include::pattern/observer.txt[]
+
+ifdef::slides[=== Patrons comportementaux (suite)]
+
+Stratégie (_Strategy^uk^_)::
+include::pattern/strategy.txt[]
+
+ifdef::slides[=== Patrons comportementaux (suite)]
+
+Visiteur (_Visitor^uk^_)::
+include::pattern/visitor.txt[]
+
+
+=== Patrons structurels
+
+
+
+
+Adaptateur (_Adaptor^uk^_)::
+include::pattern/adapteur.txt[]
+
+ifdef::slides[=== Patrons structurels (suite)]
+
+Composite::
+include::pattern/composite.txt[]
+
+ifdef::slides[=== Patrons structurels (suite)]
+
+Procuration (_Proxy^uk^_)::
+include::pattern/proxy.txt[]
+
+ifdef::slides[:leveloffset: +1]
+
+endif::glossaire[]
