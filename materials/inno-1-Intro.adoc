@@ -13,7 +13,7 @@ v20.1 {localdate}
 :toc: left
 :numbered:
 :status:
-:base: http://jmbruel.github.io/cpoa
+:base: https://github.com/jmbruel/InnopolisDesignPatterns
 :siteurl: {base}/Innopolis2020.html
 :bitlysiteurl: http://bit.ly/innopolis-patterns
 :incremental: %step
