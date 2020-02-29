@@ -5,7 +5,8 @@
 :baseMaterial: link:{baseURL}/materials
 :toc:
 :numbered:
-Elective course on Design Patterns ({moodle}[moodle link]) at {iu}.
+
+This project is a repository for the teaching materials used in the elective course on Design Patterns ({moodle}[moodle link]) at {iu}.
 
 .The 2020 promotion
 image::2020groupe.jpg[width=50%]
