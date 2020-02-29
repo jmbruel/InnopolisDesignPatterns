@@ -1,0 +1,93 @@
+@startuml
+
+title TP1's Class Diagram\n
+
+  namespace appli {
+      abstract class appli.Canard {
+      ComportementVol comportementVol
+      ComportementCancan comportementCancan
+          {abstract} + afficher()
+          + cancaner()
+          + nager()
+          + voler()
+      }
+    }
+
+
+    namespace appli {
+      class appli.CanardEnPlastique {
+          + CanardEnPlastique()
+          + afficher()
+      }
+    }
+
+
+    namespace appli {
+      class appli.Colvert {
+          + Colvert()
+          + afficher()
+      }
+    }
+
+
+    namespace appli {
+      class appli.Leurre {
+          + Leurre()
+          + afficher()
+      }
+    }
+
+
+    namespace appli {
+      class appli.Mandarin {
+          + Mandarin()
+          + afficher()
+      }
+    }
+  
+
+  namespace comportements.cancaner {
+    interface comportements.cancaner.ComportementCancan {
+    {abstract} + cancaner()
+    }
+    namespace impl {
+       class comportements.cancaner.impl.CanardMuet {
+       + cancaner()
+       }
+       class comportements.cancaner.impl.Cancan {
+       + cancaner()
+       }
+       class comportements.cancaner.impl.Coincoin {
+       + cancaner()
+       }
+    }
+  }
+
+  namespace comportements.voler {
+    interface comportements.voler.ComportementVol {
+    {abstract} + voler()
+    }
+    namespace impl {
+      class comportements.voler.impl.NePasVoler {
+      + voler()
+      }
+      class comportements.voler.impl.VolerAvecDesAiles {
+      + voler()
+      }
+    }
+  }
+  
+
+  appli.Canard *-- comportements.cancaner.ComportementCancan : comportementCancan
+  appli.Canard *-- comportements.voler.ComportementVol : comportementVol
+  appli.CanardEnPlastique -up-|> appli.Canard
+  appli.Colvert -up-|> appli.Canard
+  appli.Leurre -up-|> appli.Canard
+  appli.Mandarin -up-|> appli.Canard
+  comportements.cancaner.impl.CanardMuet .up.|> comportements.cancaner.ComportementCancan
+  comportements.cancaner.impl.Cancan .up.|> comportements.cancaner.ComportementCancan
+  comportements.cancaner.impl.Coincoin .up.|> comportements.cancaner.ComportementCancan
+  comportements.voler.impl.NePasVoler .up.|> comportements.voler.ComportementVol
+  comportements.voler.impl.VolerAvecDesAiles .up.|> comportements.voler.ComportementVol
+
+@enduml
