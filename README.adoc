@@ -1,9 +1,11 @@
 = InnopolisDesignPatterns
 :iu: https://university.innopolis.ru/en/[Innopolis University]
 :moodle: https://moodle.innopolis.university/course/view.php?id=424
+:baseURL: https://github.com/jmbruel/InnopolisDesignPatterns/blob/master
+:baseMaterial: link:{baseURL}/materials
 :toc:
 :numbered:
-Elective course on Design Patterns (link:{moodle}[moodle link]) at {iu}.
+Elective course on Design Patterns ({moodle}[moodle link]) at {iu}.
 
 .The 2020 promotion
 image::2020groupe.jpg[width=50%]
@@ -11,7 +13,7 @@ image::2020groupe.jpg[width=50%]
 == First venue (February 28/29)
 
 - Introduction and organization
-- TD1 / TP1 => assignment 1
+- {baseMaterial}/TD1.adoc[TD1] / {baseMaterial}/TP1.adoc[TP1] => assignment 1
 
 :numbered!:
 == Contact
