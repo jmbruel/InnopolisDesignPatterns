@@ -1,0 +1,100 @@
+@startuml
+
+title __SRC's Class Diagram__\n
+
+
+    abstract class Canard {
+        {abstract} + afficher()
+        + cancaner()
+        + nager()
+        + voler()
+    }
+
+  
+
+
+    class CanardEnPlastique {
+        + CanardEnPlastique()
+        + afficher()
+    }
+
+  
+
+
+    class CanardMuet {
+        + cancaner()
+    }
+
+  
+
+
+    class Cancan {
+        + cancaner()
+    }
+
+  
+
+
+    class Coincoin {
+        + cancaner()
+    }
+
+  
+
+
+    class Colvert {
+        + Colvert()
+        + afficher()
+    }
+
+  
+
+
+    interface ComportementCancan {
+        {abstract} + cancaner()
+    }
+
+  
+
+
+    interface ComportementVol {
+        {abstract} + voler()
+    }
+
+  
+
+
+    class Leurre {
+        + Leurre()
+        + afficher()
+    }
+
+  
+
+
+    class NePasVoler {
+        + voler()
+    }
+
+  
+
+
+    class VolerAvecDesAiles {
+        + voler()
+    }
+
+  
+
+  Canard o-- ComportementCancan : comportementCancan
+  Canard o-- ComportementVol : comportementVol
+  CanardEnPlastique -up-|> Canard
+  CanardMuet .up.|> ComportementCancan
+  Cancan .up.|> ComportementCancan
+  Coincoin .up.|> ComportementCancan
+  Colvert -up-|> Canard
+  Leurre -up-|> Canard
+  NePasVoler .up.|> ComportementVol
+  VolerAvecDesAiles .up.|> ComportementVol
+
+
+@enduml
