@@ -67,6 +67,8 @@ ifdef::slides[]
 include::strategy-uk.adoc[]
 endif::slides[]
 
+=== Enough for today...
+
 === (non) Réutilisation
 
 WARNING: Les patrons *ne sont pas réutilisables*!
