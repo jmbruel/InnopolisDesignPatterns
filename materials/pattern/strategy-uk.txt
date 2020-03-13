@@ -1,0 +1,5 @@
+*Strategy* defines a familly of algorithms/features/behaviour, implements each of them and makes them interchangeable.
+It allows the algorithm to be independant of the "clients" that use it.
+
+ifndef::slides[.UML model of _Strategy_]
+image::strategy.svg[]
