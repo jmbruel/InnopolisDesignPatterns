@@ -1,0 +1,233 @@
+:moduleTitle: CPOA
+:authorDefault:  Dut/Info-S3/M3105
+:tdnum: TP 1
+
+:eleve:
+:sourcedir: src/java/TD1
+
+ifndef::definitions[]
+include::definitions.txt[]
+endif::definitions[]
+ifndef::myasciidoconf[]
+include::asciidoc.conf[]
+endif::myasciidoconf[]
+
+ifdef::eleve[]
+:doctitle:  {moduleTitle} - Sujet {tdnum}
+endif::eleve[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+:icons: font
+
+= {doctitle}
+:Author:  {authorDefault} - (Semaine 46)
+:lang: fr
+:incremental:
+:experimental:
+:date: {localdate}
+
+// eleve : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
+
+//----------- définitions --------------
+:sitecours: http://jmbruel.github.io/cpoa/[Support de Cours]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Durée
+:depot: À rendre
+:lien: Lien
+:img: img
+:allerPlusLoin: Still hungry?
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version with answers
+=====
+This output includes answers to questions.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}		|
+. I know how to code in {java}.
+. I know I need to think before I start coding.
+. I know basic OO concepts (inheritance, polyporphism, ...).
+. I did the TD on `SuperCanard` and hence I know _Strategy_!
+| {objtd}	| Understand the importance of *Design* and implement my first pattern.
+| {duree}	| *2* TPs
+|======================
+
+[[utils]]
+== Useful files
+
+- link:util/plantuml.bat[plantuml.bat]
+- link:util/java8/plantUmlDoclet.jar[doclet fro javadoc] (non official version,
+mais compatible java `1.8`, si vous avez besoin de la version officielle : link:util/plantUmlDoclet.jar[doclet 1.7])
+- link:util/plantuml.jar[jar plantuml]
+
+== Strategy
+
+[[strategy]]
+[NOTE]
+.Design pattern : _Strategy_
+====
+include::pattern/strategy.txt[]
+====
+
+== Back to the exercice 
+
+. Download the `SuperCanardBof` app code link:TP1.zip[TP1.zip].
+. May be update/translate according to what we did in TD
++
+[TIP]
+======
+If you use eclipse/Windows:
+
+. Import in {eclipse} the project (menu:File[Import... > Existing Projects into Worspace]
+ and choose `TP1.zip` you just downloaded.
+. Setup the `Junit` in the `Classpath`(btn:[Right Clic] on your project
+menu:Properties[Java Build Path > Add Library] and choose `Junit5`)
+. If you are on Windows, in the following line of `SuperCanardTest`, you need to replace
+the ".." in the `-cp` optino by a ";":
++
+[source,java]
+-------
+executionProgrammeATester = Runtime.getRuntime().exec("java -cp .;./bin "+programmeATester);
+-------
+======
+. Launch the app to test it.
+. Look at the test `SuperCanardTest`.
+. Look at this other test `SuperCanardTest2`
+. Implement the _Strategy_ pattern as we worked on TD.
+. Make sure the tests still run.
+
+== Adventure game
+
+=== Basics
+
+. Using _Strategy_, et using the package organization provided in <<setArme,fin de TP>>), 
+write the classes and behaviours of an adventure game of TD1 (section 2.7.2):
++
+.Minimal adventure game
+image::aventure.png[link="images/aventure.png"]
+
+=== Improvements
+
+We want to force any designer of a new `Personnage` to 
+systematically decide the weapon behaviour at the instanciation time.
+
+. Propose a solution to this problem.
++
+TIP: it is perfectly authorized to create a constructor for an abstract class...
++
+. Try this solution by modifying your application
+. Test to add a new `Personnage` class who does not aplly with this new regulation and see that it does not compile.
+
+=== Dynamic Behavior
+
+Let's experiment how it is possible now to exchange behaviour at runtime.
+
+. Write an app where, from a menu, you can create a `Personnage` by selecting a type, 
+and you can then select his/her weapon.
+. Check that, when you change the weapon, the associated behavior change too.
+
+=== _Reverse engineering_ of the code
+
+You have to provide (let say in moodle!) the final class diagram of you application.
+You can use any valuable technique (`build.xml` might give you an idea):
+
+- Here is an {ant} example:
++
+[source,ant]
+----
+include::util/build.xml[]
+----
+
+
+- Here is a Windows script
++
+.Example of a `.BAT` file
+[source,shell]
+----
+set UML=TD1.uml
+set TYPE='PNG'
+set DOCLETPATH=
+echo "Creating %UML%..."
+
+javadoc -J-DdestinationFile=%UML% -J-DcreatePackages=false
+-J-DshowPublicMethods=true -J-DshowPublicConstructors=false
+-J-DshowPublicFields=true -doclet de.mallox.doclet.PlantUMLDoclet
+-docletpath plantUmlDoclet.jar src/appli/*.java
+src/comportements/arme/*.java src/comportements/arme/impl/*.java
+src/personnages/*.java
+echo "Done."
+
+set TYPE='png'
+echo "Converting %UML% to $TYPE..."
+java -jar plantuml.jar -config "config.cfg" -t %TYPE% %UML%
+echo "Done."
+----
++
+- There is a new doclet available: https://github.com/gboersma/uml-java-doclet
+- Directly get the code from an eclipse plugin
+menu:Window[Show View > Other... > PlantUML > PlantUML Source].
+
+WARNING: You have to deposit only the `TP1.uml` file on moodle.
+
+
+:numbered!:
+[appendix]
+[[setArme]]
+
+== Example of a package organization for `SuperCanard` :
+
+[source,shell]
+-------
+        ├── appli
+        │   ├── Canard.java
+        │   ├── CanardEnPlastique.java
+        │   ├── Colvert.java
+        │   ├── Leurre.java
+        │   ├── Main.java
+        │   └── Mandarin.java
+        └── comportements
+            ├── cancaner
+            │   ├── ComportementCancan.java
+            │   └── impl
+            │       ├── CanardMuet.java
+            │       ├── Cancan.java
+            │       └── Coincoin.java
+            └── voler
+                ├── ComportementVol.java
+                └── impl
+                    ├── NePasVoler.java
+                    └── VolerAvecDesAiles.java
+-------
+
+[appendix]
+== {allerPlusLoin}
+
+. Test the limits of your implementation (for example what happens if someone does `new Chevalier(null,null)` ?).
+. Why not doing a graphical interface for the game :-)
+
+ifndef::compact[]
+== About...
+
+****************************************************************
+Document réalisé via  {asciidoctorlink} (version `{asciidoctor-version}`) de 'Dan Allen', lui même basé sur {asciidoc}.
+Libre d'utilisation et géré par la 'Licence Creative Commons'.
+image:88x31.png["Licence Creative
+Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
+endif::compact[]

@@ -1,0 +1,79 @@
+@startuml
+
+' definitions
+' -----------
+
+' package ""
+abstract Canard
+class CanardEnPlastique
+class CanardEnPlastique
+class Cancan
+class Colvert
+interface ComportementCancan
+interface ComportementVol
+class NePasVoler
+class SuperCanard
+class SuperCanardTest
+class SuperCanardTest2
+class VolerAvecDesAiles
+' end package
+
+Canard  --> "comportementVol" ComportementVol
+Canard  --> "comportementCancan" ComportementCancan
+' content
+' -------
+
+' Canard:
+Canard : void effectuerCancan()
+Canard : void nager()
+Canard : void afficher()
+Canard : void effectuerVol()
+
+' Colvert:
+Canard <|-- Colvert
+Colvert : void afficher()
+
+' CanardEnPlastique:
+
+' SuperCanardTest:
+SuperCanardTest : void main(String)
+SuperCanardTest : void test_ligne1()
+SuperCanardTest : void test_ligne2()
+SuperCanardTest : void test_ligne3()
+SuperCanardTest : void test_ligne4()
+
+' SuperCanardTest2:
+SuperCanardTest2 : void setUpStreams()
+SuperCanardTest2 : void cleanUpStreams()
+SuperCanardTest2 : void testComportementColvert()
+SuperCanardTest2 : void testComportementCanardEnPlastique()
+
+' ComportementCancan:
+ComportementCancan : void cancaner()
+
+' NePasVoler:
+ComportementVol <|.. NePasVoler
+NePasVoler : void voler()
+
+' VolerAvecDesAiles:
+ComportementVol <|.. VolerAvecDesAiles
+VolerAvecDesAiles : void voler()
+
+' ComportementVol:
+ComportementVol : void voler()
+
+' Cancan:
+ComportementCancan <|.. Cancan
+Cancan : void cancaner()
+
+' SuperCanard:
+SuperCanard : void main(String)
+
+' CanardEnPlastique:
+Canard <|-- CanardEnPlastique
+CanardEnPlastique : void cancaner()
+CanardEnPlastique : void nager()
+CanardEnPlastique : void voler()
+CanardEnPlastique : void afficher()
+
+@enduml
