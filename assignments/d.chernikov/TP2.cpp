@@ -1,4 +1,4 @@
-/// Author: Denis Chernikov, specially for [S20] Design Patterns, Innopolis University.
+/// Author: Denis Chernikov, especially for [S20] Design Patterns, Innopolis University.
 
 #include <cassert>
 #include <type_traits>
