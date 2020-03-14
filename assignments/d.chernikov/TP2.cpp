@@ -60,9 +60,9 @@ public:
 #define SINGLETON(name, public_members, private_members) \
     struct name : singleton<name>                        \
     {                                                    \
-        public_members;                                  \
+        public_members                                   \
     private:                                             \
-        private_members;                                 \
+        private_members                                  \
         friend singleton<name>;                          \
         name() noexcept = default;                       \
         ~name() = default;                               \
@@ -72,9 +72,9 @@ public:
 #define CONST_SINGLETON(name, public_members, private_members) \
     struct name : singleton<const name>                        \
     {                                                          \
-        public_members;                                        \
+        public_members                                         \
     private:                                                   \
-        private_members;                                       \
+        private_members                                        \
         friend singleton<const name>;                          \
         name() noexcept = default;                             \
         ~name() = default;                                     \
@@ -88,7 +88,7 @@ CONST_SINGLETON(const_empty_singleton,,);
 static void test_singleton() noexcept
 try
 {
-    SINGLETON(Universe, int i = 42,);
+    SINGLETON(Universe, int i = 42;,);
 
     //// CODE EQUIVALENT TO MACRO ABOVE (may be implemented by hands)
     //// Adding attributes via CRTP (see duplicating typename while inheriting?).
@@ -137,7 +137,7 @@ catch (...)
     assert(false && "Unexpected exception handled.");
 }
 
-int main(const int argc, const char *const *const argv)
+int main()
 {
     test_singleton();
 
