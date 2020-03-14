@@ -103,7 +103,7 @@ pre.pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */
 <span id="email"><a href="mailto:jbruel@gmail.com">jbruel@gmail.com</a></span>
 <br />
 <span id="revnumber">version 1.9,</span>
-<span id="revdate">2020-03-13 (started on 2015-10-05)</span>
+<span id="revdate">2020-03-14 (started on 2015-10-05)</span>
 </section>
 <section class="slide topic" id="_this_slides_on_the_internet">
 <h2>This slides on the Internet&#8230;&#8203;</h2>
@@ -268,6 +268,9 @@ It allows the algorithm to be independant of the "clients" that use it.</p></div
 </a>
 </div>
 </div>
+</section>
+<section class="slide" id="_usage_example_ctd">
+<h2>Usage example (ctd.)</h2>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="images/superCanardFinal-b.png">
@@ -275,6 +278,9 @@ It allows the algorithm to be independant of the "clients" that use it.</p></div
 </a>
 </div>
 </div>
+</section>
+<section class="slide" id="_usage_examplectd">
+<h2>Usage example(ctd.)</h2>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="images/superCanardFinal-c.png">
@@ -282,6 +288,9 @@ It allows the algorithm to be independant of the "clients" that use it.</p></div
 </a>
 </div>
 </div>
+</section>
+<section class="slide" id="_usage_examplectd_2">
+<h2>Usage example(ctd.)</h2>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -312,13 +321,6 @@ This usage example is taken from
 </table>
 </div>
 <div class="paragraph"><p><strong>The problem</strong></p></div>
-<div class="paragraph"><p>Vous avez une classe <code>FileWriter</code> qui a pour rôle d&#8217;écrire dans un fichier
-ainsi qu&#8217;une classe <code>DBWriter</code>. Dans un premier temps, ces classes ne
-contiennent qu&#8217;une méthode <code>write()</code> qui n&#8217;écrira que le texte passé
-en paramètre.</p></div>
-<div class="paragraph"><p>Au fil du temps, vous vous rendez compte que c&#8217;est dommage qu&#8217;elles ne
-fassent que ça et vous aimeriez bien qu&#8217;elles puissent écrire en différents
-formats (HTML, XML, etc.) : les classes doivent donc formater puis écrire.</p></div>
 <div class="paragraph"><p>You have a <code>FileWriter</code> class which has the role of writing to a file
 as well as a <code>DBWriter</code> class. At first, these classes
 contain only a <code>write ()</code> method which will only write the text parameter.</p></div>
@@ -418,10 +420,6 @@ formats (HTML, XML, etc.): classes must therefore format and then write.</p></di
 </section>
 <section class="slide" id="_another_concrete_example_ctd_6">
 <h2>Another concrete example (ctd.)</h2>
-<div class="paragraph"><p>Enfin, nous avons nos trois formateurs.
-L&#8217;un ne fait rien de particulier (<code>TextFormater</code>),
-et les deux autres formatent le texte en deux langages
-différents (<code>HTMLFormater</code> et <code>XMLFormater</code>).</p></div>
 <div class="paragraph"><p>Finally, we have our three formaters.
 One does nothing special (<code>TextFormater</code>),
 and the other two format the text in two

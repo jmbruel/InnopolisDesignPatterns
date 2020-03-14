@@ -113,7 +113,7 @@ de remplir un bouilleur déjà plein ou de faire bouillir un bouilleur vide !
 endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
 
-You have a horrible nightmare (well, mau be not so bad after all) where you drown in chocolate.
+You have a horrible nightmare (well, may be not so bad after all) where you drown in chocolate.
 You wake up startled with terrible fear.
 
 //----------------------------- Question ------------------
@@ -142,9 +142,6 @@ endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
 
 === Improvement 1
-
-Vous vous souvenez des premiers exercices {java}  sur les variables de classe
-et vous proposez d'utiliser un compteur d'instance pour solutionner le problème.
 
 You remember your first {java} exercises on class variables
 and you propose to use an instance counter to solve the problem.
@@ -236,9 +233,6 @@ endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
 
 === You are not done yet!
-
-Vos cauchemars continuent! Mais cette fois ils sont en anglais! Vous voyez un
-grand gaillard irlandais vous menacer (en fait vous confondez _threat_ et _thread_...).
 
 Your nightmares continue! But this time they are in English! You see a
 big guy threatening you (in fact you confuse _threat_ and _thread_...).
@@ -469,6 +463,7 @@ In most cases these two patterns do *not go together at all*.
 This strategy is only recommended in a specific case of use of
 _Strategy_: one where behaviors are simple and "static" (no
 resource consumption for example) and where an association is used:
+
 image::strategy-assoc.png[]
 
 With an implementation like:
@@ -491,10 +486,6 @@ endif::compact[]
 .*QUESTION*
 [WARNING]
 ====
-. Faites en sorte que les instances d'objet affectées à chaque comportement
-d'un `Personnage` soient uniques pour chaque comportement distinct.
-. Pourquoi ne devrait-on pas utiliser `getInstance()` dans le cas
-d'une composition (dans le constructeur du composé) ?
 . Make the object instances assigned to each behavior
 of a `Character` are unique for each distinct behavior.
 . Why shouldn't we use `getInstance ()` in the case
