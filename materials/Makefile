@@ -19,7 +19,7 @@ DECKJS=$(BACKENDS)/haml/
 DECK=swiss
 #DECK=neon
 #DECK=beamer
-DZSLIDES=../asciidoctor-backends/slim/dzslides
+DZSLIDES=../../asciidoctor-backends/slim/dzslides
 EXT=adoc
 PANDOC=pandoc
 OUTPUT=.
@@ -73,7 +73,7 @@ full.pdf: full.$(EXT) $(DEP)
 %.deckjs.html: %.$(EXT)  $(DEP)
 	@echo '==> Compiling asciidoc files to generate Deckjs'
 	$(DOCTOR) -b deckjs \
-	-T ../asciidoctor-deck.js/templates/haml/ -a slides \
+	-T ../../asciidoctor-deck.js/templates/haml/ -a slides \
 	-a deckjs_theme=$(DECK) \
 	-r asciidoctor-diagram \
 	-a styledir=. \
