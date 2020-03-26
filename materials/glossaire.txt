@@ -21,12 +21,12 @@ ifdef::slides[:leveloffset: -1]
 Singleton::
 include::pattern/singleton.txt[]
 
-ifdef::slides[=== Patrons de création (suite)]
+ifdef::slides[=== Patrons de création (ctd.)]
 
 Fabrique::
 include::pattern/fabrique.txt[]
 
-ifdef::slides[=== Patrons de création (suite)]
+ifdef::slides[=== Patrons de création (ctd.)]
 
 [[FabriqueAbstraite]] Fabrique abstraite::
 include::pattern/fabrique-abstraite.txt[]
@@ -40,22 +40,22 @@ include::pattern/fabrique-abstraite.txt[]
 État (_State^uk^_)::
 include::pattern/etat.txt[]
 
-ifdef::slides[=== Patrons comportementaux (suite)]
+ifdef::slides[=== Patrons comportementaux (ctd.)]
 
 Itérateur (_Iterator^uk^_)::
 include::pattern/iterateur.txt[]
 
-ifdef::slides[=== Patrons comportementaux (suite)]
+ifdef::slides[=== Patrons comportementaux (ctd.)]
 
 Observateur (_Observer^uk^_)::
 include::pattern/observer.txt[]
 
-ifdef::slides[=== Patrons comportementaux (suite)]
+ifdef::slides[=== Patrons comportementaux (ctd.)]
 
 Stratégie (_Strategy^uk^_)::
 include::pattern/strategy.txt[]
 
-ifdef::slides[=== Patrons comportementaux (suite)]
+ifdef::slides[=== Patrons comportementaux (ctd.)]
 
 Visiteur (_Visitor^uk^_)::
 include::pattern/visitor.txt[]
@@ -69,12 +69,12 @@ include::pattern/visitor.txt[]
 Adaptateur (_Adaptor^uk^_)::
 include::pattern/adapteur.txt[]
 
-ifdef::slides[=== Patrons structurels (suite)]
+ifdef::slides[=== Patrons structurels (ctd.)]
 
 Composite::
 include::pattern/composite.txt[]
 
-ifdef::slides[=== Patrons structurels (suite)]
+ifdef::slides[=== Patrons structurels (ctd.)]
 
 Procuration (_Proxy^uk^_)::
 include::pattern/proxy.txt[]

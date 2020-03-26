@@ -103,7 +103,7 @@ pre.pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */
 <span id="email"><a href="mailto:jbruel@gmail.com">jbruel@gmail.com</a></span>
 <br />
 <span id="revnumber">version 1.9,</span>
-<span id="revdate">2020-03-13 (started on 2015-10-05)</span>
+<span id="revdate">2020-03-26 (started on 2015-10-05)</span>
 </section>
 <section class="slide topic" id="_this_slides_on_the_internet">
 <h2>This slides on the Internet&#8230;&#8203;</h2>
@@ -268,6 +268,9 @@ It allows the algorithm to be independant of the "clients" that use it.</p></div
 </a>
 </div>
 </div>
+</section>
+<section class="slide" id="_usage_example_ctd">
+<h2>Usage example (ctd.)</h2>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="images/superCanardFinal-b.png">
@@ -275,6 +278,9 @@ It allows the algorithm to be independant of the "clients" that use it.</p></div
 </a>
 </div>
 </div>
+</section>
+<section class="slide" id="_usage_examplectd">
+<h2>Usage example(ctd.)</h2>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="images/superCanardFinal-c.png">
@@ -282,6 +288,9 @@ It allows the algorithm to be independant of the "clients" that use it.</p></div
 </a>
 </div>
 </div>
+</section>
+<section class="slide" id="_usage_examplectd_2">
+<h2>Usage example(ctd.)</h2>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -312,13 +321,6 @@ This usage example is taken from
 </table>
 </div>
 <div class="paragraph"><p><strong>The problem</strong></p></div>
-<div class="paragraph"><p>Vous avez une classe <code>FileWriter</code> qui a pour rôle d&#8217;écrire dans un fichier
-ainsi qu&#8217;une classe <code>DBWriter</code>. Dans un premier temps, ces classes ne
-contiennent qu&#8217;une méthode <code>write()</code> qui n&#8217;écrira que le texte passé
-en paramètre.</p></div>
-<div class="paragraph"><p>Au fil du temps, vous vous rendez compte que c&#8217;est dommage qu&#8217;elles ne
-fassent que ça et vous aimeriez bien qu&#8217;elles puissent écrire en différents
-formats (HTML, XML, etc.) : les classes doivent donc formater puis écrire.</p></div>
 <div class="paragraph"><p>You have a <code>FileWriter</code> class which has the role of writing to a file
 as well as a <code>DBWriter</code> class. At first, these classes
 contain only a <code>write ()</code> method which will only write the text parameter.</p></div>
@@ -346,7 +348,7 @@ formats (HTML, XML, etc.): classes must therefore format and then write.</p></di
 </td>
 <td class="content">
 <div class="listingblock">
-<div class="title">The interface in <code>PHP</code> (code source <a href="src/php/Formater.php">ici</a>)</div>
+<div class="title">The interface in <code>PHP</code> (code source <a href="src/php/Formater.php">here</a>)</div>
 <div class="content">
 <pre class="highlight"><code class="php language-php">&lt;?php&#x000A;interface Formater&#x000A;{&#x000A;  public function format($text);&#x000A;}&#x000A;?&gt;</code></pre>
 </div>
@@ -366,7 +368,7 @@ formats (HTML, XML, etc.): classes must therefore format and then write.</p></di
 </td>
 <td class="content">
 <div class="listingblock">
-<div class="title">The <code>Writer</code> abstract class (code source <a href="src/php/Writer.php">ici</a>)</div>
+<div class="title">The <code>Writer</code> abstract class (code source <a href="src/php/Writer.php">here</a>)</div>
 <div class="content">
 <pre class="highlight"><code class="php language-php">&lt;?php&#x000A;abstract class Writer&#x000A;{&#x000A;  // Attribut contenant l'instance du formateur que l'on veut utiliser.&#x000A;  protected $formater;&#x000A;&#x000A;  abstract public function write($text);&#x000A;&#x000A;  // Nous voulons une instance d'une classe implémentant Formater en paramètre.&#x000A;  public function __construct(Formater $formater)&#x000A;  {&#x000A;    $this-&gt;formater = $formater;&#x000A;  }&#x000A;}&#x000A;?&gt;</code></pre>
 </div>
@@ -386,7 +388,7 @@ formats (HTML, XML, etc.): classes must therefore format and then write.</p></di
 </td>
 <td class="content">
 <div class="listingblock">
-<div class="title">The <code>FileWriter</code> class (code source <a href="src/php/FileWriter.php">ici</a>)</div>
+<div class="title">The <code>FileWriter</code> class (code source <a href="src/php/FileWriter.php">here</a>)</div>
 <div class="content">
 <pre class="highlight"><code class="php language-php">&lt;?php&#x000A;class FileWriter extends Writer&#x000A;{&#x000A;  // Attribut stockant le chemin du fichier.&#x000A;  protected $file;&#x000A;&#x000A;  public function __construct(Formater $formater, $file)&#x000A;  {&#x000A;    parent::__construct($formater);&#x000A;    $this-&gt;file = $file;&#x000A;  }&#x000A;&#x000A;  public function write($text)&#x000A;  {&#x000A;    $f = fopen($this-&gt;file, 'w');&#x000A;    fwrite($f, $this-&gt;formater-&gt;format($text));&#x000A;    fclose($f);&#x000A;  }&#x000A;}&#x000A;?&gt;</code></pre>
 </div>
@@ -406,7 +408,7 @@ formats (HTML, XML, etc.): classes must therefore format and then write.</p></di
 </td>
 <td class="content">
 <div class="listingblock">
-<div class="title">The <code>DBWriter</code> class (code source <a href="src/php/DBWriter.php">ici</a>)</div>
+<div class="title">The <code>DBWriter</code> class (code source <a href="src/php/DBWriter.php">here</a>)</div>
 <div class="content">
 <pre class="highlight"><code class="php language-php">&lt;?php&#x000A;class DBWriter extends Writer&#x000A;{&#x000A;  protected $db;&#x000A;&#x000A;  public function __construct(Formater $formater, PDO $db)&#x000A;  {&#x000A;    parent::__construct($formater);&#x000A;    $this-&gt;db = $db;&#x000A;  }&#x000A;&#x000A;  public function write ($text)&#x000A;  {&#x000A;    $q = $this-&gt;db-&gt;prepare('INSERT INTO lorem_ipsum SET text = :text');&#x000A;    $q-&gt;bindValue(':text', $this-&gt;formater-&gt;format($text));&#x000A;    $q-&gt;execute();&#x000A;  }&#x000A;}&#x000A;?&gt;</code></pre>
 </div>
@@ -418,10 +420,6 @@ formats (HTML, XML, etc.): classes must therefore format and then write.</p></di
 </section>
 <section class="slide" id="_another_concrete_example_ctd_6">
 <h2>Another concrete example (ctd.)</h2>
-<div class="paragraph"><p>Enfin, nous avons nos trois formateurs.
-L&#8217;un ne fait rien de particulier (<code>TextFormater</code>),
-et les deux autres formatent le texte en deux langages
-différents (<code>HTMLFormater</code> et <code>XMLFormater</code>).</p></div>
 <div class="paragraph"><p>Finally, we have our three formaters.
 One does nothing special (<code>TextFormater</code>),
 and the other two format the text in two
@@ -437,7 +435,7 @@ different  languages (<code>HTMLFormater</code> and` XMLFormater`).</p></div>
 </td>
 <td class="content">
 <div class="listingblock">
-<div class="title">The <code>TextFormater</code> class (code source <a href="src/php/TextFormater.php">ici</a>)</div>
+<div class="title">The <code>TextFormater</code> class (code source <a href="src/php/TextFormater.php">here</a>)</div>
 <div class="content">
 <pre class="highlight"><code class="php language-php">&lt;?php&#x000A;class TextFormater implements Formater&#x000A;{&#x000A;  public function format($text)&#x000A;  {&#x000A;    return 'Date : ' . time() . "\n" . 'Texte : ' . $text;&#x000A;  }&#x000A;}&#x000A;?&gt;</code></pre>
 </div>
@@ -457,7 +455,7 @@ different  languages (<code>HTMLFormater</code> and` XMLFormater`).</p></div>
 </td>
 <td class="content">
 <div class="listingblock">
-<div class="title">The <code>HTMLFormater</code> class (code source <a href="src/php/HTMLFormater.php">ici</a>)</div>
+<div class="title">The <code>HTMLFormater</code> class (code source <a href="src/php/HTMLFormater.php">here</a>)</div>
 <div class="content">
 <pre class="highlight"><code class="php language-php">&lt;?php&#x000A;class HTMLFormater implements Formater&#x000A;{&#x000A;  public function format($text)&#x000A;  {&#x000A;    return '&lt;p&gt;Date : ' . time() . '&lt;br /&gt;' ."\n". 'Texte : ' . $text . '&lt;/p&gt;';&#x000A;  }&#x000A;}&#x000A;?&gt;</code></pre>
 </div>
@@ -477,7 +475,7 @@ different  languages (<code>HTMLFormater</code> and` XMLFormater`).</p></div>
 </td>
 <td class="content">
 <div class="listingblock">
-<div class="title">The <code>XMLFormater</code> class (code source <a href="src/php/XMLFormater.php">ici</a>)</div>
+<div class="title">The <code>XMLFormater</code> class (code source <a href="src/php/XMLFormater.php">here</a>)</div>
 <div class="content">
 <pre class="highlight"><code class="php language-php">&lt;?php&#x000A;class XMLFormater implements Formater&#x000A;{&#x000A;  public function format($text)&#x000A;  {&#x000A;    return '&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;' ."\n".&#x000A;           '&lt;message&gt;' ."\n".&#x000A;           "\t". '&lt;date&gt;' . time() . '&lt;/date&gt;' ."\n".&#x000A;           "\t". '&lt;texte&gt;' . $text . '&lt;/texte&gt;' ."\n".&#x000A;           '&lt;/message&gt;';&#x000A;  }&#x000A;}&#x000A;?&gt;</code></pre>
 </div>
@@ -518,12 +516,8 @@ More details <a href="http://stackoverflow.com/questions/370258/real-world-examp
 </table>
 </div>
 </section>
-<section class="slide" id="_enough_for_today">
-<h2>Enough for today&#8230;&#8203;</h2>
-
-</section>
-<section class="slide" id="_non_réutilisation">
-<h2>(non) Réutilisation</h2>
+<section class="slide" id="_reuse">
+<h2>Reuse ?</h2>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -531,28 +525,27 @@ More details <a href="http://stackoverflow.com/questions/370258/real-world-examp
 <i class="icon-warning"></i>
 </td>
 <td class="content">
-Les patrons <strong>ne sont pas réutilisables</strong>!
+Patterns <strong>are not directly reusable</strong>!
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph"><p>Il faut implémeter la solution qu&#8217;il représente à chaque fois.</p></div>
+<div class="paragraph"><p>They need to be implemented and adapted each time they are used.</p></div>
 </section>
-<section class="slide" id="_réutilisation_exception">
-<h2>Réutilisation (exception)</h2>
-<div class="paragraph"><p>Exception : certains font l&#8217;objet d&#8217;une librairie (comme <a href="#observerJava"><em>Observer</em> de Java</a>).</p></div>
-<div class="paragraph"><p>Par exemple le patron Singleton existe dans la bibliothèque standard du
-langage  en <a href="https://www.ruby-lang.org">Ruby</a>.
-C&#8217;est un <em>mixin</em> qu&#8217;il suffit d&#8217;inclure dans la classe qui doit être un singleton.</p></div>
+<section class="slide" id="_reuse_an_exception">
+<h2>Reuse (an exception)</h2>
+<div class="paragraph"><p>Exception: some patterns, in some languages, are directly available as libraries (e.g., <a href="#observerJava"><em>Observer</em> from Java</a>).</p></div>
+<div class="paragraph"><p>Another example is Singleton in <a href="https://www.ruby-lang.org">Ruby</a>.
+It is a <em>mixin</em> that you simply include in a class to make it a singleton:</p></div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="ruby language-ruby">class Klass&#x000A;   include Singleton&#x000A;   # ...&#x000A;end&#x000A;&#x000A;a,b  = Klass.instance, Klass.instance&#x000A;&#x000A;a == b&#x000A;# =&gt; true&#x000A;&#x000A;Klass.new&#x000A;# =&gt; NoMethodError - new is private ...</code></pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_association_ou_composition">
-<h2>Association ou composition</h2>
-<div class="paragraph"><p>On trouve deux modèles <a href="http://www.uml.org/">UML&#8482;</a> :</p></div>
+<section class="slide" id="_association_or_composition">
+<h2>Association or composition</h2>
+<div class="paragraph"><p>Let&#8217;s consider 2 <a href="http://www.uml.org/">UML&#8482;</a> models:</p></div>
 <div class="imageblock">
 <div class="content">
 <img alt="strategy compo" src="images/strategy-compo.png" />
@@ -564,29 +557,29 @@ C&#8217;est un <em>mixin</em> qu&#8217;il suffit d&#8217;inclure dans la classe 
 </div>
 </div>
 </section>
-<section class="slide" id="_association_ou_composition_suite">
-<h2>Association ou composition (suite)</h2>
-<div class="paragraph"><p>Et donc deux implémentations :</p></div>
+<section class="slide" id="_association_or_composition_ctd">
+<h2>Association or composition (ctd.)</h2>
+<div class="paragraph"><p>Here are the corresponding implementations:</p></div>
 <div class="listingblock">
-<div class="title">Composition &#8658; le composé encapsule les composants</div>
+<div class="title">Composition &#8658; encapsulation of the components</div>
 <div class="content">
 <pre class="highlight"><code class="java language-java">public class Colvert extends Canard {&#x000A;&#x000A;	protected Colvert() {&#x000A;		this(new VolerAvecDesAiles(), new Cancan());&#x000A;	}&#x000A;...&#x000A;c1 = new Colvert();</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Association &#8658; le composant existe "en dehors"</div>
+<div class="title">Association &#8658; the components exist "outside"</div>
 <div class="content">
 <pre class="highlight"><code class="java language-java">...&#x000A;vol = new VolerAvecDesAiles();&#x000A;cri = new Cancan();&#x000A;c1 = new Colvert(vol,cri);&#x000A;...</code></pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_un_peu_dhistoire">
-<h2>Un peu d&#8217;histoire</h2>
+<section class="slide" id="_key_historical_elements">
+<h2>Key historical elements</h2>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">1977</dt>
 <dd>
-<p><strong>Alexander</strong> : patterns pour les architectures (les vraies)</p>
+<p><strong>Alexander</strong>: patterns for architectures (the real ones!)</p>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="images/Alexander.png">
@@ -597,16 +590,15 @@ C&#8217;est un <em>mixin</em> qu&#8217;il suffit d&#8217;inclure dans la classe 
 </dd>
 <dt class="hdlist1">1987</dt>
 <dd>
-<p><strong>Beck</strong> et <strong>Cunningham</strong> : patterns pour des interfaces utilisateurs</p>
+<p><strong>Beck</strong> &amp; <strong>Cunningham</strong>: patterns for GUIs</p>
 </dd>
 <dt class="hdlist1">1988</dt>
 <dd>
-<p><strong>Meyer</strong> : livre sur l&#8217;orienté objet (langage <a href="http://fr.wikipedia.org/wiki/Eiffel_(langage)">Eiffel</a>), devenu la bible pour
-beaucoup de programmeurs (cf. <a href="#Meyer88">[Meyer88]</a>)</p>
+<p><strong>Meyer</strong>: OO Book (using <a href="http://fr.wikipedia.org/wiki/Eiffel_(langage)">Eiffel</a>), the reference book on OO(cf. <a href="#Meyer88">[Meyer88]</a>)</p>
 </dd>
 <dt class="hdlist1">1990-1995</dt>
 <dd>
-<p><strong>Gamma</strong>, Helm, Johnson et Vlissides : LE livre de référence (cf. <a href="#GoF">[GoF]</a>)</p>
+<p><strong>Gamma</strong>, Helm, Johnson &amp; Vlissides: THE reference book on patterns (cf. <a href="#GoF">[GoF]</a>)</p>
 <div class="imageblock">
 <div class="content">
 <a class="image" href="images/GoF.png">
@@ -621,7 +613,7 @@ beaucoup de programmeurs (cf. <a href="#Meyer88">[Meyer88]</a>)</p>
 <i class="icon-note"></i>
 </td>
 <td class="content">
-Les auteurs de ce livre sont connus comme les <strong>Gof</strong> pour « <em>Gang of Four</em> ».
+The authors of this book are known as the <strong>Gof</strong> (« <em>Gang of Four</em> »).
 </td>
 </tr>
 </table>
@@ -629,17 +621,17 @@ Les auteurs de ce livre sont connus comme les <strong>Gof</strong> pour « <em>G
 </dd>
 <dt class="hdlist1">2003</dt>
 <dd>
-<p><strong>Martin</strong> : principes SOLID (cf. <a href="#Martin03">[Martin03]</a>)</p>
+<p><strong>Martin</strong>:  SOLID principles (cf. <a href="#Martin03">[Martin03]</a>)</p>
 </dd>
 <dt class="hdlist1">2004</dt>
 <dd>
-<p><strong>Craig Larman</strong> décrit des modèles de conception : les Patterns <strong>GRASP</strong> (cf. <a href="#Larman05">[Larman05]</a>)</p>
+<p><strong>Craig Larman</strong> about design models:   <strong>GRASP</strong> Patterns (cf. <a href="#Larman05">[Larman05]</a>)</p>
 </dd>
 </dl>
 </div>
 </section>
-<section class="slide" id="_exemples_de_bons_principes">
-<h2>Exemples de bons principes</h2>
+<section class="slide" id="_good_principles_examples">
+<h2>Good Principles Examples</h2>
 <div class="paragraph"><p><strong>SOLID</strong>:</p></div>
 <div class="ulist">
 <ul>
@@ -660,7 +652,7 @@ Les auteurs de ce livre sont connus comme les <strong>Gof</strong> pour « <em>G
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Responsabilité =&gt; Sujet à changement</pre>
+<pre>Responsability =&gt; Subject to change</pre>
 </div>
 </div>
 </section>
@@ -673,14 +665,14 @@ Les auteurs de ce livre sont connus comme les <strong>Gof</strong> pour « <em>G
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Ouvert à l'extension mais fermé à la modification</pre>
+<pre>Open to extension but closed to modification</pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_open_closed_principle_suite">
-<h2><em><strong>O</strong>pen-Closed Principle</em> (suite)</h2>
-<div class="paragraph"><p>Ainsi, une fois écrite et testée, une classe ne devrait être modifiée que pour
-être corrigée! Toute modification devrait être possible par extension.</p></div>
+<section class="slide" id="_open_closed_principle_ctd">
+<h2><em><strong>O</strong>pen-Closed Principle</em> (ctd.)</h2>
+<div class="paragraph"><p>Once written and tested, a class should only be modified to fix a bug!
+All modification should be possible by extension.</p></div>
 </section>
 <section class="slide" id="_liskov_substitution_principle">
 <h2><em><strong>L</strong>iskov Substitution Principle</em></h2>
@@ -692,11 +684,12 @@ Les auteurs de ce livre sont connus comme les <strong>Gof</strong> pour « <em>G
 </div>
 </div>
 </section>
-<section class="slide" id="_barbara_liskov_est_toujours_active">
-<h2>Barbara Liskov est toujours active!</h2>
+<section class="slide" id="_barbara_liskov_is_still_active">
+<h2>Barbara Liskov is still active!</h2>
+<div class="paragraph"><p>Received the <em>Turing Award</em> in 2009.</p></div>
 <div class="imageblock">
 <div class="content">
-<img alt="liskov2018" src="images/liskov2018.png" width="70%" />
+<img alt="liskov2018" src="images/liskov2018.png" width="60%" />
 </div>
 </div>
 </section>
@@ -709,20 +702,20 @@ Les auteurs de ce livre sont connus comme les <strong>Gof</strong> pour « <em>G
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Une classe doit pouvoir être remplacée par une instance d'un de ses&#x000A;sous-types, sans modifier la cohérence du programme</pre>
+<pre>A class should be replaced by one of its subclasses without modifying the behavior of the program.</pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_lsp_un_exemple">
-<h2>LSP : un exemple</h2>
+<section class="slide" id="_lsp_an_example">
+<h2>LSP: an example</h2>
 <div class="quoteblock">
 <blockquote>
-<div class="paragraph"><p>Un carré est un rectangle particulier.</p></div>
+<div class="paragraph"><p>A square is a kind of rectangle.</p></div>
 </blockquote>
 </div>
 <div class="imageblock">
 <div class="content">
-<img alt="carre" src="images/carre.png" width="10%" />
+<img alt="carre" src="images/carre.svg" width="10%" />
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -733,51 +726,51 @@ Les auteurs de ce livre sont connus comme les <strong>Gof</strong> pour « <em>G
 </td>
 <td class="content">
 <div class="title">Question</div>
-Peut-on toujours substituer un <code>Carré</code> à la place d&#8217;un <code>Rectangle</code> ?
+Can we subtitute a <code>Square</code> in place of a <code>Rectangle</code> ?
 </td>
 </tr>
 </table>
 </div>
 </section>
-<section class="slide" id="_vraiment">
-<h2>Vraiment?</h2>
+<section class="slide" id="_really">
+<h2>Really?</h2>
 <div class="listingblock">
-<div class="title">Réponse (<code>Rectangle.java</code>)</div>
+<div class="title">Answer (<code>Rectangle.java</code>)</div>
 <div class="content">
 <pre class="highlight"><code class="java language-java">class Rectangle&#x000A;{&#x000A;	protected int m_width;&#x000A;	protected int m_height;&#x000A;&#x000A;	public void setWidth(int width){&#x000A;		m_width = width;&#x000A;	}&#x000A;&#x000A;	public void setHeight(int height){&#x000A;		m_height = height;&#x000A;	}&#x000A;&#x000A;&#x000A;	public int getWidth(){&#x000A;		return m_width;&#x000A;	}&#x000A;&#x000A;	public int getHeight(){&#x000A;		return m_height;&#x000A;	}&#x000A;&#x000A;	public int getArea(){&#x000A;		return m_width * m_height;&#x000A;	}&#x000A;}</code></pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_vraiment_2">
-<h2>Vraiment?</h2>
+<section class="slide" id="_really_2">
+<h2>Really?</h2>
 <div class="listingblock">
-<div class="title">Réponse (<code>Square.java</code>)</div>
+<div class="title">Answer (<code>Square.java</code>)</div>
 <div class="content">
 <pre class="highlight"><code class="java language-java">// Violation of Likov's Substitution Principle&#x000A;class Square extends Rectangle&#x000A;{&#x000A;	public void setWidth(int width){&#x000A;		m_width = width;&#x000A;		m_height = width;&#x000A;	}&#x000A;&#x000A;	public void setHeight(int height){&#x000A;		m_width = height;&#x000A;		m_height = height;&#x000A;	}&#x000A;&#x000A;}</code></pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_vraiment_3">
+<section class="slide" id="_vraiment">
 <h2>Vraiment?</h2>
 <div class="listingblock">
-<div class="title">Réponse (<code>Square.java</code> - suite)</div>
+<div class="title">Answer (<code>Square.java</code> - Ctd.)</div>
 <div class="content">
 <pre class="highlight"><code class="java language-java">class LspTest&#x000A;{&#x000A;	private static Rectangle getNewRectangle()&#x000A;	{&#x000A;		// it can be an object returned by some factory ...&#x000A;		return new Square();&#x000A;	}&#x000A;&#x000A;	public static void main (String args[])&#x000A;	{&#x000A;		Rectangle r = LspTest.getNewRectangle();&#x000A;&#x000A;		r.setWidth(5);&#x000A;		r.setHeight(10);&#x000A;		// User knows that r is a rectangle.&#x000A;		// It assumes that he's able to set the width and height as for the base class&#x000A;&#x000A;		System.out.println(r.getArea());&#x000A;		// Now she's surprised to see that the area is 100 instead of 50.&#x000A;	}&#x000A;}</code></pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_et_linverse">
-<h2>Et l&#8217;inverse?</h2>
+<section class="slide" id="_is_it_the_opposite_then">
+<h2>Is it the opposite then?</h2>
 <div class="imageblock">
 <div class="content">
-<img alt="rectangle" src="images/rectangle.png" width="40%" />
+<img alt="rectangle" src="images/rectangle.svg" width="60%" />
 </div>
 </div>
 </section>
-<section class="slide" id="_même_problème">
-<h2>Même problème</h2>
+<section class="slide" id="_same_problem">
+<h2>Same problem</h2>
 <div class="listingblock">
-<div class="title">Réponse (<code>Rectangle.java</code>)</div>
+<div class="title">Answer (<code>Rectangle.java</code>)</div>
 <div class="content">
 <pre class="highlight"><code class="java language-java">class LspTest&#x000A;{&#x000A;	private static Square getNewSquare()&#x000A;	{&#x000A;		// it can be an object returned by some factory ...&#x000A;		return new Rectangle();&#x000A;	}&#x000A;&#x000A;	public static void main (String args[])&#x000A;	{&#x000A;		Square s = LspTest.getNewSquare();&#x000A;&#x000A;		s.setWidth(5);&#x000A;		// User knows that r is a rectangle.&#x000A;		// It assumes that he's able to set the width and height as for the base class&#x000A;&#x000A;		System.out.println(s.getArea());&#x000A;		// Now she's surprised to see that the area is 0 instead of 25.&#x000A;	}&#x000A;}</code></pre>
 </div>
@@ -792,12 +785,12 @@ Peut-on toujours substituer un <code>Carré</code> à la place d&#8217;un <code>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Préférer plusieurs interfaces spécifiques pour chaque client plutôt qu'une seule interface générale</pre>
+<pre>Prefer several specific interfaces (for each client) rather than a general interface.</pre>
 </div>
 </div>
 </section>
 <section class="slide" id="_dependency_inversion_principle">
-<h2><em><strong>D</strong>ependency Inversion Principle</em></h2>
+<h2><em><strong>D</strong>ependency <strong>I</strong>nversion <strong>P</strong>rinciple</em></h2>
 <div class="imageblock">
 <div class="content">
 <img alt="solid d" src="images/solid-d.jpg" />
@@ -805,54 +798,40 @@ Peut-on toujours substituer un <code>Carré</code> à la place d&#8217;un <code>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Il faut dépendre des abstractions, pas des implémentations</pre>
+<pre>It is better to depend on abstractions, not on implementations.</pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_dip_explications">
-<h2>DIP : explications</h2>
-<div class="paragraph"><p>Ce principe indique :</p></div>
+<section class="slide" id="_dip_explanations">
+<h2>DIP: explanations</h2>
 <div class="ulist">
 <ul>
-<li>Les modules de haut niveau (abstraits) ne doivent pas dépendre des modules de bas niveau.
-Les deux doivent dépendre d&#8217;abstractions.</li>
-<li>Les abstractions ne doivent pas dépendre des détails d&#8217;implémentation.
-C&#8217;est l&#8217;inverse : les détails doivent dépendre des abstractions.</li>
+<li>High level (abstract) modules should not depend on low level (concrete) ones.
+Both should depend on abstractions.</li>
+<li>Abstractions should not depend on implementation details.</li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note"></i>
-</td>
-<td class="content">
-Ainsi ce principe va à l&#8217;encontre de l&#8217;intuition classique.
-</td>
-</tr>
-</table>
-</div>
 </section>
-<section class="slide" id="_exemple_bad">
-<h2>Exemple (bad)</h2>
+<section class="slide" id="_example_bad">
+<h2>Example (bad)</h2>
 <div class="imageblock">
 <div class="content">
-<img alt="dip bad" src="images/dip-bad.png" width="70%" />
+<img alt="dip bad" src="images/dip-bad.svg" width="70%" />
 </div>
-<div class="title">Figure 1. Exemple de code violant le principe d&#8217;inversion des dépendances</div>
+<div class="title">Figure 1. Example violating the DIP</div>
 </div>
 </section>
-<section class="slide" id="_exemple_good">
-<h2>Exemple (good)</h2>
+<section class="slide" id="_example_good">
+<h2>Example (good)</h2>
 <div class="imageblock">
 <div class="content">
-<img alt="dip" src="images/dip.png" width="80%" />
+<img alt="dip" src="images/dip.svg" width="80%" />
 </div>
-<div class="title">Figure 2. Exemple de code ne violant plus le principe d&#8217;inversion des dépendances</div>
+<div class="title">Figure 2. Example conforming to the DIP</div>
 </div>
 </section>
-<section class="slide" id="_solid_et_patrons">
-<h2>SOLID et patrons</h2>
+<section class="slide" id="_solid_patterns">
+<h2>SOLID &amp; Patterns</h2>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -861,7 +840,7 @@ Ainsi ce principe va à l&#8217;encontre de l&#8217;intuition classique.
 </td>
 <td class="content">
 <div class="title"><strong>QUESTION</strong></div>
-<div class="paragraph"><p>Lesquels des 5 principes SOLID s&#8217;appliquent bien à <em>Strategy</em> ?</p></div>
+<div class="paragraph"><p>Which of the 5 SOLID principles apply to  <em>Strategy</em> ?</p></div>
 </td>
 </tr>
 </table>
@@ -885,9 +864,8 @@ Ainsi ce principe va à l&#8217;encontre de l&#8217;intuition classique.
 </tbody>
 </table>
 </section>
-<section class="slide" id="_solid_et_patrons_éléments_de_réponses">
-<h2>SOLID et patrons (éléments de réponses)</h2>
-<div class="paragraph"><p>Quelques éléments de réponses :</p></div>
+<section class="slide" id="_solid_patterns_answer_elements">
+<h2>SOLID &amp; Patterns (Answer elements)</h2>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><em><strong>S</strong>ingle Responsibility Principle</em></dt>
@@ -896,19 +874,19 @@ Ainsi ce principe va à l&#8217;encontre de l&#8217;intuition classique.
 </dd>
 <dt class="hdlist1"><em><strong>O</strong>pen-Closed Principle</em></dt>
 <dd>
-<p>&#8658; <strong>Oui</strong> : extension (du comportement) sans toucher au code!</p>
+<p>&#8658; <strong>Yes</strong>: extension (of the behavior) without modifiying existing code!</p>
 </dd>
 <dt class="hdlist1"><em><strong>L</strong>iskov Substitution Principle</em></dt>
 <dd>
-<p>Non</p>
+<p>Nope</p>
 </dd>
 <dt class="hdlist1"><em><strong>I</strong>nterface Segregation Principle</em></dt>
 <dd>
-<p>Oui, mais pas spécifiquement</p>
+<p><strong>Yes</strong>: but not specifically</p>
 </dd>
 <dt class="hdlist1"><em><strong>D</strong>ependency Inversion Principle</em></dt>
 <dd>
-<p>&#8658; <strong>Oui</strong> : les algos dépendent des mêmes abstractions que les données (les interfaces)</p>
+<p>&#8658; <strong>Yes</strong>: algorithms depend on the same abstractions than data (interfaces)</p>
 </dd>
 </dl>
 </div>
@@ -924,8 +902,6 @@ design principles</strong>. It is not the UML or any other technology.</p></div>
 </div>
 </blockquote>
 </div>
-<div class="paragraph"><p>Il s&#8217;agit d&#8217;un ensemble de patrons, plutôt orientés conception (UML). Nous en
-aborderons certains au travers des exemples de ce module (cf. <a href="#Larman05">[Larman05]</a>).</p></div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -933,64 +909,28 @@ aborderons certains au travers des exemples de ce module (cf. <a href="#Larman05
 <i class="icon-tip"></i>
 </td>
 <td class="content">
-Notez que les principes SOLID ne s&#8217;appliquent pas qu&#8217;à la programmation objet. Pour une discussion sur leur application avec React (language fonctionnel), cf. <a class="bare" href="https://dev.to/shadid12/can-you-apply-solid-principles-to-your-react-applications-46il">https://dev.to/shadid12/can-you-apply-solid-principles-to-your-react-applications-46il</a>.
+Note that the SOLID principles do not only apply to OO languages. For a discussion on their use in React, cf. <a class="bare" href="https://dev.to/shadid12/can-you-apply-solid-principles-to-your-react-applications-46il">https://dev.to/shadid12/can-you-apply-solid-principles-to-your-react-applications-46il</a>.
 </td>
 </tr>
 </table>
 </div>
 </section>
-<section class="slide" id="_les_patrons_comment_ça_marche">
-<h2>Les patrons : comment ça marche ?</h2>
+<section class="slide" id="_design_patterns_how_does_it_work">
+<h2>Design patterns: how does it work ?</h2>
 
 </section>
-<section class="slide" id="_intérêt">
-<h2>Intérêt</h2>
+<section class="slide" id="_benefits">
+<h2>Benefits</h2>
 <div class="ulist">
 <ul>
-<li>Réponses éprouvées à des problèmes récurrents</li>
-<li>Vocabulaire commun</li>
+<li>Proved answers to reccuring problems</li>
+<li>Common vocabulary</li>
 </ul>
 </div>
 <div class="quoteblock">
 <blockquote>
-<div class="paragraph"><p>T&#8217;as qu&#8217;à utiliser une <em>factory</em>!</p></div>
+<div class="paragraph"><p>Just use a <em>factory</em>!</p></div>
 </blockquote>
-</div>
-</section>
-<section class="slide" id="_patrons_abordés">
-<h2>Patrons abordés</h2>
-<div class="ulist">
-<ul>
-<li class="slide"><a href="#Singleton">[Singleton]</a></li>
-<li class="slide"><a href="#strategy">Stratégie</a></li>
-<li class="slide"><a href="#Fabrique">[Fabrique]</a> (<em>factory</em>)</li>
-<li class="slide"><a href="#Observateur">[Observateur]</a></li>
-<li class="slide"><a href="#Itérateur">[Itérateur]</a></li>
-<li class="slide"><a href="#Composite">[Composite]</a></li>
-<li class="slide"><a href="#Etat">[Etat]</a></li>
-<li class="slide"><a href="#Proxy">[Proxy]</a></li>
-<li class="slide"><a href="#Adaptateur">[Adaptateur]</a></li>
-</ul>
-</div>
-</section>
-<section class="slide" id="_patrons_non_abordés">
-<h2>Patrons non abordés</h2>
-<div class="ulist">
-<ul>
-<li>Décorateur</li>
-<li>Commande</li>
-<li>Façade</li>
-<li>Patron de méthode</li>
-<li>Chaînes de responsabilité</li>
-<li>Visiteur</li>
-<li>Prototype</li>
-<li>Mémento</li>
-<li>Médiateur</li>
-<li>Interprète</li>
-<li>Poids-mouche</li>
-<li>Monteur</li>
-<li>Pont</li>
-</ul>
 </div>
 </section>
 <section class="slide topic" id="_ready_for_a_quizz">

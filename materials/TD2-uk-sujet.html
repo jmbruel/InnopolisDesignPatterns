@@ -142,7 +142,7 @@ transformed into chocolate bars.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>You have a horrible nightmare (well, mau be not so bad after all) where you drown in chocolate.
+<p>You have a horrible nightmare (well, may be not so bad after all) where you drown in chocolate.
 You wake up startled with terrible fear.</p>
 </div>
 <div class="admonitionblock warning">
@@ -175,10 +175,6 @@ only one instance of a given class.</p>
 </div>
 <div class="sect2">
 <h3 id="_improvement_1"><a class="link" href="#_improvement_1">1.2. Improvement 1</a></h3>
-<div class="paragraph">
-<p>Vous vous souvenez des premiers exercices <a href="https://www.java.com/fr/">Java</a>  sur les variables de classe
-et vous proposez d&#8217;utiliser un compteur d&#8217;instance pour solutionner le problème.</p>
-</div>
 <div class="paragraph">
 <p>You remember your first <a href="https://www.java.com/fr/">Java</a> exercises on class variables
 and you propose to use an instance counter to solve the problem.</p>
@@ -291,10 +287,6 @@ What&#8217;s wrong with the following code:</p>
 </div>
 <div class="sect2">
 <h3 id="_you_are_not_done_yet"><a class="link" href="#_you_are_not_done_yet">1.4. You are not done yet!</a></h3>
-<div class="paragraph">
-<p>Vos cauchemars continuent! Mais cette fois ils sont en anglais! Vous voyez un
-grand gaillard irlandais vous menacer (en fait vous confondez <em>threat</em> et <em>thread</em>&#8230;&#8203;).</p>
-</div>
 <div class="paragraph">
 <p>Your nightmares continue! But this time they are in English! You see a
 big guy threatening you (in fact you confuse <em>threat</em> and <em>thread</em>&#8230;&#8203;).</p>
@@ -418,37 +410,37 @@ problem by reconstructing a possible wrong sequence with two threads:</p>
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Bloc 1</div>
+<div class="title">Block 1</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java"><span></span><span class="tok-kd">public</span> <span class="tok-kd">static</span> <span class="tok-n">BouilleurChocolat</span> <span class="tok-nf">getInstance</span><span class="tok-o">()</span> <span class="tok-o">{</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Bloc 2</div>
+<div class="title">Block 2</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java"><span></span><span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">uniqueInstance</span> <span class="tok-o">==</span> <span class="tok-kc">null</span><span class="tok-o">)</span> <span class="tok-o">{</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Bloc 3</div>
+<div class="title">Block 3</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java"><span></span><span class="tok-n">uniqueInstance</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-n">BouilleurSafeChocolat</span><span class="tok-o">();</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Bloc 4</div>
+<div class="title">Block 4</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java"><span></span>		<span class="tok-o">}</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Bloc 5</div>
+<div class="title">Block 5</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java"><span></span>		<span class="tok-k">return</span> <span class="tok-n">uniqueInstance</span><span class="tok-o">;</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Bloc 6</div>
+<div class="title">Block 6</div>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java"><span></span>	<span class="tok-o">}</span></code></pre>
 </div>
@@ -565,8 +557,12 @@ but there is no reason not to share them among all the objects that
 <p>In most cases these two patterns do <strong>not go together at all</strong>.
 This strategy is only recommended in a specific case of use of
 <em>Strategy</em>: one where behaviors are simple and "static" (no
-resource consumption for example) and where an association is used:
-image::strategy-assoc.png[]</p>
+resource consumption for example) and where an association is used:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="data:image/png;base64,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" alt="strategy assoc">
+</div>
 </div>
 <div class="paragraph">
 <p>With an implementation like:</p>
@@ -593,14 +589,6 @@ image::strategy-assoc.png[]</p>
 <div class="title"><strong>QUESTION</strong></div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Faites en sorte que les instances d&#8217;objet affectées à chaque comportement
-d&#8217;un <code>Personnage</code> soient uniques pour chaque comportement distinct.</p>
-</li>
-<li>
-<p>Pourquoi ne devrait-on pas utiliser <code>getInstance()</code> dans le cas
-d&#8217;une composition (dans le constructeur du composé) ?</p>
-</li>
 <li>
 <p>Make the object instances assigned to each behavior
 of a <code>Character</code> are unique for each distinct behavior.</p>
@@ -630,7 +618,7 @@ of a UML composition (in the constructor of the compound)?</p>
 <td class="content">
 <div class="title"><strong>QUESTION</strong></div>
 <div class="paragraph">
-<p>WHat is the difference between singleton and a global variable?</p>
+<p>What is the difference between singleton and a global variable?</p>
 </div>
 </td>
 </tr>
@@ -656,7 +644,7 @@ of a UML composition (in the constructor of the compound)?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-12 23:12:07 +0100
+Last updated 2020-03-14 11:21:38 +0100
 </div>
 </div>
 <link rel="stylesheet" href="./pygments-manni.css">
