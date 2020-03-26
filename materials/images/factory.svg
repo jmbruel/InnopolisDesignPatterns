@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="197px" preserveAspectRatio="none" style="width:549px;height:197px;" version="1.1" viewBox="0 0 549 197" width="549px" zoomAndPan="magnify"><defs><filter height="300%" id="f9qlikkhp564d" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--class c--><rect fill="#FEFECE" filter="url(#f9qlikkhp564d)" height="65.9102" id="c" style="stroke: #A80036; stroke-width: 1.5;" width="88" x="175.5" y="8"/><ellipse cx="196.35" cy="24" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M196.4633,19.5981 L195.3095,24.6699 L197.6254,24.6699 Z M194.9691,17.3569 L197.9657,17.3569 L201.3109,29.75 L198.8622,29.75 L198.0985,26.687 L194.8197,26.687 L194.0727,29.75 L191.6239,29.75 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="43" x="211.65" y="28.5352">Creator</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="176.5" x2="262.5" y1="40" y2="40"/><ellipse cx="186.5" cy="51" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="41" x="195.5" y="54.6348">create()</text><ellipse cx="186.5" cy="63.9551" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="62" x="195.5" y="67.5898">Operation()</text><path d="M298.5,28.5 L298.5,37 L263.73,41 L298.5,45 L298.5,53.8105 A0,0 0 0 0 298.5,53.8105 L436.5,53.8105 A0,0 0 0 0 436.5,53.8105 L436.5,38.5 L426.5,28.5 L298.5,28.5 A0,0 0 0 0 298.5,28.5 " fill="#FBFB77" filter="url(#f9qlikkhp564d)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M426.5,28.5 L426.5,38.5 L436.5,38.5 L426.5,28.5 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="117" x="304.5" y="46.0684">product = create();</text><!--class p--><rect fill="#FEFECE" filter="url(#f9qlikkhp564d)" height="32" id="p" style="stroke: #A80036; stroke-width: 1.5;" width="76" x="53.5" y="25"/><ellipse cx="68.5" cy="41" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M68.6133,36.5981 L67.4595,41.6699 L69.7754,41.6699 Z M67.1191,34.3569 L70.1157,34.3569 L73.4609,46.75 L71.0122,46.75 L70.2485,43.687 L66.9697,43.687 L66.2227,46.75 L63.7739,46.75 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="82.5" y="45.5352">Product</text><!--class ConcreteCreator--><rect fill="#FEFECE" filter="url(#f9qlikkhp564d)" height="52.9551" id="ConcreteCreator" style="stroke: #A80036; stroke-width: 1.5;" width="126" x="168.5" y="134"/><ellipse cx="183.5" cy="150" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M185.9731,156.1431 Q185.3921,156.4419 184.7529,156.5913 Q184.1138,156.7407 183.4082,156.7407 Q180.9014,156.7407 179.5815,155.0889 Q178.2617,153.437 178.2617,150.3159 Q178.2617,147.1865 179.5815,145.5347 Q180.9014,143.8828 183.4082,143.8828 Q184.1138,143.8828 184.7612,144.0322 Q185.4087,144.1816 185.9731,144.4805 L185.9731,147.2031 Q185.3423,146.6221 184.7488,146.3523 Q184.1553,146.0825 183.5244,146.0825 Q182.1797,146.0825 181.4949,147.1492 Q180.8101,148.2158 180.8101,150.3159 Q180.8101,152.4077 181.4949,153.4744 Q182.1797,154.541 183.5244,154.541 Q184.1553,154.541 184.7488,154.2712 Q185.3423,154.0015 185.9731,153.4204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="94" x="197.5" y="154.5352">ConcreteCreator</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="169.5" x2="293.5" y1="166" y2="166"/><ellipse cx="179.5" cy="177" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="41" x="188.5" y="180.6348">create()</text><path d="M329.5,148 L329.5,156.5 L294.62,160.5 L329.5,164.5 L329.5,173.3105 A0,0 0 0 0 329.5,173.3105 L537.5,173.3105 A0,0 0 0 0 537.5,173.3105 L537.5,158 L527.5,148 L329.5,148 A0,0 0 0 0 329.5,148 " fill="#FBFB77" filter="url(#f9qlikkhp564d)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M527.5,148 L527.5,158 L537.5,158 L527.5,148 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="187" x="335.5" y="165.5684">return new ConcreteProduct();</text><!--class ConcreteProduct--><rect fill="#FEFECE" filter="url(#f9qlikkhp564d)" height="32" id="ConcreteProduct" style="stroke: #A80036; stroke-width: 1.5;" width="127" x="6" y="144.5"/><ellipse cx="21" cy="160.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.4731,166.6431 Q22.8921,166.9419 22.2529,167.0913 Q21.6138,167.2407 20.9082,167.2407 Q18.4014,167.2407 17.0815,165.5889 Q15.7617,163.937 15.7617,160.8159 Q15.7617,157.6865 17.0815,156.0347 Q18.4014,154.3828 20.9082,154.3828 Q21.6138,154.3828 22.2612,154.5322 Q22.9087,154.6816 23.4731,154.9805 L23.4731,157.7031 Q22.8423,157.1221 22.2488,156.8523 Q21.6553,156.5825 21.0244,156.5825 Q19.6797,156.5825 18.9949,157.6492 Q18.3101,158.7158 18.3101,160.8159 Q18.3101,162.9077 18.9949,163.9744 Q19.6797,165.041 21.0244,165.041 Q21.6553,165.041 22.2488,164.7712 Q22.8423,164.5015 23.4731,163.9204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="95" x="35" y="165.0352">ConcreteProduct</text><!--reverse link p to ConcreteProduct--><path d="M84.9,77.25 C80.73,99.55 75.54,127.24 72.38,144.14 " fill="none" id="p&lt;-ConcreteProduct" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="78.06,75.73,88.62,57.36,91.82,78.31,78.06,75.73" style="stroke: #A80036; stroke-width: 1.0;"/><!--reverse link c to ConcreteCreator--><path d="M224.83,94.17 C226.23,107.89 227.68,122.1 228.87,133.75 " fill="none" id="c&lt;-ConcreteCreator" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="217.85,94.72,222.78,74.11,231.77,93.29,217.85,94.72" style="stroke: #A80036; stroke-width: 1.0;"/><!--reverse link p to c--><path d="M135.33,41 C148.7,41 162.07,41 175.45,41 " fill="none" id="p&lt;-c" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="130,41,139,45,135,41,139,37,130,41" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="137.1828" y="29.8763">+product</text><!--reverse link ConcreteProduct to ConcreteCreator--><path d="M138.35,160.5 C148.38,160.5 158.42,160.5 168.46,160.5 " fill="none" id="ConcreteProduct&lt;-ConcreteCreator" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="#A80036" points="133.1,160.5,142.1,164.5,138.1,160.5,142.1,156.5,133.1,160.5" style="stroke: #A80036; stroke-width: 1.0;"/><!--
+@startuml
+
+
+hide empty members
+hide empty methods
+
+
+abstract class c as "Creator" {
+}
+note right: product = create();
+
+abstract class p as "Product"
+
+c : {abstract} +create()
+c : +Operation()
+
+class ConcreteCreator {
+	+create()
+}
+note right: return new ConcreteProduct();
+
+p <|- - ConcreteProduct
+c <|- - ConcreteCreator
+
+p "+product" <- c
+ConcreteProduct <. ConcreteCreator
+
+@enduml
+
+PlantUML version 1.2019.09(Mon Aug 26 18:19:51 CEST 2019)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_152-b16
+Operating System: Mac OS X
+OS Version: 10.15.3
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+--></g></svg>

@@ -5,11 +5,11 @@ ifndef::references[]
 == Références
 
 [bibliography]
-- [[[Cysboy]]] Apprenez à programmer en Java. Par `cysboy`. Disponible https://app.box.com/shared/yrlj0takyhjeg1mefacy[ici] (le {localdate}).
+- [[[Cysboy]]] Apprenez à programmer en Java. Par `cysboy`. Disponible https://app.box.com/shared/yrlj0takyhjeg1mefacy[here] (le {localdate}).
 - [[[Freeman04]]] Design Pattren - Head First. Bert Bates, Eric Freeman, Elisabeth Freeman, Kathy Sierra. O'Reilly, 09/2004.
 - [[[Freeman05]]] Tête la première : Design Pattern. Bert Bates, Eric Freeman, Elisabeth Freeman, Kathy Sierra. Editions O'Reilly. 2005.
 - [[[GoF]]] Design Patterns: Elements of reusable object oriented software. 1994.
-- GOPROD - De bonnes pratiques au service de la conception orientée objets. Disponible http://www.goprod.bouhours.net[ici] (le {localdate}).
+- GOPROD - De bonnes pratiques au service de la conception orientée objets. Disponible http://www.goprod.bouhours.net[here] (le {localdate}).
 - [[[Larman05]]] Larman, Craig. Applying UML and Patterns – An Introduction to Object-Oriented Analysis and Design
 and Iterative Development (3rd ed.). Prentice Hall. 2005. ISBN 0-13-148906-2.
 - [[[Martin03]]] “Principles Of OOD”, Robert C. Martin (“Uncle BOB”), http://butunclebob.com.

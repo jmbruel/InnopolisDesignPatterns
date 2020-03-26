@@ -13,9 +13,9 @@ hide empty methods
 class Rectangle {
 }
 
-class Carré {
+class Square {
 }
 
-Rectangle <|-- Carré
+Rectangle <|-- Square
 
 @enduml
