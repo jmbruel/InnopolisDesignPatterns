@@ -23,3 +23,4 @@ hs_err_pid*
 .idea
 README.html
 code/Main.uml
+../.DS_Store
