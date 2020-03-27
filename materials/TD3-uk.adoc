@@ -301,6 +301,7 @@ endif::prof[]
 Just by bringing one or two transformations to `Pizzeria`,
 we have gone from an object managing the instantiation of our concrete classes
 to a set of subclasses that now assume this responsibility.
+
 //----------------------------- Question ------------------
 .*QUESTION*
 [WARNING]
