@@ -1,5 +1,5 @@
-:moduleTitle: CPOA
-:authorDefault:  Dut/Info-S3/M3105
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
 :tdnum: TD 2
 
 :eleve:
@@ -14,7 +14,7 @@ include::asciidoc.conf[]
 endif::myasciidoconf[]
 
 ifdef::eleve[]
-:doctitle:  {moduleTitle} - Sujet {tdnum}
+:doctitle:  {moduleTitle} - Subject {tdnum}
 endif::eleve[]
 ifdef::prof[]
 :doctitle: {moduleTitle} - Support {tdnum}
@@ -27,8 +27,8 @@ endif::todoprof[]
 :experimental:
 
 = {doctitle}
-:Author:  {authorDefault} - (Semaine 46)
-:lang: fr
+:Author:  {authorDefault} - (week 11)
+:lang: uk
 :incremental:
 
 // eleve : sujet pour élèves
@@ -106,9 +106,7 @@ ifdef::prof[]
 .Solution image:icons/solution.png[]
 [CAUTION]
 ====
-Si vous étudiez le code, vous constatez qu'ils ont essayé très soigneusement d'éviter
-les catastrophes, par exemple de vider deux mille litres de mélange qui n'a pas bouilli,
-de remplir un bouilleur déjà plein ou de faire bouillir un bouilleur vide !
+To control the behavior of the boiler.
 ====
 endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
@@ -131,11 +129,11 @@ ifdef::prof[]
 .Solution image:icons/solution.png[]
 [CAUTION]
 ====
-. Que l'un remplisse alors que l'autre n'a pas vidé par exemple.
-. S'assurer de n'avoir qu'une seule instance de ce contrôleur.
-. Quelques exemples :
-- accès unique à une base de données (on vient de le voir)
-- objet "parent" d'une interface
+. One is filling while the other one has not emptied for example.
+. Make sure that there exist only one instance of the controller.
+. Some examples :
+- unique access to a database
+- "parent" object of an interface
 - ...
 ====
 endif::prof[]
@@ -161,7 +159,7 @@ include::{sourcedir}/Chocolat/src/BouilleurCptChocolat.java[lines=5..19]
 ifdef::prof[]
 [CAUTION]
 ====
-Pas de return dans un constructeur.
+No `return` in a constructor!
 ====
 endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
@@ -220,10 +218,10 @@ public class BouilleurChocolat {
 ifdef::prof[]
 [CAUTION]
 ====
-. Oui!
-. En implémentant une fonction qui s'en charge.
+. Yes!
+. By implementing a function that takes care of it.
 +
-.Extrait de la solution
+.Excerpt of a solution
 [source,java]
 -----
 include::{sourcedir}/Chocolat/src/BouilleurSafeChocolat.java[lines=5..20]
@@ -270,37 +268,37 @@ problem by reconstructing a possible wrong sequence with two threads:
 |===
 ====
 
-.Bloc 1
+.Block 1
 [source,java]
 ------
 public static BouilleurChocolat getInstance() {
 ------
 
-.Bloc 2
+.Block 2
 [source,java]
 ------
 if (uniqueInstance == null) {
 ------
 
-.Bloc 3
+.Block 3
 [source,java]
 ------
 uniqueInstance = new BouilleurSafeChocolat();
 ------
 
-.Bloc 4
+.Block 4
 [source,java]
 ------
 		}
 ------
 
-.Bloc 5
+.Block 5
 [source,java]
 ------
 		return uniqueInstance;
 ------
 
-.Bloc 6
+.Block 6
 [source,java]
 ------
 	}
@@ -335,16 +333,15 @@ public class BouilleurSafeChocolat {
 
 Explications :
 
-. Thread 1 appelle `getInstance()` et détermine que `uniqueInstance` est `null` en ligne 12
-. Thread 1 entre dans le bloc `if` puis est préempté par le thread 2 avant
-l'exécution de la ligne 13
-. Thread 2 appelle `getInstance()` et détermine que `uniqueInstance` est `null` en ligne  12
-. Thread 2 entre dans le bloc `if`, crée un nouveau `BouilleurSafeChocolat` et
-assigne ce nouvel objet à la variable `uniqueInstance` en ligne  13
-. Thread 2 retourne la référence au `BouilleurSafeChocolat` en ligne  15
-. Thread 2 est préempté par le Thread 1
-. Thread 1 reprend où il s'était arrêté et exécute la ligne 13 créant alors une autre instance de `BouilleurSafeChocolat`
-. Thread 1 retourne cette nouvelle instance en ligne  15
+. Thread 1 calls `getInstance()` and asserts that `uniqueInstance` is `null` in line 12
+. Thread 1 enters block `if` then is preempted by thread 2 before the
+execution in line 13
+. Thread 2 calls `getInstance()` and asserts that `uniqueInstance` is `null` in line  12
+. Thread 2 enters block `if`, create a new `BouilleurSafeChocolat` and store it in `uniqueInstance` in line  13
+. Thread 2 returns the reference of `BouilleurSafeChocolat` in line  15
+. Thread 2 is preempted by Thread 1
+. Thread 1 starts again in ligne 13 creating itself a new instance of `BouilleurSafeChocolat`
+. Thread 1 returns this new instance in line  15
 
 ====
 
@@ -403,13 +400,11 @@ endif::prof[]
 ifdef::prof[]
 [CAUTION]
 =====
-. Une seule fois, lors du 1er passage dans la méthode!!
-. C'est bien trop consomateur en ressource! En pratique, il y a des copies de
-blocs de mémoire, ce qui prend du temps.
-
-. Voici un exemple :
+. Only once, the 1st time the method is called!!
+. Way too much expensive in computing resources (memory blocks copied, etc.).
+. Here is an example:
 +
-.Création de l'instance unique au démarrage
+.Loading instanciation
 [source,java]
 ------
 public class Singleton {
@@ -419,11 +414,7 @@ public class Singleton {
 }
 ------
 +
-En adoptant cette approche, nous nous reposons sur la JVM pour créer
-l'unique instance du Singleton quand la classe est chargée.
-La JVM garantit que l'instance sera créée avant qu'un thread
-quelconque n'accède à la variable statique `uniqueInstance`.
-
+Here the JVM is creating the (unique) instance of the Singleton when the class is loaded.
 =====
 endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
@@ -495,15 +486,15 @@ of a UML composition (in the constructor of the compound)?
 ifdef::prof[]
 [CAUTION]
 ====
-. Extrait de solution (disponible sur le GitHub pour les profs)
+. Excerpt of a possible solution:
 +
-.Extrait de ComportemenEpee.java
+.`ComportemenEpee.java`excerpt
 [source,java]
 -----
 include::src/java/TD3/src/simuaventure/comportements/arme/impl/ComportementEpee.java[lines=5..11]
 -----
 +
-Qu'on pourra éventuellement enrichir pour être complet avec :
+Which could be improved eventually with:
 +
 [source,java]
 -----
@@ -512,17 +503,16 @@ private ComportementEpee(){
 	}
 -----
 +
-.Extrait de Chevalier.java
+.`Chevalier.java` excerpt
 [source,java]
 -----
 include::src/java/TD3/src/simuavanture/appli/Chevalier.java[lines=8..12]
 -----
 +
-NOTE: Il faudra alors changer les appels comme `compAdequat = new ComportementEpee();`
- en `compAdequat = ComportementEpee.getInstance();`
+NOTE: Calls like `compAdequat = new ComportementEpee();` will need to be changed into `compAdequat = ComportementEpee.getInstance();`
 +
-. Car dans une composition les objets possèdent les instances de leur comportement.
-Elles sont donc uniques et leurs instances ne doivent pas être transmises, pour être sûr que la destruction du composite détruit les composés.
+. Because in a composition, objects owns their own behavior instances.
+They are then unique and should not be transmised outside so that the garbage collector will delete them if the owner is deleted.
 ====
 endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
@@ -534,16 +524,16 @@ endif::prof[]
 .*QUESTION*
 [WARNING]
 ====
-WHat is the difference between singleton and a global variable?
+What is the difference between singleton and a global variable?
 ====
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
 [CAUTION]
 ====
-Quelques éléments de solution :
+Elements of solution:
 
-- En {java} les variables globales sont des références statiques à des objets.
-- Problème déjà vu de l'instanciation à la demande vs. au démarrage.
+- In {java} global variables are static references to objects.
+- On demand instanciatino vs. loading-time instanciation.
 ====
 endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------
@@ -558,10 +548,11 @@ How would you test <<Singleton,Singleton>>?
 ifdef::prof[]
 [CAUTION]
 ====
-Exemples de test :
+Test examples:
 
-- Tentative d'instanciation depuis l'extérieur de la classe
-- Tentative de construction de deux objets de type Singleton
+- Construct 2 objects Singleton and check they are the same object
+- You can use {java} reflection mechanisms to check that constructors are not accessible outside the class, but this should not be done by testing but by static analysis (see an interesting blog http://blog.davidehringer.com/testing/test-driven-development/unit-testing-singletons/[here])
+
 ====
 endif::prof[]
 //----------------------------------------------------- fin Correction -------------------------

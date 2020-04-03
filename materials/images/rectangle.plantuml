@@ -10,16 +10,16 @@ hide empty members
 hide empty methods
 
 
-class Carré {
-  int largeur
+class Square {
+  int width
 }
 
-class Rectangle extends Carré {
-  int longueur
+class Rectangle extends Square {
+  int length
 }
 
 legend right
-  <i>Un rectangle est un carré avec une dimension de plus...</i>
+  <i>A rectangle is a square with an additional dimension...</i>
 endlegend
 
 @enduml

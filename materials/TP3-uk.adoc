@@ -1,0 +1,159 @@
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
+:tdnum: TP 3
+
+:eleve:
+:sourcedir: src/java/TD3
+
+ifndef::definitions[]
+include::definitions.txt[]
+endif::definitions[]
+ifndef::myasciidoconf[]
+include::asciidoc.conf[]
+endif::myasciidoconf[]
+
+ifdef::eleve[]
+:doctitle:  {moduleTitle} - Subject {tdnum}
+endif::eleve[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+:icons: font
+
+= {doctitle}
+:Author:  {authorDefault} - (Week 13)
+:lang: uk
+:incremental:
+:experimental:
+:date: {localdate}
+
+// eleve : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
+
+//----------- définitions --------------
+:sitecours: https://github.com/jmbruel/InnopolisDesignPatterns[Course Material]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Duration
+:depot: Expected results
+:lien: Links
+:img: img
+:principe: Good design principle
+:allerPlusLoin: Still hungry?
+:about: About
+
+:pizzeriaSRC: src/java/PizzeriaJMB/src/appli
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version with answers
+=====
+This output includes answers to questions.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}		|
+. I know how to code in {java}.
+. I know I need to think before I start coding.
+. I know basic OO concepts (inheritance, polyporphism, ...)
+. I did the TD on `Pizzeria` and hence I know _Factory_!
+| {objtd}	| Understand the importance of *Design* and implement my 3rd pattern.
+| {duree}	| *2* TPs
+|======================
+
+
+== The _Factory_ pattern
+
+[[Fabrique]]
+[NOTE]
+.Design pattern: Factoty
+====
+include::pattern/factory.txt[]
+====
+
+== Implementation
+
+Following what you have done in TD3 and using the following link:{pizzeriaSRC}/Pizza.java[Pizza.java] code:
+
+[source,java]
+-------
+include::{pizzeriaSRC}/Pizza.java[lines:5..200]
+-------
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Fully implement the Pizzeria application so that the
+test program below will produce the result below.
++
+TIP: Start by writing this program and use _QuickFix_ to "generate" the code as much as possible (as during the Coding Dojo class).
++
+. Generate your class diagram automatically (like in TP1)
+====
+
+We will use the following pizzas model:
+
+image::Pizzas-dc.png[]
+
+.Testing program
+[source,java]
+-------
+public class PizzaTestDrive {
+  public static void main(String[] args) {
+    Pizzeria boutiqueBrest = new PizzeriaBrest();
+    Pizzeria boutiqueStrasbourg = new PizzeriaStrasbourg();
+
+    Pizza pizza = boutiqueBrest.commanderPizza("fromage");
+    System.out.println("JMB a commandé une " + pizza.getNom() + "\n");
+
+    pizza = boutiqueStrasbourg.commanderPizza("fromage");
+    System.out.println("JMI a commandé une " + pizza.getNom() + "\n");
+  }
+}
+-------
+
+.Execution results
+............
+$ java PizzaTestDrive
+Préparation de Pizza sauce style brest au fromage
+Étalage de la pâte...
+Ajout de la sauce...
+Ajout des garnitures :
+Parmigiano reggiano râpé
+Cuisson 25 minutes à 180°
+Découpage en parts triangulaires
+Emballage dans une boîte officielle
+JMB a commandé une Pizza sauce style brest et fromage
+Préparation de Pizza pâte Strasbourg et fromage
+Étalage de la pâte...
+Ajout de la sauce...
+Ajout des garnitures :
+Mozzarella en lamelles
+Cuisson 25 minutes à 180°
+Découpage en parts carrées
+Emballage dans une boîte officielle
+JMI a commandé une Pizza pâte Strasbourg et fromage
+............
+
+ifndef::compact[]
+== About...
+
+****************************************************************
+Document réalisé via  {asciidoctorlink} (version `{asciidoctor-version}`) de 'Dan Allen', lui même basé sur {asciidoc}.
+Libre d'utilisation et géré par la 'Licence Creative Commons'.
+image:88x31.png["Licence Creative
+Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
+endif::compact[]

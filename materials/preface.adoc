@@ -89,5 +89,5 @@ ce livre (presque à l'opposé du livre de référence <<Meyer>>).
 Il faut réaliser qu'il ne s'agit que d'un support de cours,
 sensé être accompagné des exercices réalisés en travaux dirigés
 (que vous trouverez en <<TDs,Annexes>>), des travaux pratiques sur machine
-(disponibles {siteurl}[ici]),
+(disponibles {siteurl}[here]),
 et des cours d'amphi qui vont avec (eux aussi bientôt disponibles). 

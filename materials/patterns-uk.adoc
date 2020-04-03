@@ -67,21 +67,18 @@ ifdef::slides[]
 include::strategy-uk.adoc[]
 endif::slides[]
 
-=== Enough for today...
+=== Reuse ?
 
-=== (non) Réutilisation
+WARNING: Patterns *are not directly reusable*!
 
-WARNING: Les patrons *ne sont pas réutilisables*!
+They need to be implemented and adapted each time they are used.
 
-Il faut implémeter la solution qu'il représente à chaque fois.
+ifdef::slides[=== Reuse (an exception)]
 
-ifdef::slides[=== Réutilisation (exception)]
+Exception: some patterns, in some languages, are directly available as libraries (e.g., <<observerJava,_Observer_ from Java>>).
 
-Exception : certains font l'objet d'une librairie (comme <<observerJava,_Observer_ de Java>>).
-
-Par exemple le patron Singleton existe dans la bibliothèque standard du
-langage  en {Ruby}.
-C'est un _mixin_ qu'il suffit d'inclure dans la classe qui doit être un singleton.
+Another example is Singleton in {Ruby}.
+It is a _mixin_ that you simply include in a class to make it a singleton:
 
 [source,ruby]
 ------
@@ -99,9 +96,9 @@ Klass.new
 # => NoMethodError - new is private ...
 ------
 
-=== Association ou composition
+=== Association or composition
 
-On trouve deux modèles {uml} :
+Let's consider 2 {uml} models:
 
 ifndef::slides[._Strategy_  et composition]
 image::strategy-compo.png[]
@@ -109,11 +106,11 @@ image::strategy-compo.png[]
 ifndef::slides[._Strategy_  et association]
 image::strategy-assoc.png[]
 
-ifdef::slides[=== Association ou composition (suite)]
+ifdef::slides[=== Association or composition (ctd.)]
 
-Et donc deux implémentations :
+Here are the corresponding implementations:
 
-.Composition => le composé encapsule les composants
+.Composition => encapsulation of the components
 [source,java]
 ------
 public class Colvert extends Canard {
@@ -125,7 +122,7 @@ public class Colvert extends Canard {
 c1 = new Colvert();
 ------
 
-.Association => le composant existe "en dehors"
+.Association => the components exist "outside"
 [source,java]
 ------
 ...
@@ -137,7 +134,7 @@ c1 = new Colvert(vol,cri);
 
 ifdef::slides[:leveloffset: +1]
 
-== Un peu d'histoire
+== Key historical elements
 
 //-------------- book
 ifdef::backend-pdf[]
@@ -147,27 +144,26 @@ endif::backend-pdf[]
 //--------------------
 
 1977::
-  *Alexander* : patterns pour les architectures (les vraies)
+  *Alexander*: patterns for architectures (the real ones!)
 +
 image::Alexander.png[width=10%,scaledwidth=30%,link=images/Alexander.png]
 1987::
-  *Beck* et *Cunningham* : patterns pour des interfaces utilisateurs
+  *Beck* & *Cunningham*: patterns for GUIs
 1988::
-  *Meyer* : livre sur l'orienté objet (langage {eiffel}), devenu la bible pour
-  beaucoup de programmeurs (cf. <<Meyer88>>)
+  *Meyer*: OO Book (using {eiffel}), the reference book on OO(cf. <<Meyer88>>)
 1990-1995::
-  *Gamma*, Helm, Johnson et Vlissides : LE livre de référence (cf. <<GoF>>)
+  *Gamma*, Helm, Johnson & Vlissides: THE reference book on patterns (cf. <<GoF>>)
 +
 image::GoF.png[width=10%,scaledwidth=30%,link=images/GoF.png]
 +
-NOTE:  Les auteurs de ce livre sont connus comme les *Gof* pour « _Gang of Four_ ».
+NOTE:  The authors of this book are known as the *Gof* (« _Gang of Four_ »).
 2003::
-  *Martin* : principes SOLID (cf. <<Martin03>>)
+  *Martin*:  SOLID principles (cf. <<Martin03>>)
 2004::
-  *Craig Larman* décrit des modèles de conception : les Patterns *GRASP* (cf. <<Larman05>>)
+  *Craig Larman* about design models:   *GRASP* Patterns (cf. <<Larman05>>)
 
 
-== Exemples de bons principes
+== Good Principles Examples  
 
 //-------------- book
 ifdef::backend-pdf[]
@@ -194,7 +190,7 @@ ifndef::slides[._**S**ingle Responsibility Principle_ (source <<SOLID>>)]
 image::solid-s.jpg[scaledwidth="70%"]
 
 .......
-Responsabilité => Sujet à changement
+Responsability => Subject to change
 .......
 
 //-------------- book
@@ -210,13 +206,13 @@ ifndef::slides[._**O**pen-Closed Principle_ (source <<SOLID>>)]
 image::solid-o.jpg[scaledwidth="70%"]
 
 .......
-Ouvert à l'extension mais fermé à la modification
+Open to extension but closed to modification
 .......
 
-ifdef::slides[=== _**O**pen-Closed Principle_ (suite)]
+ifdef::slides[=== _**O**pen-Closed Principle_ (ctd.)]
 
-Ainsi, une fois écrite et testée, une classe ne devrait être modifiée que pour
-être corrigée! Toute modification devrait être possible par extension.
+Once written and tested, a class should only be modified to fix a bug! 
+All modification should be possible by extension.
 
 === _**L**iskov Substitution Principle_
 
@@ -227,13 +223,15 @@ a donné son nom à un principe important et bien connu : le principe default:
 (le _Turing Award_) en 2009.
 endif::slides[]
 
-ifndef::slides[.Barbara Liskov reçoit le _Turing Award_]
+ifndef::slides[.Barbara Liskov received the _Turing Award_ in 2009]
 image::liskov.jpg[scaledwidth="70%", link="https://www.dropbox.com/s/u4wenpfkbml8et0/Capture%20d%27%C3%A9cran%202017-11-08%2015.12.20.png?dl=0"]
 
-ifdef::slides[=== Barbara Liskov est toujours active!]
+ifdef::slides[=== Barbara Liskov is still active!]
 
-ifndef::slides[.Barbara Liskov est toujours active!]
-image::liskov2018.png[width=70%,scaledwidth="70%"]
+Received the _Turing Award_ in 2009.
+
+ifndef::slides[.Barbara Liskov is still active!]
+image::liskov2018.png[width=60%,scaledwidth="70%"]
 
 ifdef::slides[=== LSP : le principe]
 
@@ -241,31 +239,30 @@ ifdef::backend-pdf[._**L**iskov Substitution Principle_ (source <<SOLID>>)]
 image::solid-l.jpg[scaledwidth="70%"]
 
 .......
-Une classe doit pouvoir être remplacée par une instance d'un de ses
-sous-types, sans modifier la cohérence du programme
+A class should be replaced by one of its subclasses without modifying the behavior of the program.
 .......
 
-ifdef::slides[=== LSP : un exemple]
+ifdef::slides[=== LSP: an example]
 [quote]
 __________________
-Un carré est un rectangle particulier.
+A square is a kind of rectangle.
 __________________
 
-ifndef::slides[.Exemple classique de violation du principe de substitution de Liskov]
-image::carre.png[width=10%,scaledwidth=20%]
+ifndef::slides[.Classical example violating the Liskov substitution principle]
+image::carre.svg[width=10%,scaledwidth=20%]
 
 .Question
-WARNING: Peut-on toujours substituer un `Carré` à la place d'un `Rectangle` ?
+WARNING: Can we subtitute a `Square` in place of a `Rectangle` ?
 
-ifdef::slides[=== Vraiment?]
+ifdef::slides[=== Really?]
 
 //-------------- book
 ifdef::backend-pdf[]
-Examinons avec un exemple concret pourquoi la réponse est non.
+Let us examine this particuliar code, where the answer is no.
 endif::backend-pdf[]
 //--------------------
 
-.Réponse (`Rectangle.java`)
+.Answer (`Rectangle.java`)
 [source,java]
 ----
 class Rectangle
@@ -296,9 +293,9 @@ class Rectangle
 }
 ----
 
-ifdef::slides[=== Vraiment?]
+ifdef::slides[=== Really?]
 
-.Réponse (`Square.java`)
+.Answer (`Square.java`)
 [source,java]
 ----
 // Violation of Likov's Substitution Principle
@@ -319,7 +316,7 @@ class Square extends Rectangle
 
 ifdef::slides[=== Vraiment?]
 
-.Réponse (`Square.java` - suite)
+.Answer (`Square.java` - Ctd.)
 [source,java]
 ----
 class LspTest
@@ -345,20 +342,20 @@ class LspTest
 }
 ----
 
-ifdef::slides[=== Et l'inverse?]
+ifdef::slides[=== Is it the opposite then?]
 
-ifndef::slides[.Et si on essaye l'inverse]
-image::rectangle.png[width=40%,scaledwidth=70%]
+ifndef::slides[.Let us try the other way around]
+image::rectangle.svg[width=60%,scaledwidth=70%]
 
-ifdef::slides[=== Même problème]
+ifdef::slides[=== Same problem]
 
 //-------------- book
 ifdef::backend-pdf[]
-Et bien non, ça ne fonctionne pas plus dans l'autre sens.
+Nope, it dooes not work neither.
 endif::backend-pdf[]
 //--------------------
 
-.Réponse (`Rectangle.java`)
+.Answer (`Rectangle.java`)
 [source,java]
 ----
 class LspTest
@@ -389,7 +386,7 @@ ifdef::backend-pdf[._**I**nterface Segregation Principle_ (source <<SOLID>>)]
 image::solid-i.jpg[scaledwidth="70%"]
 
 .......
-Préférer plusieurs interfaces spécifiques pour chaque client plutôt qu'une seule interface générale
+Prefer several specific interfaces (for each client) rather than a general interface.
 .......
 
 //-------------- book
@@ -399,42 +396,37 @@ mais appliqué aux interfaces.
 endif::backend-pdf[]
 //--------------------
 
-=== _**D**ependency Inversion Principle_
+=== _**D**ependency **I**nversion **P**rinciple_
 
 ifdef::backend-pdf[._**I**nterface Segregation Principle_ (source <<SOLID>>)]
 image::solid-d.jpg[scaledwidth="90%"]
 
 .......
-Il faut dépendre des abstractions, pas des implémentations
+It is better to depend on abstractions, not on implementations.
 .......
 
-ifdef::slides[=== DIP : explications]
+ifdef::slides[=== DIP: explanations]
 
-Ce principe indique :
+- High level (abstract) modules should not depend on low level (concrete) ones.
+Both should depend on abstractions.
+- Abstractions should not depend on implementation details.
 
-- Les modules de haut niveau (abstraits) ne doivent pas dépendre des modules de bas niveau.
-Les deux doivent dépendre d'abstractions.
-- Les abstractions ne doivent pas dépendre des détails d'implémentation.
-C'est l'inverse : les détails doivent dépendre des abstractions.
+ifdef::slides[=== Example (bad)]
 
-NOTE: Ainsi ce principe va à l'encontre de l'intuition classique.
+.Example violating the DIP
+image::dip-bad.svg[width=70%,scaledwidth="90%"]
 
-ifdef::slides[=== Exemple (bad)]
+ifdef::slides[=== Example (good)]
 
-.Exemple de code violant le principe d'inversion des dépendances
-image::dip-bad.png[width=70%,scaledwidth="90%"]
+.Example conforming to the DIP
+image::dip.svg[width=80%,scaledwidth="90%"]
 
-ifdef::slides[=== Exemple (good)]
-
-.Exemple de code ne violant plus le principe d'inversion des dépendances
-image::dip.png[width=80%,scaledwidth="90%"]
-
-=== SOLID et patrons
+=== SOLID & Patterns
 
 .*QUESTION*
 [WARNING]
 ====
-Lesquels des 5 principes SOLID s'appliquent bien à _Strategy_ ?
+Which of the 5 SOLID principles apply to  _Strategy_ ?
 ====
 
 ifdef::slides[]
@@ -451,21 +443,19 @@ ifdef::slides[]
 endif::slides[]
 
 //----------------------------------------------------- Correction -------------------------
-ifdef::slides[=== SOLID et patrons (éléments de réponses)]
+ifdef::slides[=== SOLID & Patterns (Answer elements)]
 ifdef::prof[]
-Quelques éléments de réponses :
-
 [%step]
 _**S**ingle Responsibility Principle_::
   Bof
 _**O**pen-Closed Principle_::
-  => *Oui* : extension (du comportement) sans toucher au code!
+  => *Yes*: extension (of the behavior) without modifiying existing code!
 _**L**iskov Substitution Principle_::
-  Non
+  Nope
 _**I**nterface Segregation Principle_::
-  Oui, mais pas spécifiquement
+  *Yes*: but not specifically
 _**D**ependency Inversion Principle_::
-  => *Oui* : les algos dépendent des mêmes abstractions que les données (les interfaces)
+  => *Yes*: algorithms depend on the same abstractions than data (interfaces)
 
 endif::prof[]
 //----------------------------------------------------- Correction -------------------------
@@ -481,21 +471,18 @@ The critical design tool for software development is *a mind well educated in
 design principles*. It is not the UML or any other technology.
 ________________
 
-Il s'agit d'un ensemble de patrons, plutôt orientés conception (UML). Nous en
-aborderons certains au travers des exemples de ce module (cf. <<Larman05>>).
-
 ifndef::slides[:leveloffset: -1]
 
-TIP: Notez que les principes SOLID ne s'appliquent pas qu'à la programmation objet. Pour une discussion sur leur application avec React (language fonctionnel), cf. https://dev.to/shadid12/can-you-apply-solid-principles-to-your-react-applications-46il.
+TIP: Note that the SOLID principles do not only apply to OO languages. For a discussion on their use in React, cf. https://dev.to/shadid12/can-you-apply-solid-principles-to-your-react-applications-46il.
 
-== Les patrons : comment ça marche ?
+== Design patterns: how does it work ?
 
 ifdef::slides[:leveloffset: -1]
 
-=== Intérêt
+=== Benefits
 
-- Réponses éprouvées à des problèmes récurrents
-- Vocabulaire commun
+- Proved answers to reccuring problems
+- Common vocabulary
 
 //-------------- book
 ifdef::backend-pdf[]
@@ -507,114 +494,6 @@ endif::backend-pdf[]
 
 [quote]
 ___________________
-T'as qu'à utiliser une _factory_!
+Just use a _factory_!
 ___________________
 
-ifdef::slides[]
-
-////
-//----------------------------- Question ------------------
-.*QUESTION*
-[WARNING]
-====
-Qui fait la nuit de l'info dans un groupe avec des Masters?
-
-image::N2I.png[width=30%]
-====
-////
-
-endif::slides[]
-
-//-------------- book
-ifdef::backend-pdf[]
-Pour chaque patron étudié dans ce livre nous aurons les mêmes
-éléments de définition.
-
-endif::backend-pdf[]
-//--------------------
-
-/////
-=== Éléments de définition
-
-- Nom
-- Problème
-- Solution
-- Conséquences
-
-Exemple pour _Strategy_ :
-
-*Nom*:: _Strategy_
-*Problème*::  Situations où il est nécessaire de pouvoir définir dynamiquement les
-            algorithmes utilisés.
-*Solution*::  Définir une famille d'algorithmes, encapsuler chacun d'eux en tant
-            qu'objet, et les rendre interchangeables.
-*Conséquences*::  Ce patron laisse les algorithmes changer indépendamment des
-                clients qui les emploient.
-/////
-
-=== Patrons abordés
-
-//-------------- book
-ifdef::backend-pdf[]
-Voici la liste des patrons abordés dans ce cours.
-endif::backend-pdf[]
-//--------------------
-
-[%step]
-- <<Singleton>>
-- <<strategy,Stratégie>>
-- <<Fabrique>> (_factory_)
-- <<Observateur>>
-- <<Itérateur>>
-- <<Composite>>
-- <<Etat>>
-- <<Proxy>>
-- <<Adaptateur>>
-
-=== Patrons non abordés
-
-//-------------- book
-ifdef::backend-pdf[]
-Voici une liste (non-exhaustive) des patrons *non abordés* dans ce cours
-(pour donner une idée du chemin qu'il vous reste à parcourir).
-endif::backend-pdf[]
-//--------------------
-
-- Décorateur
-- Commande
-- Façade
-- Patron de méthode
-- Chaînes de responsabilité
-- Visiteur
-- Prototype
-- Mémento
-- Médiateur
-- Interprète
-- Poids-mouche
-- Monteur
-- Pont
-
-//////
-
-
-
-ifndef::inclusion[]
-
-[appendix]
-:numbered!:
-include::glossaire.txt[]
-
-include::refs.txt[]
-
-include::conventions.txt[]
-
-include::creditPhoto.txt[]
-
-endif::inclusion[]
-
-ifdef::inclusion[]
-
-ifdef::slides[:leveloffset: +1]
-
-endif::inclusion[]
-//////

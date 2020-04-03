@@ -1,0 +1,538 @@
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
+
+:tdnum: TD 3
+
+:eleve:
+//:prof:
+:sourcedir: src/java/TD3
+
+ifndef::definitions[]
+include::definitions.txt[]
+endif::definitions[]
+ifndef::myasciidoconf[]
+include::asciidoc.conf[]
+endif::myasciidoconf[]
+
+ifdef::eleve[]
+:doctitle:  {moduleTitle} - Sujet {tdnum}
+endif::eleve[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+:icons: font
+:experimental:
+
+= {doctitle}
+:Author:  {authorDefault} - (week 13)
+:lang: uk
+:incremental:
+
+// eleve : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
+
+//----------- définitions --------------
+:sitecours: https://github.com/jmbruel/InnopolisDesignPatterns[Course Material]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Duration
+:depot: Expected results
+:lien: Links
+:img: img
+:principe: Good design principle
+:allerPlusLoin: Still hungry?
+:about: About
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version with answers
+=====
+This output of the TD includes answers to questions.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}		|
+. I know how to code in {java}.
+. I know I need to think before I start coding.
+. I know basic OO concepts (inheritance, polyporphism, ...).
+. I have understood what a pattern is and I am hungry to learn more than _Strategy_ and _Singleton_
+| {objtd}	| Study the *Factory* pattern.
+| {duree}	| *1* TD and *2* TPs
+|======================
+
+ifndef::compact[]
+
+== Classroom materials
+
+TIP: Do not hesitate to (re)read regularly the {sitecours}.
+NOTE: This TD exercise is inspired by the Chapter 4 of  the excellent book "Head First: Design Pattern".
+Bert Bates, Eric Freeman, Elisabeth Freeman, Kathy Sierra. Editions O'Reilly. 2005.
+
+endif::compact[]
+
+== O'Reilly pizzeria
+
+You are hired in a pizzeria to do ... computer science!
+Last year's intern who worked on the code left. 
+You only have at your disposal:
+
+. The following starting code:
++
+.Code de `Pizzeria.java`
+[source,java]
+------
+include::src/java/JMIsPizzas/src/Pizzeria3.java[]
+------
++
+. An excerpt of class diagram:
++
+image::Pizzas.png[width=70%,scaledwidth=70%,align=center]
++
+. The following testing code:
++
+[source,java]
+------
+Pizzeria boutiqueBrest = new Pizzeria();
+boutiqueBrest.commanderPizza("fromage");
+...
+Pizzeria boutiqueStrasbourg = new Pizzeria();
+boutiqueStrasbourg.commanderPizza("grecque");
+------
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Identify what varies in that code (if market pressure does
+add pizza to the menu or if a pizza is no longer successful and needs to
+disappear, etc.).
+. Isolate this code in a `SimpleFabriqueDePizzas` class.
+. Make the corresponding class diagram.
+. What is the advantage of doing this? Don't we transfer
+just the problem to another object?
+====
+
+TIP: You have inherited from this horrible "if then else". 
+In your implementation you might want to use a "switch case" et may be an `enum`.
+
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+. Replace the `if` by a  `pizza = fabrique.creerPizza(type);`
+and add the following code into the class:
++
+[source,java]
+------
+	SimpleFabriqueDePizzas fabrique;
+
+	public Pizzeria(SimpleFabriqueDePizzas fabrique) {
+		this.fabrique = fabrique;
+	}
+------
++
+NOTE: Note that the pizza is not anymore part of the pizzeria, but
+of the fabrique!
+. `SimpleFabriqueDePizzas` code
++
+[source,java]
+------
+include::src/java/JMIsPizzas/src/SimpleFabriqueDePizzas.java[]
+------
++
+. Class Diagram:
++
+image::Pizzeria2.png[width=90%,scaledwidth=90%]
++
+. By encapsulating the pizzas creation (in a single class), there is only one place to modify the code in case of evolution.
+========
+:icons: font
+endif::prof[]
+
+== Almost there...
+
+We have end up with a clean code that is almost a pattern. 
+Often called _Simple Factory_, it is nevertheless not considered as a Design Pattern.
+
+=== Success of the O'Reilly pizzerias: Franchising the pizza stores
+
+Several cities want to open pizzerias like yours.
+Your boss, very happy with your programs wants to impose on all
+future pizzerias to use your codes.
+
+The problem: Strasbourg cheese pizzas are different
+pizzas with Corsican cheeses!
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Propose a solution where `SimpleFabriqueDePizzas` would be an abstract
+class.
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+Simply add abstract, and create several sub-classes to be able to write things like:
+
+[source,java]
+------
+SimpleFabriqueDePizzas fabriqueBrest = new FabriqueDePizzasBrest();
+Pizzeria boutiqueBrest = new Pizzeria(fabriqueBrest);
+boutiqueBrest.commander("Végétarienne");
+...
+SimpleFabriqueDePizzas fabriqueStrasbourg = new FabriqueDePizzasStrasbourg();
+Pizzeria boutiqueStrasbourg = new Pizzeria(fabriqueStrasbourg);
+boutiqueStrasbourg.commander("Végétarienne");
+------
+
+========
+endif::prof[]
+
+=== Problem: everyone works as they see fit!
+
+Pizzerias use your factories well but have changed their procedures: some do not cut the pizzas, change the
+cooking times, and O'Reilly pizzerias lose their identity. 
+So we need to *restructure* the pizzerias.
+
+A highly paid Italian consultant (fortunately in pizzas!)
+proposes to return to the following structure:
+
+[source,java]
+------
+public abstract class Pizzeria {
+	public final Pizza commanderPizza(String type) {
+		Pizza pizza;
+
+		pizza = creerPizza(type);
+		pizza.preparer();
+		pizza.cuire();
+		pizza.couper();
+		pizza.emballer();
+
+		return pizza;
+	}
+
+	....... Pizza creerPizza(String type);
+}
+------
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+What are the differences with our current design?
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+- Pizzeria is now abstract (you will see why below).
+- Now, `creerPizza ()` is again a call to a Pizzeria method
+and not a manufactured object.
+- Our "manufacturing method" is now abstract in `Pizzeria`.
+- And we transferred the functionality of our factory object to this method.
+========
+endif::prof[]
+
+=== Allowing the subclasses to decide
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+In the following diagram, place the methods in the right place
+so that the procedures are followed while having pizza
+with "regional" variants.
+
+image::Pizzeria3.png[width=60%,scaledwidth=60%]
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+
+image::Pizzeria3-sol.png[width=60%]
+
+Each subclass redefines the `creerPizza ()` method,
+while all the subclasses use the `commanderPizza ()` method
+defined in `Pizzeria`.
+
+Here is an example of a concrete Pizzeria:
+
+[source,java]
+------
+public class PizzeriaBrest extends Pizzeria {
+	Pizza creerPizza(String item) {
+	if (choix.equals("fromage")) {
+		return new PizzaFromageStyleBrest();
+		} else if (choix.equals("vegetarienne")) {
+		return new PizzaVegetarienneStyleBrest();
+		} else if (choix.equals("fruitsDeMer")) {
+		return new PizzaFruitsDeMerStyleBrest();
+		} else if (choix.equals("poivrons")) {
+		return new PizzaPoivronsStyleBrest();
+		} else
+		return null;
+	}
+}
+------
+
+========
+endif::prof[]
+
+=== Declaring a factory method
+
+Just by bringing one or two transformations to `Pizzeria`,
+we have gone from an object managing the instantiation of our concrete classes
+to a set of subclasses that now assume this responsibility.
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+What is the exact declaration of the `creerPizza()` method of
+the `Pizzeria` class ?
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+
+[source,java]
+------
+protected abstract Pizza creerPizza(String type);
+------
+
+- `protected abstract` : As a manufacturing method is abstract,
+we rely on subclasses to manage the creation of objects.
+- `Pizza` : A manufacturing method returns a product that we generally use
+in the methods defined in the superclass.
+- `creerPizza`: A factory method isolates the client (the superclass code,
+like `commanderPizza ()`: it now does not have to know the kind of concrete product that is actually created.
+========
+endif::prof[]
+
+=== So, how does it work ?
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Give a sequence diagram of a "order a cheese pizza
+of Strasbourg type".
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+image::Pizzeria-sec.png[width=100%,scaledwidth=100%]
+========
+endif::prof[]
+
+NOTE: You will implement the missing class in TP.
+
+== The Factory pattern
+
+Here we are, we have in fact used the Factory pattern
+[[Fabrique]]
+[NOTE]
+.Design pattern : *Factory (simple)*
+====
+include::pattern/factory.txt[]
+====
+
+ifndef::compact[]
+
+.Several examples of Factory pattern definitions
+image::google-fabrique.png[link="images/google-fabrique.png",width=100%,scaledwidth=100%]
+
+endif::compact[]
+
+
+:numbered!:
+== {allerPlusLoin}
+
+=== What about pizzas !?
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Write a class diagram for the pizzas (class, attributes & methods).
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+image::Pizzas-dc.png[width=100%,scaledwidth=100%]
+
+Example of code for `Pizza` :
+
+[source,java]
+---------
+public abstract class Pizza {
+	private String nom;
+	private String pate;
+	private String sauce;
+	private ArrayList <Ingredient> garnitures = new ArrayList<>();
+
+	public void preparer() {
+		System.out.println("Préparation de " + nom);
+		System.out.println("Étalage de la pâte...");
+		System.out.println("Ajout de la sauce...");
+		System.out.println("Ajout des garnitures: ");
+		for (int i = 0; i < garnitures.size(); i++) {
+			System.out.println(" " + garnitures.get(i));
+		}
+	}
+	public void cuire() {
+		System.out.println("Cuisson 25 minutes à 180°");
+	}
+	public void couper() {
+		System.out.println("Découpage en parts triangulaires");
+	}
+	public void emballer() {
+		System.out.println("Emballage dans une boîte officielle");
+	￼￼￼￼￼}
+	public String getNom() {
+		return nom;
+	}
+}
+---------
+
+========
+endif::prof[]
+
+=== What would it look like without the pattern ?
+
+A 2013 intern (Design Patterns were not yet in the curriculum)
+has written the following code:
+
+[source,java]
+------
+include::src/java/JMIsPizzas/src/PizzeriaDependante.java[]
+------
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Count the number of concrete classes on which this class depends.
+. And what if you add Marseille style pizzas to this Pizzeria?
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+. 8
+. 12
++
+TIP: To be compared with the 2 (factory & pizza) with the pattern.
+
+========
+endif::prof[]
+
+=== Back to the adventure game
+
+You surely remind the adventure game application where
+some of the code resembles this:
+
+.Adaptation of behavior to the situation
+[source,java]
+-----
+if (choix.equals("Epee")) {
+	perso.setArme(new ComportementEpee());
+}
+else if (choix.equals("Arc")) {
+	perso.setArme(new ComportementArc());
+	else if ...
+	...
+}
+-----
+
+This code is not very adaptive and will suffer from changes, for example:
+
+- change the list of possible weapons
+- add `if then else` to each new weapon
+- removal of certain weapons
+- ...
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Isolate this code in a class `SimpleFabriqueArme` which will have
+a method `createAreaWeapon (String type)` which returns the behavior
+adapted according to the parameter received.
+. Give the UML class diagram of the new organization.
+. What are the differences with the Fabrique pattern? Give some examples of an extension of the adventure game that would correspond to the use of a Factory.
+. Give the corresponding sequence diagram. For example with the following test code:
++
+[source,java]
+------
+Chevalier perso = new Chevalier("JMI");
+
+SimpleFabriqueArme fabrique = new SimpleFabriqueArme();
+ComportementArme c = fabrique.creerComportementArme("Epee");
+
+perso.setArme(c);
+perso.frapper();
+------
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+====
+. Implementation
++
+.Excerpt of FabriqueArme.java
+[source,java]
+-----
+include::{sourcedir}/src/simuaventure/comportements/arme/impl/SimpleFabriqueArme.java[lines=12..25]
+-----
++
+. Class diagram of the behavior factory:
++
+image::fabriqueArme.png[width=100%,scaledwidth=100%]
++
+. The creator and the concrete creator are in a single class (SimpleFabriqueArme) because we have only one unique factory for the moment. One can imagine two modes of play, with medieval weapons (metal sword) or modern (lightsaber sword) which will be treated in two different concrete factories "FabriqueArmeMedievales" and "FabriqueArmeModernes".
+. `Main` sequence diagram.
+image::fabriqueArme-seq.svg[width=100%,scaledwidth=100%]
+
+====
+endif::prof[]
+//----------------------------------------------------- fin Correction -------------------------
+
+
+ifndef::compact[]
+== {about}...
+
+****************************************************************
+Realised via {asciidoctorlink} (version `{asciidoctor-version}`) from 'Dan Allen', a {asciidoc}.
+  Free to use this material under 'Licence Creative Commons'.
+  image:88x31.png["Licence Creative
+  Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+  http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
+endif::compact[]

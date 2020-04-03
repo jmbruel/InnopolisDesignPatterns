@@ -104,7 +104,7 @@ ifdef::slides[=== Another concrete example (ctd.)]
 
 [NOTE,formater-icon.png]
 ====
-.The interface in `PHP` (code source link:src/php/Formater.php[ici])
+.The interface in `PHP` (code source link:src/php/Formater.php[here])
 [source,php]
 ------
 include::src/php/Formater.php[]
@@ -115,7 +115,7 @@ ifdef::slides[=== Another concrete example (ctd.)]
 
 [NOTE,formater-icon.png]
 ====
-.The `Writer` abstract class (code source link:src/php/Writer.php[ici])
+.The `Writer` abstract class (code source link:src/php/Writer.php[here])
 [source,php]
 ------
 include::src/php/Writer.php[]
@@ -126,7 +126,7 @@ ifdef::slides[=== Another concrete example (ctd.)]
 
 [NOTE,filewriter-icon.png]
 ====
-.The `FileWriter` class (code source link:src/php/FileWriter.php[ici])
+.The `FileWriter` class (code source link:src/php/FileWriter.php[here])
 [source,php]
 ------
 include::src/php/FileWriter.php[]
@@ -137,7 +137,7 @@ ifdef::slides[=== Another concrete example (ctd.)]
 
 [NOTE,dbwriter-icon.png]
 ====
-.The `DBWriter` class (code source link:src/php/DBWriter.php[ici])
+.The `DBWriter` class (code source link:src/php/DBWriter.php[here])
 [source,php]
 ------
 include::src/php/DBWriter.php[]
@@ -155,7 +155,7 @@ ifdef::slides[=== Another concrete example (ctd.)]
 
 [NOTE,formaters-icon.png]
 ====
-.The `TextFormater` class (code source link:src/php/TextFormater.php[ici])
+.The `TextFormater` class (code source link:src/php/TextFormater.php[here])
 [source,php]
 ------
 include::src/php/TextFormater.php[]
@@ -171,7 +171,7 @@ ifdef::slides[]
 
 endif::slides[]
 
-.The `HTMLFormater` class (code source link:src/php/HTMLFormater.php[ici])
+.The `HTMLFormater` class (code source link:src/php/HTMLFormater.php[here])
 [source,php]
 ------
 include::src/php/HTMLFormater.php[]
@@ -187,7 +187,7 @@ ifdef::slides[]
 
 endif::slides[]
 
-.The `XMLFormater` class (code source link:src/php/XMLFormater.php[ici])
+.The `XMLFormater` class (code source link:src/php/XMLFormater.php[here])
 [source,php]
 ------
 include::src/php/XMLFormater.php[]

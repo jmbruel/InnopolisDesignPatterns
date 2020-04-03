@@ -1,0 +1,6 @@
+
+*Factory* defines an interface for creating an objet, but leaving to its subclasses
+the choice of the class to be instanciated (see also <<FabriqueAbstraite,Abstract Factory>>).
+
+ifndef::slides[.UML model of the Factory pattern]
+image::factory.svg[]
