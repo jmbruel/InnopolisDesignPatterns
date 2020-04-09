@@ -1,0 +1,57 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class BankAgency1 {
+	-String name
+	-String loc
+	-ArrayList<Account> accounts
+	+String getOwner()
+	+int getNbAccounts()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+class Account {
+}
+
+class BankAgency2 {
+	-String name
+	-String loc
+	-ArrayList<Account> accounts
+	+String getOwner()
+	+int getNbAccounts()
+	...()
+	+void addAccount() {... new Account(...)...}
+}
+
+class BankAgency3 {
+	-String name
+	-String loc
+	+ArrayList<Account> accounts
+	+String getOwner()
+	+int getNbAccounts()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+class BankAgency4 {
+	-String name
+	-String loc
+	+String getOwner()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+class BankAgency5 {
+	-String name
+	-String loc
+	-Account Account
+	+String getOwner()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+
+
+@enduml

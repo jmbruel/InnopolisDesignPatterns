@@ -1,0 +1,749 @@
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
+
+:tdnum: TD 5
+
+:eleve:
+//:prof:
+:sourcedir: src/java/TD5
+
+ifndef::definitions[]
+include::definitions.txt[]
+endif::definitions[]
+ifndef::myasciidoconf[]
+include::asciidoc.conf[]
+endif::myasciidoconf[]
+
+ifdef::eleve[]
+:doctitle:  {moduleTitle} - Sujet {tdnum}
+endif::eleve[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+:icons: font
+:experimental:
+
+= {doctitle}
+:Author:  {authorDefault} - (week 15)
+:lang: uk
+:incremental:
+
+// eleve : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
+
+//----------- définitions --------------
+:sitecours: https://github.com/jmbruel/InnopolisDesignPatterns[Course Material]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Duration
+:depot: Expected results
+:lien: Links
+:img: img
+:principe: Good design principle
+:allerPlusLoin: Still hungry?
+:about: About
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version with answers
+=====
+This output of the TD includes answers to questions.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}		|
+. I know how to code in {java}.
+. I know I need to think before I start coding.
+. I know several design patterns already.
+| {objtd}	| Learn the *Observer* pattern.
+| {duree}	| *1* TD and *2* TPs
+|======================
+
+
+ifndef::compact[]
+
+== Classroom materials
+
+TIP: Do not hesitate to (re)read regularly the {sitecours}.
+NOTE: This TD exercise is inspired by the Chapter 4 of  the excellent book "Head First: Design Pattern".
+Bert Bates, Eric Freeman, Elisabeth Freeman, Kathy Sierra. Editions O'Reilly. 2005.
+
+endif::compact[]
+
+== Motivations
+
+In this exercise, we will explore the need to maintain consistency between related objects without making classes tightly coupled.
+
+.The classical Observer illustration
+image::observer-illustration.png[]
+
+== The Observer design pattern
+
+=== Definition
+
+include::pattern/observer-uk.txt[]
+
+Several precisions:
+
+- the observers must be registered somehow
+- the subject has to inform the observers (about changes).
+
+.Example of use
+image::observer-scenario2.png[]
+
+There are several ways to implement the `attacher`, but in order to work properly
+it must be done:
+
+- by an external object,
+- by the `concreteObserver` itself.
+
+=== Intent
+
+- Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+
+=== Applicability
+
+Use the Observer pattern in any of the following situations:
+
+- When an abstraction has two aspects, one dependent on the other.
+Encapsulating these aspects in separate objects lets you vary and reuse
+them independently.
+- When a change to one object requires changing others
+- When an object should be able to notify other objects without making
+assumptions about those objects
+
+=== Participants
+
+* `Subject`
+** Keeps track of its `observers`
+** Provides an interface for attaching and detaching `Observer` objects
+* `Observer`
+** Defines an interface for update notification
+* `ConcreteSubject`
+** The object being observed
+** Stores state of interest to ConcreteObserver objects
+** Sends a notification to its observers when its state changes
+* `ConcreteObserver`
+** The observing object
+** Stores state that should stay consistent with the subject's
+** Implements the Observer update interface to keep its state consistent with
+the subject's
+
+=== Scenario
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Let's see if you have undestood its utility.
+Make a sequence diagram that illustrate the use of the _Observer_ pattern.
+====
+
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+.Example of use
+image::observer-scenario.png[]
+========
+endif::prof[]
+
+
+=== Benefits
+
+* Minimal coupling between the Subject and the Observer
+-  Can reuse subjects without reusing their observers and vice versa
+-  Observers can be added without modifying the subject
+-  All subject knows is its list of observers
+-  Subject does not need to know the concrete class of an observer, just that
+each observer implements the update interface
+-  Subject and observer can belong to different abstraction layers
+* Support for event broadcasting
+-  Subject sends notification to all subscribed observers
+-  Observers can be added/removed at any time
+
+=== Liabilities
+
+* Possible cascading of notifications
+- Observers are not necessarily aware of each other and must be careful
+about triggering updates
+* Simple update interface requires observers to deduce changed item
+
+== Implementation Issues
+
+ifdef::slides[:leveloffset: -1]
+
+=== Problems
+
+Let's try to define an implementation.
+
+TIP: If you already know or have used the `Observer` {java} implementation,
+try to forget it!
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Here are a list of possible issues. For each of them try to provide
+some answers:
+
+. How does the subject keep track of its observers?
+. What if an observer wants to observe more than one subject?
+. Who triggers the update?
+. Make sure the subject updates its state before sending out notifications
+. How much info about the change should the subject send to the observers?
+. Can the observers subscribe to specific events of interest?
+. Can an observer also be a subject?
+. What if an observer wants to be notified only after several subjects have
+changed state?
+====
+
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+
+. Array, linked list
+. Have the subject tell the observer who it is via the update interface
+. For example:
+- The subject whenever its state changes
+- The observers after they cause one or more state changes
+- Some third party object(s)
+. Hard to enforce other than by systematic checking/testing
+. For example:
+- Push Model => Lots
+- Pull Model => Very Little
+. If so, it's publish-subscribe
+. Yes!
+. For example:
+- Use an intermediary object which acts as a mediator
+- Subjects send notifications to the mediator object which performs any
+necessary processing before notifying the observers
+========
+endif::prof[]
+
+=== _Observer_ in Java
+
+{Java} provides the _Observable/Observer_ classes as built-in
+support for the _Observer_ pattern.
+The `java.util.Observable` class is the base `Subject` class.
+Any class that wants to be observed extends this class which:
+
+- Provides methods to add/delete observers
+- Provides methods to notify all observers
+- A subclass only needs to ensure that its observers are notified in the
+appropriate mutators
+- Uses a `Vector` for storing the observer references
+
+The `java.util.Observer` interface is the `Observer` interface.
+It must be implemented by any observer class.
+
+ifdef::slides[:leveloffset: -1]
+
+==== The java.util.Observable Class
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Here is a list of methods of the `java.util.Observable` class:
+
+[source,java,linenum]
+-----
+public Observable()
+public synchronized void addObserver(Observer o)
+protected synchronized void setChanged()
+public synchronized void deleteObserver(Observer o)
+protected synchronized void clearChanged()
+public synchronized boolean hasChanged()
+public void notifyObservers(Object arg)
+public void notifyObservers()
+-----
+
+Match them with their corresponding comments:
+
+. Adds an observer to the set of observers of this object
+. If this object has changed, as indicated by the hasChanged() method, then
+notify all of its observers and then call the clearChanged() method to
+indicate that this object has no longer changed. Each observer has its
+update() method called with two arguments: this observable object and the
+arg argument. The arg argument can be used to indicate which attribute of
+the observable object has changed.
+. Indicates that this object has changed
+. Indicates that this object has no longer changed, or that it has already
+notified all of its observers of its most recent change. This method is called
+automatically by `notifyObservers()`.
+. Same as above, but the arg argument is set to null. That is, the observer is
+given no indication what attribute of the observable object has changed.
+. Tests if this object has changed. Returns true if setChanged() has been
+called more recently than clearChanged() on this object; false otherwise.
+. Construct an `Observable` with zero observers
+. Deletes an observer from the set of observers of this object
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+
+[source,java,linenum]
+-----
+public Observable()
+// => Construct an `Observable` with zero Observers
+public synchronized void addObserver(Observer o)::
+// => Adds an observer to the set of observers of this object
+protected synchronized void setChanged()
+// => Indicates that this object has changed
+public synchronized void deleteObserver(Observer o)
+// => Deletes an observer from the set of observers of this object
+protected synchronized void clearChanged()
+/* => Indicates that this object has no longer changed, or that it has already
+notified all of its observers of its most recent change. This method is called
+automatically by notifyObservers(). */
+public synchronized boolean hasChanged()
+/* => Tests if this object has changed. Returns true if setChanged() has been
+called more recently than clearChanged() on this object; false otherwise. */
+public void notifyObservers(Object arg)
+/* => If this object has changed, as indicated by the hasChanged() method, then
+notify all of its observers and then call the clearChanged() method to
+indicate that this object has no longer changed. Each observer has its
+update() method called with two arguments: this observable object and the
+arg argument. The arg argument can be used to indicate which attribute of
+the observable object has changed. */
+public void notifyObservers()
+/* => Same as above, but the arg argument is set to null. That is, the observer
+is given no indication what attribute of the observable object has changed. */
+-----
+
+========
+endif::prof[]
+
+
+==== The java.util.Observer Interface
+
+
+[source,java,linenum]
+.java.util.Observer
+-----
+/**
+* This method is called whenever the observed object is changed. An
+* application calls an observable object's notifyObservers method to have all
+* the object's observers notified of the change.
+*
+* Parameters:
+* o - the observable object
+* arg - an argument passed to the notifyObservers method
+*/
+public abstract void update(Observable o, Object arg)
+-----
+
+ifdef::slides[:leveloffset: +1]
+
+=== Observable/Observer Example
+
+[source,java,linenum]
+.ConcreteSubject.java
+-----
+/**
+* A subject to observe!
+*/
+public class ConcreteSubject extends Observable {
+
+  private String name;
+  private float price;
+  public ConcreteSubject(String name, float price) {
+    this.name = name;
+    this.price = price;
+    System.out.println("ConcreteSubject created: " + name + " at " + price);
+  }
+  public String getName() {return name;}
+  public float getPrice() {return price;}
+  public void setName(String name) {
+    this.name = name;
+    setChanged();
+    notifyObservers(name);
+  }
+  public void setPrice(float price) {
+    this.price = price;
+    setChanged();
+    notifyObservers(new Float(price));
+  }
+}
+-----
+
+[source,java,linenum]
+.NameObserver.java
+-----
+// An observer of name changes.
+public class NameObserver implements Observer {
+  private String name;
+  public NameObserver() {
+    name = null;
+    System.out.println("NameObserver created: Name is " + name);
+  }
+  public void update(Observable obj, Object arg) {
+    if (arg instanceof String) {
+      name = (String)arg;
+      System.out.println("NameObserver: Name changed to " + name);
+    } else {
+      System.out.println("NameObserver: Some other change to
+      subject!");
+    }
+  }
+}
+-----
+
+[source,java,linenum]
+.PriceObserver.java
+-----
+// An observer of price changes.
+public class PriceObserver implements Observer {
+  private float price;
+  public PriceObserver() {
+    price = 0;
+    System.out.println("PriceObserver created: Price is " + price);
+  }
+  public void update(Observable obj, Object arg) {
+    if (arg instanceof Float) {
+      price = ((Float)arg).floatValue();
+      System.out.println("PriceObserver: Price changed to " +
+      price);
+    } else {
+      System.out.println("PriceObserver: Some other change to
+      subject!");
+    }
+  }
+}
+-----
+
+[source,java,linenum]
+.TestObservers.java
+-----
+// Test program for ConcreteSubject, NameObserver and PriceObserver
+public class TestObservers {
+  public static void main(String args[]) {
+    // Create the Subject and Observers.
+    ConcreteSubject s = new ConcreteSubject("Corn Pops", 1.29f);
+    NameObserver nameObs = new NameObserver();
+    PriceObserver priceObs = new PriceObserver();
+    // Add those Observers!
+    s.addObserver(nameObs);
+    s.addObserver(priceObs);
+    // Make changes to the Subject.
+    s.setName("Frosted Flakes");
+    s.setPrice(4.57f);
+    s.setPrice(9.22f);
+    s.setName("Sugar Crispies");
+  }
+}
+-----
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Donnez la trace d'exécution du code ci-dessus.
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+
+[source,java,linenum]
+.Test program output
+.......
+ConcreteSubject created: Corn Pops at 1.29
+NameObserver created: Name is null
+PriceObserver created: Price is 0.0
+PriceObserver: Some other change to subject!
+NameObserver: Name changed to Frosted Flakes
+PriceObserver: Price changed to 4.57
+NameObserver: Some other change to subject!
+PriceObserver: Price changed to 9.22
+NameObserver: Some other change to subject!
+PriceObserver: Some other change to subject!
+NameObserver: Name changed to Sugar Crispies
+.......
+========
+endif::prof[]
+
+=== Limitations of Observable/Observer in Java
+
+Problem::
+Suppose the class which we want to be an observable is already part of an
+inheritance hierarchy, e.g.,:
+
+[source,java,linenum]
+------
+class SpecialSubject extends ParentClass
+------
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Since {Java} does not support multiple inheritance, how can we have
+`ConcreteSubject` extend both `Observable` and `ParentClass` ?
+
+. Propose a solution
+. Define its corresponding class diagram
+. Write the {java} implementations (mainly `SpecialSubject`)
++
+TIP: Two methods of `java.util.Observable` are *protected* methods: `setChanged()`
+and `clearChanged()`.
+
+You can use the following test code:
+[source,java]
+-----
+// Test program for SpecialSubject with a Delegated Observable.
+public class TestSpecial {
+  public static void main(String args[]) {
+    // Create the Subject and Observers.
+    SpecialSubject s = new SpecialSubject("Corn Pops", 1.29f);
+    NameObserver nameObs = new NameObserver();
+    PriceObserver priceObs = new PriceObserver();
+    // Add those Observers!
+    s.getObservable().addObserver(nameObs);
+    s.getObservable().addObserver(priceObs);
+    // Make changes to the Subject.
+    s.setName("Frosted Flakes");
+    s.setPrice(4.57f);
+    s.setPrice(9.22f);
+    s.setName("Sugar Crispies");
+  }
+}
+-----
+
+That should produce the following results:
+
+.......
+ConcreteSubject created: Corn Pops at 1.29
+NameObserver created: Name is null
+PriceObserver created: Price is 0.0
+PriceObserver: Some other change to subject!
+NameObserver: Name changed to Frosted Flakes
+PriceObserver: Price changed to 4.57
+PriceObserver: Price changed to 9.22
+PriceObserver: Some other change to subject!
+NameObserver: Name changed to Sugar Crispies
+.......
+
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+. Here is one solution:
+- Use Delegation
+- We will have `SpecialSubject` contain an `Observable` object
+- We will delegate the observable behavior that `SpecialSubject` needs to this
+contained `Observable` object
+. Corresponding class diagram
++
+image::specialsubject.png[]
++
+. Corresponding {java} code:
+
+[source,java,linenum]
+------
+/**
+ * A subject to observe!
+ * But this subject already extends another class.
+ * So use a contained DelegatedObservable object.
+ * Note that in this version of SpecialSubject we do
+ * not duplicate any of the interface of Observable.
+ * Clients must get a reference to our contained
+ * Observable object using the getObservable() method.
+ */
+import java.util.Observable;
+
+public class SpecialSubject extends ParentClass {
+   private String name;
+   private float price;
+   private DelegatedObservable obs;
+
+   public SpecialSubject(String name, float price) {
+     this.name = name;
+     this.price = price;
+     obs = new DelegatedObservable();
+     System.out.println("ConcreteSubject created: " + name + " at " + price);
+   }
+   public String getName() {return name;}
+   public float getPrice() {return price;}
+   public Observable getObservable() {return obs;}
+   public void setName(String string) {
+     name = string;
+     obs.setChanged();
+     obs.notifyObservers(name);
+   }
+   public void setPrice(float f) {
+     price = f;
+     obs.setChanged();
+     obs.notifyObservers(price);
+   }
+}
+------
+
+Explanations:
+
+What's this `DelegatedObservable` class?
+It implements the two methods of `java.util.Observable` that are protected methods:
+`setChanged()` and `clearChanged()`.
+
+NOTE: Apparently, the designers of Observable felt that only subclasses
+of Observable (that is, "true" observable subjects) should be able
+to modify the state-changed flag.
+
+If `SpecialSubject` contains an `Observable` object, it could not
+invoke the `setChanged()` and `clearChanged()` methods on it.
+So we have `DelegatedObservable` extends `Observable` and override
+these two methods making them have public visibility.
+
+NOTE: {Java} rule: A subclass can changed the visibility of an overridden
+method of its superclass, but only if it provides more access.
+========
+endif::prof[]
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+After studying the solution with your favorite teacher:
+
+. Do you see a problem to this implementation?
+. Can you provide a solution?
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+. The problem: this version of `SpecialSubject` did not provide implementations
+of any of the methods of `Observable`. As a result, it had to allow
+its clients to get a reference to its contained `Observable` object
+using the `getObservable()` method. This may have dangerous
+consequences. A rogue client could, for example, call the
+`deleteObservers()` method on the `Observable` object, and delete all
+the observers!
+Let’s have `SpecialSubject` not expose its contained `Observable`
+object, but instead provide "wrapper" implementations of the
+`addObserver()` and `deleteObserver()` methods which simply pass
+on the request to the contained `Observable` object.
+. The solution
++
+[source,java]
+-----
+import java.util.Observer;
+
+public class SpecialSubject2 extends ParentClass {
+  private String name;
+  private float price;
+  private DelegatedObservable obs;
+  public SpecialSubject2(String name, float price) {
+    this.name = name;
+    this.price = price;
+    obs = new DelegatedObservable();
+  }
+  public String getName() {return name;}
+  public float getPrice() {return price;}
+  public void addObserver(Observer o) {
+    obs.addObserver(o);
+  }
+  public void deleteObserver(Observer o) {
+    obs.deleteObserver(o);
+  }
+  public void setName(String name) {
+    this.name = name;
+    obs.setChanged();
+    obs.notifyObservers(name);
+  }
+  public void setPrice(float price) {
+    this.price = price;
+    obs.setChanged();
+    obs.notifyObservers(new Float(price));
+  }
+}
+-----
+
+========
+endif::prof[]
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Hence how to you modify the test?
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+[source,java]
+-----
+//s.getObservable().addObserver(nameObs);
+s.addObserver(nameObs);
+//s.getObservable().addObserver(priceObs);
+s.addObserver(priceObs);
+-----
+========
+endif::prof[]
+
+:numbered!:
+== To go further...
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+- For the `price` and `name` example, we could have decided that only the `PriceObserver` are notified of a price variation an that only the
+ `NameObserver` are notified of a change of name. How would you do that?
+- Make some connections with what you hav practiced today and the listeners used in Swing.
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+[icon="{iconsdir}/solution.png"]
+[IMPORTANT]
+.Solution
+========
+- Pas simple à faire car pas possible de "différencier" des types d'observateurs ...
+Et le `notify` est déjà implémenté ...
+
+Mais faisable ensuite avec la solution finale et 2 types de add/remove observeurs : add/removeNameObservers et add/removePriceobservers et gérer 2 Observable internes.
+
+- Voir le fichier link:Observer-suite.txt[] sur le github pour compléter.
+========
+endif::prof[]
+
+ifndef::compact[]
+== {about}...
+
+****************************************************************
+Realised via {asciidoctorlink} (version `{asciidoctor-version}`) from 'Dan Allen', a {asciidoc}.
+  Free to use this material under 'Licence Creative Commons'.
+  image:88x31.png["Licence Creative
+  Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+  http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
+endif::compact[]

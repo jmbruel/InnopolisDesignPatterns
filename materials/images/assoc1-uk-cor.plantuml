@@ -1,0 +1,60 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class BankAgency1 {
+	-String name
+	-String loc
+	+String getOwner()
+	+int getNbAccounts()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+class Account {
+}
+
+class BankAgency2 {
+	-String name
+	-String loc
+	+String getOwner()
+	+int getNbAccounts()
+	...()
+	+void addAccount() {... new Account(...)...}
+}
+
+class BankAgency3 {
+	-String name
+	-String loc
+	+String getOwner()
+	+int getNbAccounts()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+class BankAgency4 {
+	-String name
+	-String loc
+	+String getOwner()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+class BankAgency5 {
+	-String name
+	-String loc
+	+String getOwner()
+	...()
+	+void addAccount(Account newAccount)
+}
+
+
+' Structural relationships
+
+BankAgency1 o-> "*" Account
+Account "*" <-* BankAgency2
+Account "*" <--o BankAgency3
+Account <.. BankAgency4
+Account "1" <-- BankAgency5
+
+@enduml
