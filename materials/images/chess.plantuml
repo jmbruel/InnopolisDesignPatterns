@@ -1,0 +1,26 @@
+@startuml
+
+'-----------------------------------
+' UML patterns illustrated
+' JMB 2014
+' 2020 version, in English from IU class
+' Adapted from Nikolay Buldakov
+'-----------------------------------
+
+[*] -> Nominal
+state Nominal as "Playing" {
+[*] -> WhitesTurn
+WhitesTurn -> BlacksTurn : Whites's move\n[!checkmate]
+BlacksTurn -> WhitesTurn : Blacks's move\n[!checkmate]
+}
+Nominal --> Draw  : repetitions
+Nominal --> Draw  : pat
+Nominal --> WhitesWin : Whites's move\n[checkmate]
+Nominal --> BlacksWin : Blacks's move\n[checkmate]
+WhitesWin --> [*]
+BlacksWin --> [*]
+Draw --> [*]
+
+center footer Adapted from Nilolay Buldakov solution 2020-04-10 :-)
+
+@enduml
