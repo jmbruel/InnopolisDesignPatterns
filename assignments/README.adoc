@@ -14,4 +14,8 @@ Folder for future assignments repo...
 
 (see issue https://github.com/jmbruel/InnopolisDesignPatterns/issues/32[#32])
 
+== Assignment 4 (deadline Tuesday 14/04/2020)
+
+(see issue https://github.com/jmbruel/InnopolisDesignPatterns/issues/49[#49])
+
 
