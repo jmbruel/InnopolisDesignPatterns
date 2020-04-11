@@ -179,8 +179,8 @@ image::feu1.png[]
 image::feu2.png[]
 . Echecs
 +
-.Diagramme d'état d'une partie d'échec
-image::echec.png[]
+.State machine of Chess Game
+image::chess.svg[]
 +
 
 ========
