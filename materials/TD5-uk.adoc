@@ -145,18 +145,18 @@ the subject's
 .*QUESTION*
 [WARNING]
 ====
-Let's see if you have undestood its utility.
+Let's see if you have understood its utility.
 Make a sequence diagram that illustrate the use of the _Observer_ pattern.
 ====
 
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========
 .Example of use
-image::observer-scenario.png[]
+image::observer-scenario.svg[]
 ========
 endif::prof[]
 
@@ -212,7 +212,7 @@ changed state?
 
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========
@@ -296,7 +296,7 @@ called more recently than clearChanged() on this object; false otherwise.
 ====
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========
@@ -461,7 +461,7 @@ Donnez la trace d'exécution du code ci-dessus.
 ====
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========
@@ -548,7 +548,7 @@ NameObserver: Name changed to Sugar Crispies
 ====
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========
@@ -634,7 +634,7 @@ After studying the solution with your favorite teacher:
 ====
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========
@@ -696,7 +696,7 @@ Hence how to you modify the test?
 ====
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========
@@ -723,7 +723,7 @@ endif::prof[]
 ====
 //----------------------------------------------------- Correction -------------------------
 ifdef::prof[]
-[icon="{iconsdir}/solution.png"]
+[icon="solution.png"]
 [IMPORTANT]
 .Solution
 ========

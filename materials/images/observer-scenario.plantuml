@@ -3,19 +3,48 @@
 '-----------------------------------
 ' UML concepts illustrated
 ' JMB 2014
+' 2020 version, in English from IU class
+' Adapted from Nikolay Buldakov
 '-----------------------------------
 
-participant a as ":ConcreteSubject"
-participant b as ":ConcreteObserver"
-participant c as ":ConcreteObserver"
+hide footbox
 
--> a : setState()
-a -> a : notify()
+participant main as ":Main"
+participant d as ":Data"
+participant d2 as ":Data2"
+participant b as "b:BarChart"
+participant p as "p:PieChart"
+
+create b
+main -> b : new
+
+create p
+main -> p : new
+
+main -> d : attach(b)
+main -> d2 : attach(b)
+main -> d : attach(p)
+
+main -> d : setBlabla()
+activate d
+
+'from Nikolay:
+d -> d: notify()
+activate d
+
 par 
-	a -> b : update()
-	b -> a : getState()
-else
-	a -> c : update()
-	c -> a : getState()
+
+    d -> b: update(push model)
+    'b -> d: getState()
+
+else 
+
+    d -> p: update()
+    p -> d: getStatePullModel()
 end
+deactivate d
+deactivate d
+
+center footer Adapted from Nicolay Buldakov solution 2020-04-11 :-)
+
 @enduml
