@@ -2,9 +2,11 @@
 
 title __WEAPONS's Class Diagram__\n
 
-  namespace Weapons {
-    interface Weapons.WeaponBehavior {
-        {abstract} + getWeaponName()
+  namespace  {
+    namespace eapons {
+      interface Weapons.WeaponBehavior {
+          {abstract} + getWeaponName()
+      }
     }
   }
   

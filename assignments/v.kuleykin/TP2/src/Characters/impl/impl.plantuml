@@ -2,46 +2,50 @@
 
 title __IMPL's Class Diagram__\n
 
-  namespace Characters {
-    namespace impl {
-      class Characters.impl.King {
-          + King()
+  namespace  {
+    namespace haracters {
+      namespace impl {
+        class Characters.impl.King {
+            + King()
+        }
       }
     }
   }
   
 
-  namespace Characters {
-    namespace impl {
-      class Characters.impl.Knight {
-          + Knight()
+  namespace  {
+    namespace haracters {
+      namespace impl {
+        class Characters.impl.Knight {
+            + Knight()
+        }
       }
     }
   }
   
 
-  namespace Characters {
-    namespace impl {
-      class Characters.impl.Queen {
-          + Queen()
+  namespace  {
+    namespace haracters {
+      namespace impl {
+        class Characters.impl.Queen {
+            + Queen()
+        }
       }
     }
   }
   
 
-  namespace Characters {
-    namespace impl {
-      class Characters.impl.Troll {
-          + Troll()
+  namespace  {
+    namespace haracters {
+      namespace impl {
+        class Characters.impl.Troll {
+            + Troll()
+        }
       }
     }
   }
   
 
-  Characters.impl.King -up-|> Characters.Character
-  Characters.impl.Knight -up-|> Characters.Character
-  Characters.impl.Queen -up-|> Characters.Character
-  Characters.impl.Troll -up-|> Characters.Character
 
 
 right footer

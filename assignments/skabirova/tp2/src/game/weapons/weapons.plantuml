@@ -3,9 +3,11 @@
 title __WEAPONS's Class Diagram__\n
 
   namespace  {
-    namespace ame.weapons {
-      abstract class game.weapons.Weapon {
-          {abstract} + getWeaponName()
+    namespace ame {
+      namespace weapons {
+        abstract class game.weapons.Weapon {
+            {abstract} + getWeaponName()
+        }
       }
     }
   }

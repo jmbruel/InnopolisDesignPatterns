@@ -2,17 +2,19 @@
 
 title __CHARACTERS's Class Diagram__\n
 
-  namespace Characters {
-    abstract class Characters.Character {
-        - name : String
-        + introduce()
-        + setWeapon()
-        # Character()
+  namespace  {
+    namespace haracters {
+      abstract class Characters.Character {
+          - name : String
+          - weapon : WeaponBehavior
+          + introduce()
+          + setWeapon()
+          # Character()
+      }
     }
   }
   
 
-  Characters.Character o-- Weapons.WeaponBehavior : weapon
 
 
 right footer
