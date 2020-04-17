@@ -22,3 +22,6 @@ Folder for future assignments repo...
 
 (see issue https://github.com/jmbruel/InnopolisDesignPatterns/issues/51[#51])
 
+== Assignment 6 (deadline Sunday 3/05/2020)
+
+Last assignment is a refactoring project. You have 2 weeks, on teams of two, to deposit in this link:https://moodle.innopolis.university/mod/assign/view.php?id=26872[moodle assignment]
