@@ -1,0 +1,6 @@
+*_Iterator_* provides a means of sequential access to elements
+of an aggregate of objects, without exposing the internal representation of
+this one.
+
+ifndef::slides[.UML model of the Iterator]
+image::iterateur.svg[]

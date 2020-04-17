@@ -1,0 +1,70 @@
+ifndef::glossaire[]
+:glossaire:
+
+[glossary]
+== Glossary & definitions
+
+ifdef::slides[:leveloffset: -1]
+
+[glossary]
+
+=== Creation patterns
+
+Singleton::
+include::pattern/singleton-uk.txt[]
+
+ifdef::slides[=== Creation patterns (ctd.)]
+
+Fabrique::
+include::pattern/factory.txt[]
+
+
+=== Behavioral patterns
+
+
+
+État (_State^uk^_)::
+include::pattern/etat.txt[]
+
+ifdef::slides[=== Behavioral patterns (ctd.)]
+
+Itérateur (_Iterator^uk^_)::
+include::pattern/iterator.txt[]
+
+ifdef::slides[=== Behavioral patterns (ctd.)]
+
+Observateur (_Observer^uk^_)::
+include::pattern/observer-uk.txt[]
+
+ifdef::slides[=== Behavioral patterns (ctd.)]
+
+Stratégie (_Strategy^uk^_)::
+include::pattern/strategy-uk.txt[]
+
+ifdef::slides[=== Behavioral patterns (ctd.)]
+
+Visiteur (_Visitor^uk^_)::
+include::pattern/visitor.txt[]
+
+
+=== Structural patterns
+
+
+
+
+Adaptateur (_Adaptor^uk^_)::
+include::pattern/adaptor.txt[]
+
+ifdef::slides[=== Structural patterns (ctd.)]
+
+Composite::
+include::pattern/composite-uk.txt[]
+
+ifdef::slides[=== Structural patterns (ctd.)]
+
+Procuration (_Proxy^uk^_)::
+include::pattern/proxy-uk.txt[]
+
+ifdef::slides[:leveloffset: +1]
+
+endif::glossaire[]

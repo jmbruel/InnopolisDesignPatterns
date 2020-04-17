@@ -1,0 +1,5 @@
+*Proxy* provides a third party with an agent or a replacement to monitor
+access to this object.
+
+ifndef::slides[.UML model of the _Proxy_ pattern]
+image::proxy.svg[width=60%,scaledwidth=60%]

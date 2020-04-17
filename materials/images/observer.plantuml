@@ -1,0 +1,46 @@
+@startuml
+
+'-----------------------------------
+' UML concepts illustrated
+' JMB 2014
+'-----------------------------------
+
+'hide circle
+hide empty members
+hide empty methods
+
+
+abstract class s as "Subject" {
+	-ArrayList<Observer> observers
+	+attach(o: Observer)
+	+detach(o: Observer)
+	+notify()
+}
+note left: foreach Observer o {\n o.update();\n}
+
+abstract class o as "Observer" {
+}
+
+o : {abstract} +update()
+
+class ConcreteSubject {
+	-subjectState
+	+getState()
+}
+note left: return subjectState;
+
+class ConcreteObserver {
+	-ConcreteSubject subject
+	-observerState
+	+update()
+}
+note right: observerState = subject.getState();
+
+
+s -> "*" o
+ConcreteSubject <- ConcreteObserver
+
+o <|-- ConcreteObserver
+s <|-- ConcreteSubject
+
+@enduml
