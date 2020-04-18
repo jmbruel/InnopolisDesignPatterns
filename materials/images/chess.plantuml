@@ -21,6 +21,6 @@ WhitesWin --> [*]
 BlacksWin --> [*]
 Draw --> [*]
 
-center footer Adapted from Nilolay Buldakov solution 2020-04-10 :-)
+center footer Adapted from Nicolay Buldakov solution 2020-04-10 :-)
 
 @enduml

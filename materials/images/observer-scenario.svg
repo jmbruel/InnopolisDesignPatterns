@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="447px" preserveAspectRatio="none" style="width:449px;height:447px;" version="1.1" viewBox="0 0 449 447" width="449px" zoomAndPan="magnify"><defs><filter height="300%" id="foocspvltfzpn" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#foocspvltfzpn)" height="171.5527" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="118.5" y="248.707"/><rect fill="#FFFFFF" filter="url(#foocspvltfzpn)" height="134.2422" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="123.5" y="286.0176"/><rect fill="#FEFECE" filter="url(#foocspvltfzpn)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="87" x="237" y="48.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="73" x="244" y="69.0234">b:BarChart</text><rect fill="#FEFECE" filter="url(#foocspvltfzpn)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="85" x="338" y="93.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="345" y="114.5117">p:PieChart</text><rect fill="#FFFFFF" filter="url(#foocspvltfzpn)" height="107.2422" style="stroke: #000000; stroke-width: 2.0;" width="350" x="87" y="306.0176"/><rect fill="#FFFFFF" height="60.6211" style="stroke: none; stroke-width: 1.0;" width="350" x="87" y="352.6387"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="35" x2="35" y1="38.4883" y2="430.2598"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="123" x2="123" y1="38.4883" y2="430.2598"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="192.5" x2="192.5" y1="38.4883" y2="430.2598"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="282" x2="282" y1="81.2324" y2="430.2598"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="382" x2="382" y1="126.7207" y2="430.2598"/><rect fill="#FEFECE" filter="url(#foocspvltfzpn)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="51" x="8" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="37" x="15" y="23.5352">:Main</text><rect fill="#FEFECE" filter="url(#foocspvltfzpn)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="49" x="97" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="35" x="104" y="23.5352">:Data</text><rect fill="#FEFECE" filter="url(#foocspvltfzpn)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="58" x="161.5" y="3"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="168.5" y="23.5352">:Data2</text><rect fill="#FFFFFF" filter="url(#foocspvltfzpn)" height="171.5527" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="118.5" y="248.707"/><rect fill="#FFFFFF" filter="url(#foocspvltfzpn)" height="134.2422" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="123.5" y="286.0176"/><polygon fill="#A80036" points="225,65.7988,235,69.7988,225,73.7988,229,69.7988" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="35.5" x2="231" y1="69.7988" y2="69.7988"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="25" x="42.5" y="65.0566">new</text><rect fill="#FEFECE" filter="url(#foocspvltfzpn)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="87" x="237" y="48.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="73" x="244" y="69.0234">b:BarChart</text><polygon fill="#A80036" points="326,111.2871,336,115.2871,326,119.2871,330,115.2871" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="35.5" x2="332" y1="115.2871" y2="115.2871"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="25" x="42.5" y="110.5449">new</text><rect fill="#FEFECE" filter="url(#foocspvltfzpn)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="85" x="338" y="93.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="345" y="114.5117">p:PieChart</text><polygon fill="#A80036" points="111.5,156.7754,121.5,160.7754,111.5,164.7754,115.5,160.7754" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="35.5" x2="117.5" y1="160.7754" y2="160.7754"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="55" x="42.5" y="156.0332">attach(b)</text><polygon fill="#A80036" points="180.5,186.0859,190.5,190.0859,180.5,194.0859,184.5,190.0859" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="35.5" x2="186.5" y1="190.0859" y2="190.0859"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="55" x="42.5" y="185.3438">attach(b)</text><polygon fill="#A80036" points="111.5,215.3965,121.5,219.3965,111.5,223.3965,115.5,219.3965" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="35.5" x2="117.5" y1="219.3965" y2="219.3965"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="55" x="42.5" y="214.6543">attach(p)</text><polygon fill="#A80036" points="106.5,244.707,116.5,248.707,106.5,252.707,110.5,248.707" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="35.5" x2="112.5" y1="248.707" y2="248.707"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="64" x="42.5" y="243.9648">setBlabla()</text><line style="stroke: #A80036; stroke-width: 1.0;" x1="128.5" x2="175.5" y1="273.0176" y2="273.0176"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="175.5" x2="175.5" y1="273.0176" y2="286.0176"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="134.5" x2="175.5" y1="286.0176" y2="286.0176"/><polygon fill="#A80036" points="144.5,282.0176,134.5,286.0176,144.5,290.0176,140.5,286.0176" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="45" x="140.5" y="268.2754">notify()</text><path d="M87,306.0176 L155,306.0176 L155,313.0176 L145,323.0176 L87,323.0176 L87,306.0176 " fill="#EEEEEE" style="stroke: #000000; stroke-width: 1.0;"/><rect fill="none" height="107.2422" style="stroke: #000000; stroke-width: 2.0;" width="350" x="87" y="306.0176"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="23" x="102" y="319.5859">par</text><polygon fill="#A80036" points="270.5,340.6387,280.5,344.6387,270.5,348.6387,274.5,344.6387" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="133.5" x2="276.5" y1="344.6387" y2="344.6387"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="125" x="140.5" y="339.8965">update(push model)</text><line style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="87" x2="437" y1="353.6387" y2="353.6387"/><polygon fill="#A80036" points="370.5,371.9492,380.5,375.9492,370.5,379.9492,374.5,375.9492" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="133.5" x2="376.5" y1="375.9492" y2="375.9492"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="51" x="140.5" y="371.207">update()</text><polygon fill="#A80036" points="144.5,401.2598,134.5,405.2598,144.5,409.2598,140.5,405.2598" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="138.5" x2="381.5" y1="405.2598" y2="405.2598"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="120" x="150.5" y="400.5176">getStatePullModel()</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="272" x="89" y="433.9277">Adapted from Nicolay Buldakov solution 2020-04-11 :-)</text><!--
+@startuml
+
+
+hide footbox
+
+participant main as ":Main"
+participant d as ":Data"
+participant d2 as ":Data2"
+participant b as "b:BarChart"
+participant p as "p:PieChart"
+
+create b
+main -> b : new
+
+create p
+main -> p : new
+
+main -> d : attach(b)
+main -> d2 : attach(b)
+main -> d : attach(p)
+
+main -> d : setBlabla()
+activate d
+
+d -> d: notify()
+activate d
+
+par 
+
+    d -> b: update(push model)
+
+else 
+
+    d -> p: update()
+    p -> d: getStatePullModel()
+end
+deactivate d
+deactivate d
+
+center footer Adapted from Nicolay Buldakov solution 2020-04-11 :-)
+
+@enduml
+
+PlantUML version 1.2019.09(Mon Aug 26 18:19:51 CEST 2019)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_152-b16
+Operating System: Mac OS X
+OS Version: 10.15.4
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+--></g></svg>

@@ -1,0 +1,167 @@
+// ------------------------------------------
+//  Created by Jean-Michel Bruel on 2014-11.
+//  Copyright (c) 2014 IRIT/U. Toulouse. All rights reserved.
+// ------------------------------------------
+= [S20]/E_DP (Design Patterns): Refactoring Project
+Jean-Michel Bruel <jbruel@gmail.com>
+v2.0, {localdate}
+:status: bottom
+:inclusion:
+:experimental:
+:depot: https://github.com/codurance/task-list.git
+// ------------------------------------------
+include::definitions.txt[]
+include::asciidoc.conf[]
+
+image::todolist.jpg[link=http://www.keepandshare.com/htm/task-list-management-software.php]
+
+== Context
+
+You are responsible for following up on a development for which the
+documentation is minimalist and the sources are available here:
+
+https://github.com/codurance/task-list/tree/master/java
+
+. Get the source codes of this project:
+- either by cloning the rpeo:
++
+..........
+git clone https://github.com/codurance/task-list.git
+..........
++
+- or by directly downloading the https://github.com/codurance/task-list/archive/master.zip[.zip] file.
++
+NOTE: Only the `java` folder is required. But feel free to have look at other languages.
++
+. Launch the tests to check that everything is OK (`ApplicationTest.java`)
+. Use this test code (see below) to determine what this application does and how it works.
+
+.ApplicationTest.java
+[source,java]
+------
+include::task-list/java/src/test/java/com/codurance/training/tasks/ApplicationTest.java[]
+------
+
+.Task.java
+[source,java]
+------
+include::task-list/java/src/main/java/com/codurance/training/tasks/Task.java[]
+------
+
+.TaskList.java
+[source,java]
+------
+include::task-list/java/src/main/java/com/codurance/training/tasks/TaskList.java[]
+------
+
+== Refactoring
+
+You have two weeks (week #17 and #18) to improve as much as possible this
+application by:
+
+- by "objectizing" the code (e.g., replacing primitive types by classes)
+- applying good OO principles
+- adding new features in the meantime (see below).
+
+=== New features
+
+You will choose among the following customer expectations (numbered for your
+documentation, not to prioritize them):
+
+. Deadlines
+.. Each task can have a "deadline" (command example: `deadline <ID> <date>`).
+.. The `today` command will allow you to see all the tasks whose deadline is
+today.
+. Removal
+.. Allow the user to delete tasks (command example: `delete <ID>`).
+. Visualizations
+.. View the tasks by date (command example: `view by date`).
+.. View tasks by deadline (command example: `view by deadline`).
+.. Without changing the functionality that allows a user to see tasks by project,
+change the command to `view by project`.
+. Allow a task to "belong" to several projects at the same time
+(if checked in one, checked in all for example)
+. Ensure that the application permanently maintains 2 task lists per project: the "checked" and the "unchecked"
+. (Be careful this one is tricky) Make sure that a task can be itself a task list
+
+WARNING: Some of the features do not combine easily, and they are not equal in difficulty.
+
+=== Types primitifs
+
+If you have carefully observed the code, you will have noticed that it uses very little
+of objects and on the other hand many primitive types (whole, tank, strings, collections, etc.).
+Business concepts are weakly present (`task`,` project`, etc.).
+
+Try, by implementing your new features, to get rid of primitive types as much as possible.
+
+TIP: A good example to see if you focus on business concepts is
+to verify that the primitive types are only used in the parameters of the
+constructors, local variables or private attributes.
+They should never be returned or passed as parameters to your methods (except for keyboard readings, etc.).
+
+=== Good practices
+
+Here are some (SOLID):
+
+- **S**ingle Responsibility Principle
+- **O**pen-Closed Principle
+- **L**iskov Substitution Principle
+- **I**nterface Segregation Principle
+- **D**ependency Inversion Principle
+
+TIP: Try to clearly identify in your documentation the principles implemented
+
+== About tests
+
+You will notice that the only test provided is a functional test.
+It may be useful for you to verify that your application still respects
+ the initial specifications. You can even enrich it to test
+your new commands (like `view by ...`) work.
+
+It does not exempt you to define
+classic unit tests for the classes you are going to produce.
+
+== Project expectations
+
+ifdef::slides[:leveloffset: -1]
+
+=== Models
+
+No model is mandatory, but do not hesitate to use them for your documentations.
+
+By the way, here is the initial class diagramof the application:
+
+.Initial Class Diagram of the application
+image::taskList.png[]
+
+=== Expected Deliverables
+
+To allow some privacy in your work, you will not use the usual merge request protocol, but you will deposit by Sunday 03/05/2020 midnight two documents:
+
+- A `.pdf` report containing (despite classical report elements such as
+names, table of content, ...) a short explication about each additional feature and each refactoring decision with some code excerpts to illustrate these refactoring (before/after) and some justification.
+
+WARNING: This report will be name Name1-Name2.pdf, with the name of the two members of the team.
+
+- A `.zip` file containing your project with (at minimum) an `src` forlder with the source files and a `doc` folder containing the javadoc.
+
+=== Evaluation criteria
+
+You should work in teams of 2 max.
+
+The main criteria that will guide the rating will be:
+
+- relevance of the choices
+- code quality
+- quality of the report (illustration, explanations)
+- extras (tests, models)
+
+If necessary, do not hesitate to contact me (on Telegram or jbruel@gmail.com).
+
+****************************************************************
+Realised via {asciidoctorlink} (version `{asciidoctor-version}`) from 'Dan Allen'.
+  Free to use this material under 'Licence Creative Commons'.
+  image:88x31.png["Licence Creative
+  Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+  http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
