@@ -1,0 +1,7 @@
+*Adaptor* allows you to convert the interface from one class to another
+in accordance with customer expectations. The Adaptor allows classes of
+collaborate, when they could not have done it because of interfaces
+incompatible.
+
+ifndef::slides[.UML model of the Adaptor pattern]
+image::adapteur.svg[]

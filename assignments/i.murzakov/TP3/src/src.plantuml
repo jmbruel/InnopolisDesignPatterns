@@ -1,0 +1,62 @@
+@startuml
+
+
+
+abstract class pizza.Pizza {
+  # dough : String
+  # ingredients : ArrayList<String>
+  # name : String
+  # sauce : String
+  + cook()
+  + cut()
+  + getName()
+  + prepare()
+  + wrap()
+}
+
+
+class pizza.implementation.Bolognese {
+    + Bolognese()
+}
+
+
+class pizza.implementation.Calabrese {
+    + Calabrese()
+}
+
+
+class pizza.implementation.Sarda {
+    + Sarda()
+}
+
+
+pizza.implementation.Bolognese -up-|> pizza.Pizza
+pizza.implementation.Calabrese -up-|> pizza.Pizza
+pizza.implementation.Sarda -up-|> pizza.Pizza
+
+
+
+
+abstract class pizzeria.Pizzeria {
+  + createPizza()
+  {abstract} # create()
+}
+
+
+class pizzeria.implementation.CacioeVino {
+    + create()
+}
+
+
+
+
+class pizzeria.implementation.InnoMax {
+    + create()
+}
+
+
+
+pizzeria.implementation.CacioeVino -up-|> pizzeria.Pizzeria
+pizzeria.implementation.InnoMax -up-|> pizzeria.Pizzeria
+
+@enduml

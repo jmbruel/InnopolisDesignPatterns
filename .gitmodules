@@ -1,0 +1,3 @@
+[submodule "materials/materials/task-list"]
+	path = materials/materials/task-list
+	url = https://github.com/codurance/task-list.git
