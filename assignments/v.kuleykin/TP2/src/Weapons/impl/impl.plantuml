@@ -2,45 +2,51 @@
 
 title __IMPL's Class Diagram__\n
 
-  namespace Weapons {
-    namespace impl {
-      class Weapons.impl.Bow {
-          {static} - instance : Bow
-          {static} + getInstance()
-          + getWeaponName()
-          - Bow()
+  namespace  {
+    namespace eapons {
+      namespace impl {
+        class Weapons.impl.Bow {
+            {static} - instance : Bow
+            {static} + getInstance()
+            + getWeaponName()
+            - Bow()
+        }
       }
     }
   }
   
 
-  namespace Weapons {
-    namespace impl {
-      class Weapons.impl.Dagger {
-          {static} - instance : Dagger
-          {static} + getInstance()
-          + getWeaponName()
-          - Dagger()
+  namespace  {
+    namespace eapons {
+      namespace impl {
+        class Weapons.impl.Dagger {
+            {static} - instance : Dagger
+            {static} + getInstance()
+            + getWeaponName()
+            - Dagger()
+        }
       }
     }
   }
   
 
-  namespace Weapons {
-    namespace impl {
-      class Weapons.impl.Sword {
-          {static} - instance : Sword
-          {static} + getInstance()
-          + getWeaponName()
-          - Sword()
+  namespace  {
+    namespace eapons {
+      namespace impl {
+        class Weapons.impl.Sword {
+            {static} - instance : Sword
+            {static} + getInstance()
+            + getWeaponName()
+            - Sword()
+        }
       }
     }
   }
   
 
-  Weapons.impl.Bow .up.|> Weapons.WeaponBehavior
-  Weapons.impl.Dagger .up.|> Weapons.WeaponBehavior
-  Weapons.impl.Sword .up.|> Weapons.WeaponBehavior
+  Weapons.impl.Bow .up.|> WeaponBehavior
+  Weapons.impl.Dagger .up.|> WeaponBehavior
+  Weapons.impl.Sword .up.|> WeaponBehavior
 
 
 right footer
