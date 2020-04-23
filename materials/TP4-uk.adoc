@@ -199,7 +199,7 @@ We will modify the code into several classes observing that:
 
 === User function as objects
 
-.	Make a copy of your current project and call it  `ActionBankAccount`.
+.	Make a copy of your current project and call it  `BankAgencyApplication`.
 .	Create the following packages:
 +
 -------
@@ -295,7 +295,7 @@ public interface ActionList extends Action {
 }
 ----
 +
-.	Declare a class `ActionListBankAgency` in the `application.actionlist` package,
+.	Declare a class `GenericActionList` in the `application.actionlist` package,
 ..	which implements `ActionList`,
 ..	with 4 attributes `(message, code, title, actionlist)`. The action list being the different options that the action list (menu) will display.
 .. write the code including a correctly configured constructor,
@@ -310,8 +310,8 @@ image:applicationbanque.svg[]
 
 . Create a class containing a main and allowing:
 .. to create an instance of each class `Action` created,
-.. to create an instance of `ActionListBankAgency`,
-.. launch `execute()` on the instance of `ActionListBankAgency`.
+.. to create an instance of `GenericActionList`,
+.. launch `execute()` on the instance of `GenericActionList`.
 +
 [WARNING]
 ====
@@ -498,12 +498,12 @@ public interface ActionList<E> extends Action<E>{
 
 === And what about `ActionList` ?
 
-`ActionListBankAgency` which implements a menu (which implements `ActionList`) is here created specifically for {ag}. But is this necessary in each application? (assuming nothing is displayed from the {ag}). We should be able to make a "generic" class for managing menus composed of actions and reusable in each application.
+`GenericActionList` which implements a menu (which implements `ActionList`) is here created specifically for {ag}. But is this necessary in each application? (assuming nothing is displayed from the {ag}). We should be able to make a "generic" class for managing menus composed of actions and reusable in each application.
 
 So let's try:
 
 . Make a copy of the project from the previous section.
-. Move `ActionListBankAgency` to the `action` package.
+. Move `GenericActionList` to the `action` package.
 . Rename this class to a name containing "ActionList" and well chosen. `AbstractActionList` would be VERY poorly chosen.
 . To make this class generic (and not abstract), change its header.
 +
