@@ -1,0 +1,415 @@
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
+
+:tdnum: TD 4
+
+:eleve:
+//:prof:
+:sourcedir: src/java/TD3
+
+ifndef::definitions[]
+include::definitions.txt[]
+endif::definitions[]
+ifndef::myasciidoconf[]
+include::asciidoc.conf[]
+endif::myasciidoconf[]
+
+ifdef::eleve[]
+:doctitle:  {moduleTitle} - Sujet {tdnum}
+endif::eleve[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+:icons: font
+:experimental:
+
+= {doctitle}
+:Author:  {authorDefault} - (week 15)
+:lang: uk
+:incremental:
+
+// eleve : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
+
+//----------- définitions --------------
+:sitecours: https://github.com/jmbruel/InnopolisDesignPatterns[Course Material]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Duration
+:depot: Expected results
+:lien: Links
+:img: img
+:principe: Good design principle
+:allerPlusLoin: Still hungry?
+:about: About
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version with answers
+=====
+This output of the TD includes answers to questions.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}		|
+. I know how to code in {java}.
+. I know I need to think before I start coding.
+. I master some patterns (at least _Strategy_, _Singleton_, or _Factory_)
+. I master UML main diagrams
+| {objtd}	| Work on some *UML* subtilities.
+| {duree}	| *1* TD
+|======================
+
+ifndef::compact[]
+
+== Classroom materials
+
+TIP: Do not hesitate to (re)read regularly the {sitecours}.
+NOTE: This TD exercise is inspired by the Chapter 4 of  the excellent book "Head First: Design Pattern".
+Bert Bates, Eric Freeman, Elisabeth Freeman, Kathy Sierra. Editions O'Reilly. 2005.
+
+endif::compact[]
+
+== Differences between dependency, association, composition, aggregation
+
+Considering the following class diagram:
+
+.Partial Class Diagram
+image::assoc1-uk.png[]
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Complete the diagram by adding pertinent relations (dependency, association, composition, aggregation) between classes.
+====
+
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+.Class Diagram with relations
+image::assoc1-uk-cor.png[]
+========
+endif::prof[]
+
+== Design Pattern
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+For each class diagram below (representing known Design Pattern), provide:
+
+- the name of the Design Pattern,
+- the missing relationships.
+
+.Design Pattern: ...
+image::fabrique-c.png[]
+
+//.Design Pattern: ...
+//image::etat-c.png[]
+
+//.Design Pattern: ...
+//image::observateur-c.png[]
+
+.Design Pattern: ...
+image::strategy-c.png[]
+====
+
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+.Design Pattern: Fabrique (simple)
+image::fabrique.png[]
+
+[NOTE]
+====
+Notez l'équivalence {UML} (ici noté en {plantUML}) entre :
+
+- `+Produit "+produit" <- Createur+`
+- `+Produit "1" <- Createur {+Produit produit;}+`
+====
+
+//.Design Pattern: Etat
+//image::etat.png[]
+
+//.Design Pattern: Observateur
+//image::observateur.png[]
+
+.Design Pattern: Strategy
+image::strategy.png[]
+========
+endif::prof[]
+
+== State machines
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Draw the UML state machine of a traffic light (Russian one?). 
+In a 2nd version, add the safety case of a problem (blinking orange in France).
+. Draw the UML state machine of a chess game party.
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+. Feu tricolore
++
+.Diagramme d'état d'un feu tricolore classique
+image::feu1.png[]
++
+.Diagramme d'état d'un feu tricolore avec panne
+image::feu2.png[]
+. Echecs
++
+.State machine of Chess Game
+image::chess.svg[]
++
+
+========
+endif::prof[]
+
+== Sequence diagrams
+
+The goal is to document the following banking application (`BankAgencyApp`) from some {java} code excerpts.
+
+NOTE: You will have, as a practical worl, to refactor this application, the goal is then not to correct the problems but to identify them.
+
+.Static method `accountsOfOwner` (`BankAgencyApp.java`)
+[source,java]
+-------
+public static void accountsOfOwner (BankAgency ag, String ownerName) {
+	Account []  t;
+
+	t = ag.getAccountsOf(ownerName);
+	if (t.length == 0) {
+		System.out.println("no account for this name ...");
+	} else {
+		System.out.println("  " + t.length + " accounts for " + ownerName);
+		for (int i=0; i<t.length; i++)
+			t[i].print();
+	}
+}
+-------
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+Define a sequence diagram illustrating the behavior of this method.
+====
+
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+.Sequence Diagram de la méthode `accountsOfOwner`
+image::banque-seq-methode.png[]
+========
+endif::prof[]
+
+.`BankAgencyApp.java`
+[source,java]
+-------
+public class BankAgencyApp {
+
+	public static void main(String argv[]) {
+
+		String choice;
+
+		boolean continue ;
+		Scanner lect;
+		BankAgency myAgency ;
+
+		String name, number;
+		Account c;
+		double amount;
+
+		lect = new Scanner ( System.in );
+		lect.useLocale(Locale.US);
+
+		myAgency = AccesBankAgency.getBankAgency();
+
+		continue = true;
+		while (continue) {
+			...
+			choice = lect.next();
+			choice = choice.toLowerCase();
+			switch (choice) {
+				case "q" :
+				System.out.println("ByeBye");
+				continue = false;
+				break;
+				case "l" :
+				myAgency.print();
+				break;
+				case "v" :
+				System.out.print("Num Account -> ");
+				number = lect.next();
+				c = myAgency.getAccount(number);
+				if (c==null) {
+					System.out.println("Account non existing ...");
+				} else {
+					c.print();
+				}
+				break;
+				case "p" :
+				System.out.print("Owner -> ");
+				name = lect.next();
+				BankAgencyApp.accountsOfOwner (myAgency, name);
+				break;
+				case "d" :
+				...
+				break;
+				case "r" :
+				...
+				break;
+				default :
+				...
+				break;
+			}
+		}
+	}
+
+	public static void accountsOfOwner (BankAgency ag,
+		String ownerName) {...}
+
+	public static void depositOnAccount (BankAgency ag,
+		String numberAccount, double amount) {...}
+
+	public static void withdrawFromAccount (BankAgency ag,
+		String numberAccount, double amount) {...}
+}
+-------
+
+.Extrait de `AccesBankAgency`
+[source,java]
+------
+public class AccesBankAgency {
+
+	private AccesBankAgency () {}
+	public static BankAgency getBankAgency () {
+
+		BankAgency ag = new BankAgency("Tinkoff Bank", "Kazan");
+		...
+	}
+...
+}
+------
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Provide the class diagram of the application
+. Does `AccesBankAgency` reminds you of something ?
+. Provide the sequence diagram illustrating the behavior of this
+application (`main`). Do not take care of the scanners.
+====
+
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+. Class diagram
++
+.Class diagram
+image::banque.png[]
+
+. Design Pattern:
+  - Singleton (getInstance() replaced by `getBankAgency()`), without the unique instance,
+  - behavior of a Factory.
+
+. Sequence Diagram
++
+.Sequence Diagram of `BankAgencyApp`
+image::banque-seq.png[]
+========
+endif::prof[]
+
+:numbered!:
+== {allerPlusLoin}
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Is it possible, in a {java} code, to make the difference between
+the aggregation `+1 <>-> *+` and the association `+1 -> *+`?
+====
+//----------------------------------------------------- Correction -------------------------
+ifdef::prof[]
+.Solution image:icons/solution.png[]
+[CAUTION]
+========
+. In Java, an object is always a reference, hence there is no structural difference between aggregation and composition (in C++ for example aggregation would store a reference and composition would store an object). 
+Nevertheless the life-cycle are different:
+  - Composition
++
+[source,java]
+-------
+public class Vehicule {
+	ArrayList<ComponentVehicule> myParts;
+	...
+	public Vehicule (){
+		myParts.add(ComponentVehicule("engine"));
+	}
+	public void print () {
+		myParts.each...
+			...
+			print();
+	}
+	public void destroy(){
+		myParts.each...
+			...
+			destroy();
+	}
+}
+-------
++
+  - Aggregation
++
+[source,java]
+-------
+public class Vehicule {
+	ArrayList<Passenger> passenger;
+	public void addPassenger(Passenger p) { passenger.add(p); }
+	public void destroy(){
+		...
+	}
+}
+-------
++
+
+========
+endif::prof[]
+
+ifndef::compact[]
+== {about}...
+
+****************************************************************
+Realised via {asciidoctorlink} (version `{asciidoctor-version}`) from 'Dan Allen', a {asciidoc}.
+  Free to use this material under 'Licence Creative Commons'.
+  image:88x31.png["Licence Creative
+  Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+  http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
+endif::compact[]

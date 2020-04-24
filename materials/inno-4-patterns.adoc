@@ -88,7 +88,7 @@ include::patterns-uk.adoc[leveloffset=+1]
 == Ready for a quizz?
 
 //----------------------------- Question ------------------
-[icon="{iconsdir}/tuxteacher.png"]
+[icon="icons/tuxteacher.png"]
 .*QUESTION*
 [WARNING]
 ====

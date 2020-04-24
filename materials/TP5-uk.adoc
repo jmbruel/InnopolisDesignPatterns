@@ -1,0 +1,171 @@
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
+:tdnum: TP 5
+
+:Student:
+:sourcedir: src/java/TD5
+
+ifndef::definitions[]
+include::definitions.txt[]
+endif::definitions[]
+ifndef::myasciidoconf[]
+include::asciidoc.conf[]
+endif::myasciidoconf[]
+
+ifdef::Student[]
+:doctitle:  {moduleTitle} - Subject {tdnum}
+endif::Student[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+:icons: font
+
+= {doctitle}
+:Author:  {authorDefault} - (Week 13)
+:lang: uk
+:incremental:
+:experimental:
+:date: {localdate}
+
+// Student : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
+
+
+//----------- définitions --------------
+:sitecours: https://github.com/jmbruel/InnopolisDesignPatterns[Course Material]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Duration
+:depot: Expected results
+:lien: Links
+:img: img
+:principe: Good design principle
+:allerPlusLoin: Still hungry?
+:about: About
+
+:pizzeriaSRC: src/java/PizzeriaJMB/src/appli
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version with answers
+=====
+This output includes answers to questions.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}         |
+. I know how to code in {java}.
+. I know I need to think before I start coding.
+. I know several design patterns already.
+| {objtd}       | Learn the *Observer* pattern.
+| {duree}       | *1* TD and *2* TPs
+|======================
+
+
+== Initial code
+
+ifdef::prof[]
+[CAUTION]
+.Credits
+=====
+This exercice is taken from: http://csserver.ucd.ie/~meloc/DesignPatternJavaExercises/Observer/Observer.htm
+=====
+endif::prof[]
+
+.	Get the file: link:ObserverInitialCode.zip[ObserverInitialCode.zip]. 
+.	Read the content and compare the applications `observer.nonpattern` and `observer.pattern`.
+.	Launch the application (`Main.main()`) and observe (haha) the results.
+
+== Exercises
+
+=== Reverse Engineering
+
+.	Obtain and compare the 2 class diagrams 
+.   Why `CourseController` is also an _Observer_ ?
+
+=== `observer.nonpattern` code evolution
+
+Upgrade the `observer.nonpattern` code to display the vector `CourseRecords` as a _pie chart_, in addition to the actual display (_bar chart_). 
+For details on Swing pie charts, cf. <<sf,final section>>.
+
+=== `observer.pattern` code evolution
+
+Do the same with the `observer.pattern` code.
+
+What do you think in terms of differences between the 2 (in terms of coding efforts and results)?
+
+=== Push vs. Pull
+
+You might have observed that the _Observer_ pattern was using the _pull_ method (`notifyObservers()` do not send any information).
+
+Realize a `push` version.
+
+=== Problems with the _push_
+
+In this new version, if the programs have more than 1000 courses, and if only one evolves, `notifyObservers ()` push all the information on all the observers!
+
+Improve your _push_ model so that it only pushes relevant data.
+
+TIP: For this exercise, you can ignore the changes to `New Course` and continue to use the _pull_ model for this type of change.
+
+=== Selecting the _updates_
+
+You might have observed that `CourseController` is only interested in the changes of `New Course`, while  `BarChart` and `PieChart` need to be aware of the `JSlider` changes. 
+Extend the registration interface of `Observable` (the` attach` method) so that `CourseController` no longer receives updates from` updates` that are not of interest to it.
+
+[[sf]]
+== How to draw a pie chart ?
+
+
+Here is a code segment that draws a pie chart given a Graphics object and 
+an Array containing Integers to be represented in the pie chart. 
+It is drawn at location (xOffset, yOffset) and with the radius specified to be of size 100.
+
+[source,java]
+-----
+public void paint(Graphics g, Integer[] data) {
+	super.paint(g);
+	int radius = 100;
+	
+	//first compute the total number of students
+	double total = 0.0;
+	for (int i = 0; i < data.length; i++) {
+		total += data[i];
+	}
+	//if total == 0 nothing to draw
+	if (total != 0) {
+		double startAngle = 0.0;
+		for (int i = 0; i < data.length; i++) {
+			double ratio = (data[i] / total) * 360.0;
+			//draw the arc
+			g.setColor(LayoutConstants.subjectColors[i%LayoutConstants.subjectColors.length]);
+			g.fillArc(LayoutConstants.xOffset, LayoutConstants.yOffset + 300, 2 * radius, 2 * radius, (int) startAngle, (int) ratio);
+			startAngle += ratio;
+		}
+	}
+}
+-----
+
+
+ifndef::compact[]
+:numbered!:
+== {about}...
+
+****************************************************************
+Realised via {asciidoctorlink} (version `{asciidoctor-version}`) from 'Dan Allen', a {asciidoc}.
+  Free to use this material under 'Licence Creative Commons'.
+  image:88x31.png["Licence Creative
+  Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+  http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
+endif::compact[]

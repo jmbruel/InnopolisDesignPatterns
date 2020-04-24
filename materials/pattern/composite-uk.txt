@@ -1,0 +1,7 @@
+*Composite*  allows you to compose objects into tree structures
+to represent component / compound hierarchies.
+Allows the customer to treat objects and combinations in a unique way
+of objects.
+
+ifndef::slides[.UML model of Composite]
+image::composite.svg[]

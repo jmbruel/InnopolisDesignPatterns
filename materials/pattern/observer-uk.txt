@@ -1,0 +1,7 @@
+*Observer* defines a relationship between objects of type
+one-to-many, so that when an object changes state,
+all those who depend on it are notified and updated
+automatically.
+
+ifndef::slides[.UML model of _Observer_]
+image::observer.png[]

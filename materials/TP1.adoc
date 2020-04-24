@@ -1,5 +1,5 @@
-:moduleTitle: CPOA
-:authorDefault:  Dut/Info-S3/M3105
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
 :tdnum: TP 1
 
 :eleve:
@@ -13,7 +13,7 @@ include::asciidoc.conf[]
 endif::myasciidoconf[]
 
 ifdef::eleve[]
-:doctitle:  {moduleTitle} - Sujet {tdnum}
+:doctitle:  {moduleTitle} - Subject {tdnum}
 endif::eleve[]
 ifdef::prof[]
 :doctitle: {moduleTitle} - Support {tdnum}
@@ -25,8 +25,8 @@ endif::todoprof[]
 :icons: font
 
 = {doctitle}
-:Author:  {authorDefault} - (Semaine 46)
-:lang: fr
+:Author:  {authorDefault} - (Week 11)
+:lang: uk
 :incremental:
 :experimental:
 :date: {localdate}
@@ -36,14 +36,16 @@ endif::todoprof[]
 // todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
 
 //----------- définitions --------------
-:sitecours: http://jmbruel.github.io/cpoa/[Support de Cours]
+:sitecours: https://github.com/jmbruel/InnopolisDesignPatterns[Course Material]
 :pre: PreReq
 :objtd: ObjTD
-:duree: Durée
-:depot: À rendre
-:lien: Lien
+:duree: Duration
+:depot: Expected results
+:lien: Links
 :img: img
+:principe: Good design principle
 :allerPlusLoin: Still hungry?
+:about: About
 
 //-------------------- Warning si correction -----------
 ifdef::prof[]
@@ -61,7 +63,7 @@ endif::prof[]
 | {pre}		|
 . I know how to code in {java}.
 . I know I need to think before I start coding.
-. I know basic OO concepts (inheritance, polyporphism, ...).
+. I know basic OO concepts (inheritance, polyporphism, ...)
 . I did the TD on `SuperCanard` and hence I know _Strategy_!
 | {objtd}	| Understand the importance of *Design* and implement my first pattern.
 | {duree}	| *2* TPs

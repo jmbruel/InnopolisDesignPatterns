@@ -1,5 +1,5 @@
-:moduleTitle: CPOA
-:authorDefault:  Dut/Info-S3/M3105
+:moduleTitle: Design Patterns
+:authorDefault:  [S20]/E_DP
 :tdnum: TD 2
 
 :eleve:
@@ -14,7 +14,7 @@ include::asciidoc.conf[]
 endif::myasciidoconf[]
 
 ifdef::eleve[]
-:doctitle:  {moduleTitle} - Sujet {tdnum}
+:doctitle:  {moduleTitle} - Subject {tdnum}
 endif::eleve[]
 ifdef::prof[]
 :doctitle: {moduleTitle} - Support {tdnum}
@@ -27,8 +27,8 @@ endif::todoprof[]
 :experimental:
 
 = {doctitle}
-:Author:  {authorDefault} - (Semaine 46)
-:lang: fr
+:Author:  {authorDefault} - (week 11)
+:lang: uk
 :incremental:
 
 // eleve : sujet pour élèves

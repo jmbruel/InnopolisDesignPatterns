@@ -1,0 +1,231 @@
+:moduleTitle: CPOA
+:authorDefault:  Dut/Info-S3/M3105
+:tdnum: TP 3
+
+
+:eleve:
+:sourcedir: src/java/TD2
+
+ifndef::definitions[]
+include::definitions.txt[]
+endif::definitions[]
+ifndef::myasciidoconf[]
+include::asciidoc.conf[]
+endif::myasciidoconf[]
+
+ifdef::eleve[]
+:doctitle:  {moduleTitle} - Sujet {tdnum}
+endif::eleve[]
+ifdef::prof[]
+:doctitle: {moduleTitle} - Support {tdnum}
+endif::prof[]
+ifdef::todoprof[]
+:doctitle: {moduleTitle} - DEROULEMENT SEANCE PROF {tdnum}
+endif::todoprof[]
+
+:icons: font
+
+= {doctitle}
+:Author:  {authorDefault} - (Semaine 48)
+:lang: fr
+:incremental:
+:experimental:
+:date: {localdate}
+
+// eleve : sujet pour élèves
+// prof : support prof pour séance
+// todoprof : support AVEC EXPLICATIOSN DEROULEMENT pour profs
+
+//----------- définitions --------------
+//:sitecours: http://jmbruel.github.io/cpoa/[Support de Cours]
+:pre: PreReq
+:objtd: ObjTD
+:duree: Durée
+:depot: À rendre
+:lien: Lien
+:img: img
+
+:pizzeriaSRC: src/java/PizzeriaJMB/src/appli
+
+//-------------------- Warning si correction -----------
+ifdef::prof[]
+[CAUTION]
+.Version corrigée
+=====
+Cette version comporte des indications pour les
+réponses aux exercices.
+=====
+endif::prof[]
+
+//-------------------- Cartouche d'en-tête -----------
+[[cartouche]]
+[align="left",cols="1,10a",width="90%"]
+|======================
+| {pre}		|
+. Je sais programmer en {java}.
+. J'ai conscience qu'il faut réfléchir avant de se lancer dans le codage.
+. J'ai compris ce qu'est un patron.
+. J'ai réalisé les TDs `BonChoco` et `Pizza` et donc connait les patron Singleton
+et _Factory_!
+| {objtd}	| Comprendre ce qu'est une *conception* et implémenter des patrons.
+| {duree}	| *2* TP de 1,5h (sur 1 semaine).
+|======================
+
+== Éléments utiles pour les TPs
+
+[[utils]]
+=== Fichiers utiles
+
+- le link:util/plantuml.bat[plantuml.bat]
+- la link:util/java8/plantUmlDoclet.jar[doclet pour javadoc] (version non officielle,
+mais compatible java `1.8`, si vous avez besoin de la version officielle : link:util/plantUmlDoclet.jar[doclet 1.7])
+- le link:util/plantuml.jar[jar plantuml]
+
+=== Plugins eclipse utiles (rappel)
+
+- http://infinitest.github.io/[InfiniTest]
+- PlantUML pour {eclipse} Luna:
++
+image::market.png[link="images/market.png",width=30%]
+image::plugin.png[link="images/plugin.png",width=50%]
++
+- PlantUML pour {eclipse} (4.x Juno/Neon): PlantUML ne semble plus présent sur l'Eclipse Markertplace.
+Cliquer sur  menu:Help[Install new software].
+Utiliser cette source: http://plantuml.sourceforge.net/updatesitejuno.
+Appuyer sur entrée, cocher "PlantUML" puis terminer le processus d'installation.
+
+Ce qui permet, non seulement d'avoir un éditeur pour {plantUML} et d'immédiatement
+voir le rendu graphique (à condition d'avoir ouvert la vue par menu:Window[Show View > Other... > PlantUML]),
+mais aussi d'avoir immédiatement le source {PlantUML} et le rendu UML de vos classes java en édition
+(cf. <<eclipse-plant,ci-dessous>>)!
+
+[[eclipse-plant]]
+.PlantUML en temps réel
+image::eclipse-plant.png[link="images/eclipse-plant.png",width=100%]
+
+== Rappel sur le patron Singleton
+
+[[Singleton]]
+[NOTE]
+.Design pattern : *Singleton*
+====
+include::pattern/singleton.txt[]
+====
+
+TIP: N'hésitez pas à (re)lire régulièrement le {sitecours}.
+
+== Mise en oeuvre de Singleton
+
+En reprenant le jeu d'aventure du TP1 et la version corrigée du http://iut-blagnac.github.io/cpoa/TD2-prof.html[TD2] :
+
+.Un jeu d'aventure minimaliste
+image::aventure.png[link="images/aventure.png"]
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Est-il possible ou nécessaire d'implémenter le patron Singleton pour toutes les classes de ce modèle ?
+. Implémentez le patron Singleton comme demandé à la
+http://iut-blagnac.github.io/cpoa/TD2.html#_et_si_on_améliorait_le_jeu_d_aventure_avec_singleton[section 4.2 du TD2].
+. En utilisant la doclet pour Javadoc de {plantUML}, comme au TP1, générez votre diagramme de classe automatiquement.
+====
+
+== Le patron Fabrique (_Factory_)
+
+Vous avez décortiqué en TD 3 le patron Fabrique.
+
+[[Fabrique]]
+[NOTE]
+.Design pattern : *Fabrique (_Factoty_)*
+====
+include::pattern/fabrique.txt[]
+====
+
+== Mise en oeuvre de Fabrique
+
+En reprenant le http://iut-blagnac.github.io/cpoa/TD3.html[TD3]
+et en utilisant le code de la classe link:{pizzeriaSRC}/Pizza.java[Pizza.java] suivant :
+
+[source,java]
+-------
+include::{pizzeriaSRC}/Pizza.java[lines:5..200]
+-------
+
+//----------------------------- Question ------------------
+.*QUESTION*
+[WARNING]
+====
+. Implémentez complètement l'application de Pizzeria de manière à ce que le
+programme de test ci-dessous produise le résultat ci-dessous.
++
+TIP: Commencez par écrire ce programme et servez-vous des _QuickFix_ pour "générer"
+un maximum de code.
++
+. Générez votre diagramme de classe automatiquement
+====
+
+On utilisera le modèle suivant pour les pizzas :
+
+image::Pizzas-dc.png[]
+
+.Programme de test
+[source,java]
+-------
+public class PizzaTestDrive {
+  public static void main(String[] args) {
+    Pizzeria boutiqueBrest = new PizzeriaBrest();
+    Pizzeria boutiqueStrasbourg = new PizzeriaStrasbourg();
+
+    Pizza pizza = boutiqueBrest.commanderPizza("fromage");
+    System.out.println("JMB a commandé une " + pizza.getNom() + "\n");
+
+    pizza = boutiqueStrasbourg.commanderPizza("fromage");
+    System.out.println("JMI a commandé une " + pizza.getNom() + "\n");
+  }
+}
+-------
+
+.Résultat d'exécution
+............
+$ java PizzaTestDrive
+Préparation de Pizza sauce style brest au fromage
+Étalage de la pâte...
+Ajout de la sauce...
+Ajout des garnitures :
+Parmigiano reggiano râpé
+Cuisson 25 minutes à 180°
+Découpage en parts triangulaires
+Emballage dans une boîte officielle
+JMB a commandé une Pizza sauce style brest et fromage
+Préparation de Pizza pâte Strasbourg et fromage
+Étalage de la pâte...
+Ajout de la sauce...
+Ajout des garnitures :
+Mozzarella en lamelles
+Cuisson 25 minutes à 180°
+Découpage en parts carrées
+Emballage dans une boîte officielle
+JMI a commandé une Pizza pâte Strasbourg et fromage
+............
+
+:numbered!:
+[appendix]
+== Pour aller plus loin
+
+. Réalisez un test en Java de votre architecture, en vous inspirant du code de
+test qui vérifie quelques points simples de l'architecture de votre application.
+Vous pourrez vous inspirer du test du patron _Strategy_ en Ruby (source link:modelTest/checkModel.rb[ici])
+. Reprenez les sections "pour aller plus loin" des TDs 1 et 2.
+
+ifndef::compact[]
+== About...
+
+****************************************************************
+Document réalisé par mailto:{email}[{author}] via  {asciidoctorlink} (version `{asciidoctor-version}`) de 'Dan Allen', lui même basé sur {asciidoc}.
+Pour l'instant ce document est libre d'utilisation et géré par la 'Licence Creative Commons'.
+image:88x31.png["Licence Creative
+Commons",style="border-width:0",link="http://creativecommons.org/licenses/by-sa/3.0/"]
+http://creativecommons.org/licenses/by-sa/3.0/[licence Creative Commons Paternité - Partage à l&#39;Identique 3.0 non transposé].
+****************************************************************
+endif::compact[]
