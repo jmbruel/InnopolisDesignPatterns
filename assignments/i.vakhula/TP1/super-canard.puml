@@ -1,0 +1,53 @@
+@startuml
+
+abstract class Canard {
+    +{abstract} afficer()
+    +cancaner()
+    +nager()
+    +voler()
+}
+
+class CanardEnPlastique extends Canard {
+    +afficer()
+}
+
+class Colvert extends Canard {
+    +afficer()
+}
+
+class Leurre extends Canard {
+    +afficer()
+}
+
+interface ComportementCancan {
+    +{abstract} cancaner()
+}
+
+class CanardMuet implements ComportementCancan {
+    +cancaner()
+}
+
+class Cancan implements ComportementCancan {
+    +cancaner()
+}
+
+class Coincoin implements ComportementCancan {
+    +cancaner()
+}
+
+interface ComportementVol {
+    +{abstract} voler()
+}
+
+class NePasVoler implements ComportementVol {
+    +voler()
+}
+
+class VolerAvecDesAiles implements ComportementVol {
+    +voler()
+}
+
+  Canard --> ComportementCancan
+  Canard --> ComportementVol
+
+@enduml
