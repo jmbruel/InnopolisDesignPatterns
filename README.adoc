@@ -31,6 +31,8 @@ include::definitions.txt[]
 :toc:
 :numbered:
 
+WARNING: Content subject to regular updates!
+
 Welcome to the teaching materials of my elective course:
 {moodleIUF20}[F20] / {moodleIUS20}[S20] Introduction to Design Patterns.
 
@@ -55,7 +57,7 @@ Additional usefull tools:
 
 == Schedule and organization
 
-WARNING: Dates for F20 session
+TIP: Dates for F20 session
 
 . Introduction and organization `2020/11/02`
 - {baseMaterial}/inno-1-Intro.html[HTML] / {baseMaterial}/inno-1-Intro.deckjs.html[Slides]
