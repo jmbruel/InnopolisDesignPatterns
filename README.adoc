@@ -1,23 +1,69 @@
-= InnopolisDesignPatterns
+= Innopolis Design Patterns 
+J.-M. Bruel <jbruel@gmail.com>
+v20.1 {localdate}
+:imagesdir: images
+//------------------------------------ variables de configuration
+// only used when master document
+:icons: font
+:experimental:
+:numbered!:
+:status:
+:base: http://jmbruel.github.io/InnopolisDesignPatterns
+:website: http://jmbruel.github.io/InnopolisDesignPatterns
+:baseURL: https://github.com/jmbruel/InnopolisDesignPatterns
+:jmbtopic:
+// Specific to GitHub
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+include::definitions.txt[]
+
 :iu: https://university.innopolis.ru/en/[Innopolis University]
-:moodle: https://moodle.innopolis.university/course/view.php?id=424
+:moodleIUS20: https://moodle.innopolis.university/course/view.php?id=562
+:moodleIUF20: https://moodle.innopolis.university/course/view.php?id=424
 :baseURL: https://github.com/jmbruel/InnopolisDesignPatterns/blob/master
-:baseMaterial: link:{baseURL}/materials
+:baseMaterial: link:materials
 :toc:
 :numbered:
 
-This project is a repository for the teaching materials used in the elective course on Design Patterns ({moodle}[moodle link]) at {iu}.
+Welcome to the teaching materials of my elective course:
+{moodleIUF20}[F20] / {moodleIUS20}[S20] Introduction to Design Patterns.
 
-.The 2020 promotion
+
+.The F20 promotion (just before COVID-19!)
 image::2020groupe.jpg[width=50%]
 
-== First venue (February 28/29)
+== Tools
 
-- Introduction and organization
+You will need:
+
+- A {github} account
+
+Please make sure to have the following tools:
+
+- {java} (version 8 minimum)
+- {maven} (or {gradle} but you'll might have to adapt some build files)
+
+Additional usefull tools:
+
+- {graphviz}
+
+== Schedule and organization
+
+WARNING: Dates for F20 session
+
+. Introduction and organization `2020/11/02`
 - {baseMaterial}/TD1.adoc[TD1] / {baseMaterial}/TP1.adoc[TP1] => assignment 1
+
+
 
 :numbered!:
 == Contact
 
-- mailto:jmbruel@gmail.com[email JMB]
-- The telegram group: ask @broccoli_nastya
+Email:: mailto:jbruel@gmail.com[jbruel@gmail.com]
+Telegram::: @jmbruel
