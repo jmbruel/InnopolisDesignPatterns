@@ -31,14 +31,6 @@ DOC = doc
 all: $(OUTPUT)/*.html
 book: full.pdf
 
-projet2018-1.html: projet2018.adoc projet2018-1.adoc
-	@echo '==> Compiling asciidoc files with Asciidoctor to generate HTML'
-	$(DOCTOR) -r asciidoctor-diagram -a projet1 -a toc2 -b html5 -a numbered -a eleve -a linkcss! -o projet2018-1.html projet2018.adoc
-
-projet2018-2.html: projet2018.adoc projet2018-2.adoc
-	@echo '==> Compiling asciidoc files with Asciidoctor to generate HTML'
-	$(DOCTOR) -r asciidoctor-diagram -a projet2 -a toc2 -b html5 -a numbered -a eleve -a linkcss! -o projet2018-2.html projet2018.adoc
-
 images/%.png: images/%.plantuml
 	@echo '==> Compiling plantUML files to generate PNG'
 	java -jar plantuml.jar $<
@@ -134,15 +126,16 @@ roadmap.html: $(MAIN).$(EXT)
 	$(DOCTOR) -a prof -a correction -a compact -a theme=compact -b html5 -a numbered \
 	-a data-uri $< -o $@
 
-deploy:
-	cp main.html index.html
-	git commit -am "maj du cours au fur et à mesure"
-	git co gh-pages
-	git co master index.html
+deploy: README.html
+	cp README.html index.html
+	git commit -am "deploy: public support update"
 	git push
 
 cours2:
 	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -a data-uri -o cours2.html wip.asc
+
+README.html: README.adoc
+	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -a data-uri -o README.html README.adoc
 
 test:
 	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -o wip2.html wip.asc
