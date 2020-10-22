@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="author" content="[S20]/E DP - (Week 13)">
+<title>Design Patterns - Support TP 5</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Design Patterns - Support TP 5</h1>
+<div class="details">
+<span id="author" class="author">[S20]/E DP - (Week 13)</span><br>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Version with answers</div>
+<div class="paragraph">
+<p>This output includes answers to questions.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table id="cartouche" class="tableblock frame-all grid-all" style="width: 90%;">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 90.9091%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PreReq</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>I know how to code in <a href="https://www.java.com/fr/">Java</a>.</p>
+</li>
+<li>
+<p>I know I need to think before I start coding.</p>
+</li>
+<li>
+<p>I know several design patterns already.</p>
+</li>
+</ol>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ObjTD</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Learn the <strong>Observer</strong> pattern.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Duration</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>1</strong> TD and <strong>2</strong> TPs</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_initial_code"><a class="link" href="#_initial_code">1. Initial code</a></h2>
+<div class="sectionbody">
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Credits</div>
+<div class="paragraph">
+<p>This exercice is taken from: <a href="http://csserver.ucd.ie/~meloc/DesignPatternJavaExercises/Observer/Observer.htm" class="bare">http://csserver.ucd.ie/~meloc/DesignPatternJavaExercises/Observer/Observer.htm</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get the file: <a href="ObserverInitialCode.zip">ObserverInitialCode.zip</a>.</p>
+</li>
+<li>
+<p>Read the content and compare the applications <code>observer.nonpattern</code> and <code>observer.pattern</code>.</p>
+</li>
+<li>
+<p>Launch the application (<code>Main.main()</code>) and observe (haha) the results.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercises"><a class="link" href="#_exercises">2. Exercises</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_reverse_engineering"><a class="link" href="#_reverse_engineering">2.1. Reverse Engineering</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Obtain and compare the 2 class diagrams</p>
+</li>
+<li>
+<p>Why <code>CourseController</code> is also an <em>Observer</em> ?</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_observer_nonpattern_code_evolution"><a class="link" href="#_observer_nonpattern_code_evolution">2.2. <code>observer.nonpattern</code> code evolution</a></h3>
+<div class="paragraph">
+<p>Upgrade the <code>observer.nonpattern</code> code to display the vector <code>CourseRecords</code> as a <em>pie chart</em>, in addition to the actual display (<em>bar chart</em>).
+For details on Swing pie charts, cf. <a href="#sf">final section</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_observer_pattern_code_evolution"><a class="link" href="#_observer_pattern_code_evolution">2.3. <code>observer.pattern</code> code evolution</a></h3>
+<div class="paragraph">
+<p>Do the same with the <code>observer.pattern</code> code.</p>
+</div>
+<div class="paragraph">
+<p>What do you think in terms of differences between the 2 (in terms of coding efforts and results)?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_push_vs_pull"><a class="link" href="#_push_vs_pull">2.4. Push vs. Pull</a></h3>
+<div class="paragraph">
+<p>You might have observed that the <em>Observer</em> pattern was using the <em>pull</em> method (<code>notifyObservers()</code> do not send any information).</p>
+</div>
+<div class="paragraph">
+<p>Realize a <code>push</code> version.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_problems_with_the_push"><a class="link" href="#_problems_with_the_push">2.5. Problems with the <em>push</em></a></h3>
+<div class="paragraph">
+<p>In this new version, if the programs have more than 1000 courses, and if only one evolves, <code>notifyObservers ()</code> push all the information on all the observers!</p>
+</div>
+<div class="paragraph">
+<p>Improve your <em>push</em> model so that it only pushes relevant data.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For this exercise, you can ignore the changes to <code>New Course</code> and continue to use the <em>pull</em> model for this type of change.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selecting_the_updates"><a class="link" href="#_selecting_the_updates">2.6. Selecting the <em>updates</em></a></h3>
+<div class="paragraph">
+<p>You might have observed that <code>CourseController</code> is only interested in the changes of <code>New Course</code>, while  <code>BarChart</code> and <code>PieChart</code> need to be aware of the <code>JSlider</code> changes.
+Extend the registration interface of <code>Observable</code> (the` attach` method) so that <code>CourseController</code> no longer receives updates from` updates` that are not of interest to it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sf"><a class="link" href="#sf">3. How to draw a pie chart ?</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here is a code segment that draws a pie chart given a Graphics object and
+an Array containing Integers to be represented in the pie chart.
+It is drawn at location (xOffset, yOffset) and with the radius specified to be of size 100.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java"><span></span><span class="tok-kd">public</span> <span class="tok-kt">void</span> <span class="tok-nf">paint</span><span class="tok-o">(</span><span class="tok-n">Graphics</span> <span class="tok-n">g</span><span class="tok-o">,</span> <span class="tok-n">Integer</span><span class="tok-o">[]</span> <span class="tok-n">data</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+	<span class="tok-kd">super</span><span class="tok-o">.</span><span class="tok-na">paint</span><span class="tok-o">(</span><span class="tok-n">g</span><span class="tok-o">);</span>
+	<span class="tok-kt">int</span> <span class="tok-n">radius</span> <span class="tok-o">=</span> <span class="tok-mi">100</span><span class="tok-o">;</span>
+
+	<span class="tok-c1">//first compute the total number of students</span>
+	<span class="tok-kt">double</span> <span class="tok-n">total</span> <span class="tok-o">=</span> <span class="tok-mf">0.0</span><span class="tok-o">;</span>
+	<span class="tok-k">for</span> <span class="tok-o">(</span><span class="tok-kt">int</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-mi">0</span><span class="tok-o">;</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-n">data</span><span class="tok-o">.</span><span class="tok-na">length</span><span class="tok-o">;</span> <span class="tok-n">i</span><span class="tok-o">++)</span> <span class="tok-o">{</span>
+		<span class="tok-n">total</span> <span class="tok-o">+=</span> <span class="tok-n">data</span><span class="tok-o">[</span><span class="tok-n">i</span><span class="tok-o">];</span>
+	<span class="tok-o">}</span>
+	<span class="tok-c1">//if total == 0 nothing to draw</span>
+	<span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-n">total</span> <span class="tok-o">!=</span> <span class="tok-mi">0</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+		<span class="tok-kt">double</span> <span class="tok-n">startAngle</span> <span class="tok-o">=</span> <span class="tok-mf">0.0</span><span class="tok-o">;</span>
+		<span class="tok-k">for</span> <span class="tok-o">(</span><span class="tok-kt">int</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-mi">0</span><span class="tok-o">;</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-n">data</span><span class="tok-o">.</span><span class="tok-na">length</span><span class="tok-o">;</span> <span class="tok-n">i</span><span class="tok-o">++)</span> <span class="tok-o">{</span>
+			<span class="tok-kt">double</span> <span class="tok-n">ratio</span> <span class="tok-o">=</span> <span class="tok-o">(</span><span class="tok-n">data</span><span class="tok-o">[</span><span class="tok-n">i</span><span class="tok-o">]</span> <span class="tok-o">/</span> <span class="tok-n">total</span><span class="tok-o">)</span> <span class="tok-o">*</span> <span class="tok-mf">360.0</span><span class="tok-o">;</span>
+			<span class="tok-c1">//draw the arc</span>
+			<span class="tok-n">g</span><span class="tok-o">.</span><span class="tok-na">setColor</span><span class="tok-o">(</span><span class="tok-n">LayoutConstants</span><span class="tok-o">.</span><span class="tok-na">subjectColors</span><span class="tok-o">[</span><span class="tok-n">i</span><span class="tok-o">%</span><span class="tok-n">LayoutConstants</span><span class="tok-o">.</span><span class="tok-na">subjectColors</span><span class="tok-o">.</span><span class="tok-na">length</span><span class="tok-o">]);</span>
+			<span class="tok-n">g</span><span class="tok-o">.</span><span class="tok-na">fillArc</span><span class="tok-o">(</span><span class="tok-n">LayoutConstants</span><span class="tok-o">.</span><span class="tok-na">xOffset</span><span class="tok-o">,</span> <span class="tok-n">LayoutConstants</span><span class="tok-o">.</span><span class="tok-na">yOffset</span> <span class="tok-o">+</span> <span class="tok-mi">300</span><span class="tok-o">,</span> <span class="tok-mi">2</span> <span class="tok-o">*</span> <span class="tok-n">radius</span><span class="tok-o">,</span> <span class="tok-mi">2</span> <span class="tok-o">*</span> <span class="tok-n">radius</span><span class="tok-o">,</span> <span class="tok-o">(</span><span class="tok-kt">int</span><span class="tok-o">)</span> <span class="tok-n">startAngle</span><span class="tok-o">,</span> <span class="tok-o">(</span><span class="tok-kt">int</span><span class="tok-o">)</span> <span class="tok-n">ratio</span><span class="tok-o">);</span>
+			<span class="tok-n">startAngle</span> <span class="tok-o">+=</span> <span class="tok-n">ratio</span><span class="tok-o">;</span>
+		<span class="tok-o">}</span>
+	<span class="tok-o">}</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-04-09 18:23:20 +0200
+</div>
+</div>
+<link rel="stylesheet" href="./pygments-manni.css">
+</body>
+</html>
