@@ -126,6 +126,9 @@ roadmap.html: $(MAIN).$(EXT)
 	$(DOCTOR) -a prof -a correction -a compact -a theme=compact -b html5 -a numbered \
 	-a data-uri $< -o $@
 
+README.html: README.adoc
+	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -a data-uri -o README.html README.adoc
+
 deploy: README.html
 	cp README.html index.html
 	git commit -am "deploy: public support update"
@@ -134,8 +137,6 @@ deploy: README.html
 cours2:
 	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -a data-uri -o cours2.html wip.asc
 
-README.html: README.adoc
-	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -a data-uri -o README.html README.adoc
 
 test:
 	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -o wip2.html wip.asc

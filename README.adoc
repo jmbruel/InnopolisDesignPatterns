@@ -58,6 +58,7 @@ Additional usefull tools:
 WARNING: Dates for F20 session
 
 . Introduction and organization `2020/11/02`
+- {baseMaterial}/inno-1-intro.html[HTML] / {baseMaterial}/inno-1-intro.deckjs.html[Slides]
 - {baseMaterial}/TD1.adoc[TD1] / {baseMaterial}/TP1.adoc[TP1] => assignment 1
 
 
@@ -66,4 +67,5 @@ WARNING: Dates for F20 session
 == Contact
 
 Email:: mailto:jbruel@gmail.com[jbruel@gmail.com]
-Telegram::: @jmbruel
+Telegram:: @jmbruel
+Telegram group:: [To Be Announced...]
