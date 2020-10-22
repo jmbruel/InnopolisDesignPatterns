@@ -23,8 +23,8 @@ DZSLIDES=../asciidoctor-backends/slim/dzslides
 EXT=adoc
 PANDOC=pandoc
 OUTPUT=.
-DEP=definitions.txt glossaire.txt refs.txt preface.adoc introduction.asc
-SOURCEFILES = ./src/java/CodingDojo/src/*.java
+DEP=definitions.txt 
+DOCS = docs
 DOC = doc
 #-----------------------------------------------------
 
@@ -127,10 +127,10 @@ roadmap.html: $(MAIN).$(EXT)
 	-a data-uri $< -o $@
 
 README.html: README.adoc
-	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -a data-uri -o README.html README.adoc
+	$(DOCTOR) -a toc2 -b html5 -a numbered -a stylesheet=$(STYLE) -a data-uri README.adoc
 
 deploy: README.html
-	cp README.html index.html
+	cp README.html $(DOCS)/index.html
 	git commit -am "deploy: public support update"
 	git push
 

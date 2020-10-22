@@ -27,7 +27,7 @@ include::definitions.txt[]
 :moodleIUS20: https://moodle.innopolis.university/course/view.php?id=562
 :moodleIUF20: https://moodle.innopolis.university/course/view.php?id=424
 :baseURL: https://github.com/jmbruel/InnopolisDesignPatterns/blob/master
-:baseMaterial: link:materials
+:baseMaterial: link:.
 :toc:
 :numbered:
 
