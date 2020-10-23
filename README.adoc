@@ -27,8 +27,9 @@ include::definitions.txt[]
 :moodleIUS20: https://moodle.innopolis.university/course/view.php?id=562
 :moodleIUF20: https://moodle.innopolis.university/course/view.php?id=424
 :baseURL: https://github.com/jmbruel/InnopolisDesignPatterns/blob/master
+:bitlysiteurl: http://bit.ly/innopolis-patterns
 :baseMaterial: link:.
-:toc:
+
 :numbered:
 
 WARNING: Content subject to regular updates!
@@ -36,15 +37,19 @@ WARNING: Content subject to regular updates!
 Welcome to the teaching materials of my elective course:
 {moodleIUF20}[F20] / {moodleIUS20}[S20] Introduction to Design Patterns.
 
+In this course we will practice the important object-oriented principles through the study of the most important design patterns.
+Although the practical assignments will be in {java}, illustrations will also be given in other OO languages.
 
 .The F20 promotion (just before COVID-19!)
 image::2020groupe.jpg[width=50%]
 
-== Tools
+//--------------------------------------------------------
+== pass:[<i class="fa fa-flask"></i>] Tools
+//--------------------------------------------------------
 
 You will need:
 
-- A {github} account
+- A pass:[<i class="fa fa-github"></i>] {github} account
 
 Please make sure to have the following tools:
 
@@ -55,19 +60,43 @@ Additional usefull tools:
 
 - {graphviz}
 
-== Schedule and organization
+//--------------------------------------------------------
+== pass:[<i class="fa fa-calendar"></i>] Schedule and organization
+//--------------------------------------------------------
 
-TIP: Dates for F20 session
+NOTE: Dates for F20 session, and subject to modifications
 
 . Introduction and organization `2020/11/02`
 - {baseMaterial}/inno-1-Intro.html[HTML] / {baseMaterial}/inno-1-Intro.deckjs.html[Slides]
 - {baseMaterial}/TD1-uk.html[TD1] / {baseMaterial}/TP1.html[TP1] => assignment 1
 
+//--------------------------------------------------------
+== pass:[<i class="fa fa-line-chart"></i>] Grading
+//--------------------------------------------------------
+
+NOTE: Subject to discussion & evolution
+
+Here is the list of elements for the evaluation:
+
+- Weekly exercises (20%) The more you are in time, the more the code is OK, the more test you have, the better the grading is.
+- Project (20%) Refactoring project, groups of 2 students max (end of semester week #?? and #??).
+- Presentation on a particular pattern (10%) 180s "My Design pattern in 180s" (precise date to be confirmed).
+- Quiz on concepts and lectures (20%) Timed online quiz (precise date to be confirmed).
+Final Exam (30%) Similar to the TD/TPs, timed exam (precise date to be confirmed).
+- Participation in live lectures (10% bonus) Simple way for me to take into account that some are always there while others are not...
+- Graded issues: successful merge requests (10% bonus) A list of graded issues will be available on the github repo board.
 
 
 :numbered!:
-== Contact
+//--------------------------------------------------------
+== pass:[<i class="fa fa-graduation-cap"></i>] Stay in touch
+//--------------------------------------------------------
 
-Email:: mailto:jbruel@gmail.com[jbruel@gmail.com]
-Telegram:: @jmbruel
-Telegram group:: [To Be Announced...]
+- icon:mobile[] icon:tablet[] icon:laptop[] {bitlysiteurl}
+- pass:[<i class="fa fa-envelope"></i>] mailto:jbruel@gmail.com[jbruel@gmail.com]
+- pass:[<i class="fa fa-telegram"></i>] https://telegram.me/jmbruel[@jmbruel]
+- pass:[<i class="fa fa-users"></i>] Telegram group (for fun and quick exchange): [To Be Announced...]
+- pass:[<i class="fa fa-slack"></i>] Slack group (for tasks and Q&A): [To Be Announced...]
+- pass:[<i class="fa fa-user"></i>] https://jmbruel.netlify.app
+- pass:[<i class="fa fa-calendar"></i>] https://doodle.com/mm/jeanmichelbruel/book-a-time[Book an]
+

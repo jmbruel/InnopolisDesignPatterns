@@ -1,10 +1,10 @@
 //---------------------------------
 // Design Patterns - version UK
-// (c) JMB - 2019-2020
+// (c) JMB - 2019-2021
 //---------------------------------
 = Design Patterns
 J.-M. Bruel <jbruel@gmail.com>
-v20.1 {localdate}
+v20.2 {localdate}
 :imagesdir: images
 //------------------------------------ variables de configuration
 // only used when master document
@@ -14,11 +14,12 @@ v20.1 {localdate}
 :numbered:
 :status:
 :base: https://github.com/jmbruel/InnopolisDesignPatterns
-:siteurl: {base}/Innopolis2020.html
+:siteurl: {base}
 :bitlysiteurl: http://bit.ly/innopolis-patterns
 :incremental: %step
 
 include::definitions.txt[]
+include::../definitions.txt[]
 
 == Before we start...
 
@@ -29,10 +30,10 @@ include::definitions.txt[]
 == Sorry...
 
 [{incremental}]
-- For travelling by night (and day) just before class!!
-- For not speaking a single word of Russian!
-- First time (and in English) for this course!
-- Second time for me teaching at Innopolis!
+- For not being able to travel...
+- For not speaking a single word of Russian! [detail]#Or too few#
+- 2nd time only (in English) for this course!
+- 3rd year for me teaching at Innopolis!
 
 include::whoAmI.asc[]
 
@@ -40,14 +41,20 @@ NOTE: I am here thanks to Pr. {bm}
 
 == Let's talk about you...
 
-https://docs.google.com/spreadsheets/d/1XSAVB8a0ZljweZB5R3J9F3XvB3o6HyXfqA6mLbDwKRY/edit?usp=sharing
+// 2020 list: https://docs.google.com/spreadsheets/d/1XSAVB8a0ZljweZB5R3J9F3XvB3o6HyXfqA6mLbDwKRY/edit?usp=sharing
+
+https://docs.google.com/spreadsheets/d/1Xs-3Ys7CfMk1zAr93QHwISDU2VxV4s7wagCR7KLFEMc/edit?usp=sharing
 
 image::whoAreU.jpg[width=70%]
 
-== Looking for...
+[NOTE]
+=====
+Looking for...
 
-- Is there any French speaking student ?
-- Who is also registered in MPA ?
+- Is there any *French speaking* student?
+- Who is also registered in MPA?
+=====
+
 
 == Materials in live... icon:mobile[] icon:tablet[] icon:laptop[]
 
@@ -63,7 +70,7 @@ Good *practices*::
 Design *Patterns*::
   Learn through practice
 Teaching *principles*::
-  Practice on paper, then on Computer, then on class
+  Practice "on paper", then on Computer, then on class
 
 == Organization
 
@@ -76,36 +83,6 @@ Teaching *principles*::
 . Practice on board/paper concept X
 . Practice on computer concept X
 . Lecture on concept X
+. Repetition and integration of previous ones
 
-== Time schedule (approx.)
-
-// 3 séances * 2 1/2 journées * 5 visites = 30 séances de 1h30?!
-// 45h
-[cols="1,2,4"]
-|===
-| # | Date | Topic
-
-| 1-3 | Feb. 27th | link:{base}/inno-1-Intro.html[Introduction], Organization & Coding Dojo
-| 4-6 | Feb. 28th | First pattern: link:{base}/.html[Strategy]
-| 7-9 | March. 13th | link:{base}/.html[Singleton] pattern
-| 10-12 | March. 14th | link:{base}/.html[Factory] pattern
-| 13-15 | March. 27th | link:{base}/.html[Principles] in OO
-| 16-18 | March. 28th | link:{base}/.html[Observer] pattern
-| 19-21 | Apr. 10th | link:{base}/.html[JTable] example
-| 22-24 | Apr. 11th | Refactoring project
-| 24-27 | Apr. 24th | Refactoring project
-| 28 | Apr. 25th | Extra patterns presentations
-| 29-30 | Apr. 25th | Final Exam
-|===
-
-NOTE: The evaluation plan is explained link:{base}/inno-Evaluation.html[here].
-
-== Between my venues
-
-[detail]#Let's decide!#
-
-[{incremental}]
-- Contribution to the github version of the course ?
-- Self-practice on an existing dedicated Project ?
-- x minute presentation to the group of a particular pattern
-- Provide Socrative Quizzes ?
+include::time-schedule.adoc[]

@@ -1,0 +1,25 @@
+//--------------------------------------------------------
+== pass:[<i class="fa fa-calendar"></i>] Schedule and organization
+//--------------------------------------------------------
+
+NOTE: Dates for F20 session, and subject to modifications
+
+// 3 session/week * 1,5h * 7 weeks = 20 sessions of 1h30
+// 40h admin => 30h student
+
+[cols="1,2,4"]
+|===
+| # | Date | Topic
+
+| 1-3 | Nov. 2/3 | link:{base}/inno-1-Intro.html[Introduction], Organization & Coding Dojo
+| 4-6 | Nov. 9/10 | First pattern: link:{base}/.html[Strategy]
+| 7-9 | Nov. 16/17 | link:{base}/.html[Singleton] pattern
+| 10-12 | Nov. 23/24 | link:{base}/.html[Factory] pattern
+| 13-15 | Nov. 30/01 | link:{base}/.html[Principles] in OO
+| 16-18 | Dec. 7/8 | link:{base}/.html[Observer] pattern
+| 19-20 | Dec. 14/15 | link:{base}/.html[JTable] example
+| project | ?? | Refactoring project
+| exam 1 | ?? | Extra patterns presentations
+| exam 2 | ?? | Final Exam
+|===
+
