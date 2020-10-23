@@ -19,15 +19,23 @@ ifdef::env-github[]
 :important-caption: :heavy_exclamation_mark:
 :caution-caption: :fire:
 :warning-caption: :warning:
+:java: https://www.java.com/fr/[Java]
+:gradle: link:http://www.gradle.org/[Gradle]
+:github: link:https://github.com/[GitHub]
+:maven: link:http://maven.apache.org/[Maven]
+:graphviz: https://graphviz.org/[Graphviz]
+
 endif::[]
 
+ifndef::env-github[]
 include::definitions.txt[]
+endif::[]
 
 :iu: https://university.innopolis.ru/en/[Innopolis University]
 :moodleIUS20: https://moodle.innopolis.university/course/view.php?id=562
 :moodleIUF20: https://moodle.innopolis.university/course/view.php?id=424
 :bitlysiteurl: http://bit.ly/innopolis-patterns
-:baseMaterial: link:.
+:baseMaterial: link:{website}
 
 :numbered:
 
@@ -66,8 +74,8 @@ Additional usefull tools:
 NOTE: Dates for F20 session, and subject to modifications
 
 . Introduction and organization `2020/11/02`
-- {baseMaterial}/inno-1-Intro.html[HTML] / {baseMaterial}/inno-1-Intro.deckjs.html[Slides]
-- {baseMaterial}/TD1-uk.html[TD1] / {baseMaterial}/TP1.html[TP1] => assignment 1
+- {website}/inno-1-Intro.html[HTML] / {website}/inno-1-Intro.deckjs.html[Slides]
+- {website}/TD1-uk.html[TD1] / {website}/TP1.html[TP1] => assignment 1
 
 //--------------------------------------------------------
 == pass:[<i class="fa fa-line-chart"></i>] Grading
