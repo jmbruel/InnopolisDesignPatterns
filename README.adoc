@@ -89,7 +89,7 @@ Here is the list of elements for the evaluation:
 - Project (20%) Refactoring project, groups of 2 students max (end of semester week #?? and #??).
 - Presentation on a particular pattern (10%) 180s "My Design pattern in 180s" (precise date to be confirmed).
 - Quiz on concepts and lectures (20%) Timed online quiz (precise date to be confirmed).
-Final Exam (30%) Similar to the TD/TPs, timed exam (precise date to be confirmed).
+- Final Exam (30%) Similar to the TD/TPs, timed exam (precise date to be confirmed).
 - Participation in live lectures (10% bonus) Simple way for me to take into account that some are always there while others are not...
 - Graded issues: successful merge requests (10% bonus) A list of graded issues will be available on the {baseURL}/issues[Github issues] (see the board https://github.com/jmbruel/InnopolisDesignPatterns/projects/2[here]).
 +
