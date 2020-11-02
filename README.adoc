@@ -66,6 +66,7 @@ Please make sure to have the following tools:
 Additional usefull tools:
 
 - {graphviz}
+- {plantuml} plug-in for your favorite IDE
 
 //--------------------------------------------------------
 == pass:[<i class="fa fa-calendar"></i>] Schedule and organization
