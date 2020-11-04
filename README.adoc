@@ -97,6 +97,15 @@ Here is the list of elements for the evaluation:
 TIP: You can propose graded issues!
 
 :numbered!:
+
+//--------------------------------------------------------
+== pass:[<i class="fa fa-book"></i>] Usefull links
+//--------------------------------------------------------
+
+- The repo for this course:  {baseURL}
+- More on Design Patterns: https://refactoring.guru/design-patterns (thanks @??)
+- Using {maven} with {IntelliJ}: https://www.jetbrains.com/help/idea/maven-support.html#create_new_maven_project (thanks @Daria)
+
 //--------------------------------------------------------
 == pass:[<i class="fa fa-graduation-cap"></i>] Stay in touch
 //--------------------------------------------------------

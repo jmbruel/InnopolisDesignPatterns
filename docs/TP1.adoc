@@ -86,7 +86,7 @@ mais compatible java `1.8`, si vous avez besoin de la version officielle : link:
 include::pattern/strategy.txt[]
 ====
 
-== Back to the exercice 
+== Back to the exercise 
 
 . Download the `SuperCanardBof` app code link:TP1.zip[TP1.zip].
 . May be update/translate according to what we did in TD
@@ -100,7 +100,7 @@ If you use eclipse/Windows:
 . Setup the `Junit` in the `Classpath`(btn:[Right Clic] on your project
 menu:Properties[Java Build Path > Add Library] and choose `Junit5`)
 . If you are on Windows, in the following line of `SuperCanardTest`, you need to replace
-the ".." in the `-cp` optino by a ";":
+the ".." in the `-cp` option by a ";":
 +
 [source,java]
 -------

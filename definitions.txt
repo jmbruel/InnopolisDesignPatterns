@@ -64,6 +64,7 @@
 :gvle: link:http://www.vle-project.org/wiki/GVLE[GVLE]
 :idm2014: link:http://devlog.cnrs.fr/idm2014orga[IDM'2014]
 :inra: link:http://www.inra.fr/[INRA]
+:IntelliJ: https://www.jetbrains.com/idea/[IntelliJ]
 :ivy: http://ant.apache.org/ivy/[Ivy]
 :java: https://www.java.com/fr/[Java]
 :javadoc: link:http://fr.wikipedia.org/wiki/Javadoc[Javadoc]
