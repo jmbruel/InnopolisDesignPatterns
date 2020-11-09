@@ -74,9 +74,11 @@ Additional usefull tools:
 
 NOTE: Dates for F20 session, and subject to modifications
 
-. Introduction and organization `2020/11/02`
-- {website}/inno-1-Intro.html[HTML] / {website}/inno-1-Intro.deckjs.html[Slides]
-- {website}/TD1-uk.html[TD1] / {website}/TP1.html[TP1] => assignment 1
+* Introduction and organization `2020/11/02`
+* {website}/inno-1-Intro.html[HTML] / {website}/inno-1-Intro.deckjs.html[Slides]
+* {website}/TD1-uk.html[TD1] / {website}/TP1.html[TP1] / https://www.dropbox.com/sh/75c7yttqx46eq19/AABtv5SlD9Zb-yimPdjUszGOa?dl=0[Recording of Nov. 3rd]
+** TD assignment: https://classroom.github.com/a/067TpXP5
+** TP assignment: https://classroom.github.com/a/BgyXsxwi
 
 //--------------------------------------------------------
 == pass:[<i class="fa fa-line-chart"></i>] Grading
