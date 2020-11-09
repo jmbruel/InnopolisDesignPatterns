@@ -50,7 +50,7 @@ Although the practical assignments will be in {java}, illustrations will also be
 .The S20 promotion (just before COVID-19!)
 image::2020groupe.jpg[width=50%]
 
-.The F20 promotion (during COVID-19!)
+.The S20 promotion (during COVID-19!)
 image::S20-2020.jpg[width=50%]
 
 //--------------------------------------------------------
@@ -82,7 +82,7 @@ NOTE: Dates for F20 session, and subject to modifications
 * {website}/TD1-uk.html[TD1] / {website}/TP1.html[TP1] / https://www.dropbox.com/sh/75c7yttqx46eq19/AABtv5SlD9Zb-yimPdjUszGOa?dl=0[Recording of Nov. 3rd]
 ** TD assignment: https://classroom.github.com/a/067TpXP5
 ** TP assignment: https://classroom.github.com/a/BgyXsxwi
-* {website}/TD2-uk.html[TD2] / {website}/TP2.html[TP2] / https://www.dropbox.com/sh/jrl5m7er39kee1e/AABjgjwJeNn9a2T8tTw3qP4Aa?dl=0[Recording of Nov. 9th]
+* {website}/TD2.html[TD2] / {website}/TP2.html[TP2] / https://www.dropbox.com/sh/jrl5m7er39kee1e/AABjgjwJeNn9a2T8tTw3qP4Aa?dl=0[Recording of Nov. 9th]
 
 
 //--------------------------------------------------------
