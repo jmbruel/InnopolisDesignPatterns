@@ -24,6 +24,7 @@ ifdef::env-github[]
 :github: link:https://github.com/[GitHub]
 :maven: link:http://maven.apache.org/[Maven]
 :graphviz: https://graphviz.org/[Graphviz]
+:plantuml: link:http://plantuml.sourceforge.net/[plantUML]
 
 endif::[]
 
