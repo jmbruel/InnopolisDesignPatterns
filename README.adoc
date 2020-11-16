@@ -84,6 +84,9 @@ Course introduction and organization
 * {website}/TD1-uk.html[TD1] / {website}/TP1.html[TP1] / https://www.dropbox.com/sh/75c7yttqx46eq19/AABtv5SlD9Zb-yimPdjUszGOa?dl=0[Recording of Nov. 3rd]
 ** TD assignment: https://classroom.github.com/a/067TpXP5 (deadline 7/11/2020)
 ** TP assignment: https://classroom.github.com/a/BgyXsxwi (deadline 13/11/2020)
+
+Week 2::
+
 * {website}/TD2.html[TD2] / [TP2] / https://www.dropbox.com/sh/jrl5m7er39kee1e/AABjgjwJeNn9a2T8tTw3qP4Aa?dl=0[Recording of Nov. 9th]
 ** TD assignment: https://classroom.github.com/a/Foc7t1b8 (deadline 13/11/2020)
 
