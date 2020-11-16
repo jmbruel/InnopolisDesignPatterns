@@ -1,0 +1,5 @@
+
+*Abstract Factory* defines an interface for creating a familly of objects, without precising their concrete implementation class.
+
+ifndef::slides[.UML model of the Abstract Factory pattern]
+image::factory-abstract.svg[]

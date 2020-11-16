@@ -1,0 +1,48 @@
+@startuml
+
+'-----------------------------------
+' UML concepts illustrated
+' JMB 2014
+'-----------------------------------
+
+'hide circle
+hide empty members
+hide empty methods
+
+class Client {
+	factory : AbstractFactory
+	Client(AbstractFactory)
+	operation()
+}
+note right: Product p=factory.CreateProduct();
+
+abstract class c as "AbstractFactory" {
+}
+c <- Client
+
+
+abstract class p as "Product"
+
+c : {abstract} +createProduct() : Product
+c : +...()
+
+class ConcreteFactory1 {
+	+createProduct() : Product
+	+...()
+}
+
+class ConcreteFactory2 {
+	+createProduct() : Product
+	+...()
+}
+note right: return new ConcreteProductA();
+
+p <|-- ConcreteProductA
+p <|-- ConcreteProductB
+c <|-- ConcreteFactory1
+c <|-- ConcreteFactory2
+
+ConcreteProductA <. ConcreteFactory1
+ConcreteProductB <. ConcreteFactory2
+
+@enduml
